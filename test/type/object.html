@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Object module unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+</head>
+<body>
+	
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/type/object.js'], function(object) {
+
+			//method trim
+			describe('object.mixin', function() {
+
+				it('Mix many object to one object', function() {
+
+					var t = { a: 'b' },
+						a = { c: 'd' },
+						b = { e: 'f' };
+
+					object.mixin(t, a, b)
+
+					expect(t['c']).toBe('d');
+					expect(t['e']).toBe('f');
+
+				});
+
+			});
+
+			//method toString
+			describe('object.toString', function() {
+
+				it('Translate an object to string', function() {
+					
+					expect(object.toString({ a: 'b', c: 'd' })).toBe('a:b,c:d');
+					expect(object.toString({ a: 'b', c: 'd' }, ['=', '&'])).toBe('a=b&c=d');
+					
+				});	
+				
+			});
+
+			//method toObject
+			describe('obejct.toObject', function() {
+
+				it('Translate a string to object', function() {
+
+					var o1 = object.toObject('a:b,c:d'),
+					    o2 = object.toObject('a=b&c=d', ['=', '&']);
+
+					expect(o1['a']).toBe('b');
+					expect(o1['c']).toBe('d');
+					expect(o2['a']).toBe('b');
+					expect(o2['c']).toBe('d');
+						
+				});
+
+			});
+
+			//method param
+			describe('object.param', function() {
+				
+				it('Translate object to param string', function() {
+
+					expect(object.param({a:'b', c:'d'})).toBe('a=b&c=d');	
+					
+				})	
+				
+			});
+
+			//method param
+			describe('object.unparam', function() {
+				
+				it('Translate param string to object', function() {
+
+					var o = object.unparam('a=b&c=d');
+
+					expect(o['a']).toBe('b');
+					expect(o['c']).toBe('d');
+					
+				})	
+				
+			});
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>
+

@@ -137,13 +137,13 @@ define(function() {
 
 			var	obj = {},
 				sym = symbol || [':', ','],
-				arr = str.split(sym[0]),
+				arr = str.split(sym[1]),
 				i = 0,
 				len = arr.length;
 
 			for (; i < len; i++) {
 
-				var kv = arr[i].split(sym[1]);
+				var kv = arr[i].split(sym[0]);
 				obj[kv[0]] = !needDecode ? kv[1] : unescape(kv[1]);
 
 			}
