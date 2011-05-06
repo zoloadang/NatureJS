@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Event test</title>
+	<script src="../../nature/require.js"></script>
+</head>
+<body>
+
+	<a href="#" id="J_Alert">注册一个 alert 事件</a>
+	<script>
+		require(['../../nature/event/event.js'], function(event) {
+
+			var func = function(ev) {
+
+				console.log(ev);
+				/*
+				//阻止默认事件
+				ev.preventDefault();
+				//阻止冒泡
+				ev.stopPropagation();
+				*/
+				//阻止默认事件和冒泡
+				ev.stopEvent();
+				event.remove(e);
+				alert('绑定成功');
+
+
+			};
+
+			var e = event.add('J_Alert', 'click', func);	
+
+			event.add(document.body, 'click', function(ev) {
+				
+				alert('bubble');
+				
+			});
+
+			/*
+			var el = document.getElementById('J_Alert');
+			el.addEventListener('click', func, false);
+			el.removeEventListener('click', func, false);
+			*/
+			
+			
+			
+		});
+	</script>
+
+</body>
+</html>

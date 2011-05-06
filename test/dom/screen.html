@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Dom screen module unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+	<style>
+		.hidden { display: none}
+	</style>
+</head>
+<body>
+	
+	<!-- 用于测试 position -->
+	<div id="position" style="width:200px; height:200px; visibility:hidden; position:absolute; top:200px; left:200px;"></div>
+
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/dom/screen.js?t=' + new Date().getTime()], function(screen) {
+
+			//method position
+			describe('screen.position', function() {
+
+				it('Get the position of an element', function() {
+
+					var pos = screen.position('position');
+
+					expect(pos['x']).toBe(200);
+					expect(pos['y']).toBe(200);
+					expect(pos['w']).toBe(200);
+					expect(pos['h']).toBe(200);
+			
+				});
+			
+			});
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>
+
+
+

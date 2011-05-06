@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>浏览器版本信息测试</title>
+</head>
+<body>
+	<div id="result"></div>
+	<script src="../../nature/require.js"></script>	
+	<script>
+		require(['../../nature/bom/browser.js?t=' + new Date().getTime()], function(browser) {
+
+			document.getElementById('result').innerHTML = [
+				'Browser: ' + browser.isBrowser,
+				'Opera: ' + browser.isOpera,
+				'WebKit: ' + browser.isWebKit,
+				'Chrome: ' + browser.isChrome,
+				'Safari: ' + browser.isSafari,
+				'Khtml: ' + browser.isKhtml,
+				'Gecko: ' + browser.isGecko,
+				'Mozilla: ' + browser.isMozilla,
+				'Moz: ' + browser.isMoz,
+				'Firefox: ' + browser.isFirefox,
+				'FF: ' + browser.isFF,
+				'IE: ' + browser.isIE,
+				'Maxthon : ' + browser.isMaxthon,
+				'Quirks: ' + browser.isQuirks
+			].join(', ');
+			
+		});
+	</script>
+</body>
+</html>
+

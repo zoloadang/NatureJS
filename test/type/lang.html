@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Lang module unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+</head>
+<body>
+	
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/type/lang.js'], function(lang) {
+
+			//method isString 
+			describe('lang.isString', function() {
+
+				it('check it is or not a string', function() {
+
+					expect(lang.isString('nanzhi')).toBeTruthy();
+
+					expect(lang.isString(undefined)).toBeFalsy();
+					expect(lang.isString(12)).toBeFalsy();
+					expect(lang.isString(null)).toBeFalsy();
+					expect(lang.isString([1, 2])).toBeFalsy();
+					expect(lang.isString(Array)).toBeFalsy();
+
+				});
+
+			});
+
+			//method isNumber
+			describe('lang.isNumber', function() {
+				
+				it('check it is or not a number', function() {
+					
+					expect(lang.isNumber(12)).toBeTruthy();
+
+					expect(lang.isNumber('nanzhi')).toBeFalsy();
+					expect(lang.isNumber(undefined)).toBeFalsy();
+					expect(lang.isNumber(null)).toBeFalsy();
+					expect(lang.isNumber([1, 2])).toBeFalsy();
+					expect(lang.isNumber(Array)).toBeFalsy();
+
+				});	
+				
+			});
+
+			//method isArray 
+			describe('lang.isArray', function() {
+				
+				it('check it is or not an array', function(a, b, c) {
+					
+					expect(lang.isArray([1, 2])).toBeTruthy();
+
+					expect(lang.isArray('nanzhi')).toBeFalsy();
+					expect(lang.isArray(undefined)).toBeFalsy();
+					expect(lang.isArray(12)).toBeFalsy();
+					expect(lang.isArray(null)).toBeFalsy();
+					expect(lang.isArray(Array)).toBeFalsy();
+					expect(lang.isArray(arguments)).toBeFalsy();
+					expect(lang.isArray(document.getElementsByTagName('head'))).toBeFalsy();
+
+				});	
+				
+			});
+
+			//method isArrayLike
+			describe('lang.isArrayLike', function() {
+				
+				it('check it is or not like array', function(a, b, c) {
+					
+					expect(lang.isArrayLike([1, 2])).toBeTruthy();
+					expect(lang.isArrayLike(arguments)).toBeTruthy();
+					expect(lang.isArrayLike(document.getElementsByTagName('head'))).toBeTruthy();
+
+					expect(lang.isArrayLike('nanzhi')).toBeFalsy();
+					expect(lang.isArrayLike(undefined)).toBeFalsy();
+					expect(lang.isArrayLike(12)).toBeFalsy();
+					expect(lang.isArrayLike(null)).toBeFalsy();
+					expect(lang.isArrayLike(Array)).toBeFalsy();
+
+				});	
+				
+			});
+
+			//method isObject
+			describe('lang.isObject', function() {
+				
+				it('check it is or not a object', function() {
+					
+					expect(lang.isObject(null)).toBeTruthy();
+					expect(lang.isObject([1, 2])).toBeTruthy();
+					expect(lang.isObject(Array)).toBeTruthy();
+					expect(lang.isObject(function() {})).toBeTruthy();
+					expect(lang.isObject(arguments)).toBeTruthy();
+
+					expect(lang.isObject('nanzhi')).toBeFalsy();
+					expect(lang.isObject(undefined)).toBeFalsy();
+					expect(lang.isObject(12)).toBeFalsy();
+
+				});	
+				
+			});
+
+			//method isFunction
+			describe('lang.isFunction', function() {
+				
+				it('check it is or not a Function', function() {
+
+					expect(lang.isFunction(function() {})).toBeTruthy();
+					
+					expect(lang.isFunction('nanzhi')).toBeFalsy();
+					expect(lang.isFunction(undefined)).toBeFalsy();
+					expect(lang.isFunction(12)).toBeFalsy();
+					expect(lang.isFunction(null)).toBeFalsy();
+					expect(lang.isFunction([1, 2])).toBeFalsy();
+					expect(lang.isFunction(Array)).toBeTruthy();
+					expect(lang.isFunction(arguments)).toBeFalsy();
+
+				});	
+				
+			});
+
+			//method isNull
+			describe('lang.isNull', function() {
+				
+				it('check it is or not null', function() {
+
+					expect(lang.isNull(null)).toBeTruthy();
+					
+					expect(lang.isNull('nanzhi')).toBeFalsy();
+					expect(lang.isNull(undefined)).toBeFalsy();
+					expect(lang.isNull(12)).toBeFalsy();
+					expect(lang.isNull([1, 2])).toBeFalsy();
+					expect(lang.isNull(Array)).toBeFalsy();
+					expect(lang.isNull(arguments)).toBeFalsy();
+
+				});	
+				
+			});
+
+			//method isUndefined
+			describe('lang.isUndefined', function() {
+				
+				it('check it is or not undefined', function() {
+					
+					expect(lang.isUndefined(undefined)).toBeTruthy();
+
+					expect(lang.isUndefined('nanzhi')).toBeFalsy();
+					expect(lang.isUndefined(12)).toBeFalsy();
+					expect(lang.isUndefined(null)).toBeFalsy();
+					expect(lang.isUndefined([1, 2])).toBeFalsy();
+					expect(lang.isUndefined(Array)).toBeFalsy();
+					expect(lang.isUndefined(arguments)).toBeFalsy();
+
+				});	
+				
+			});
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>
+
+

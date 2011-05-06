@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Dom html module unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+	<style>
+		.hidden { display: none}
+	</style>
+</head>
+<body>
+	
+	<div id="in">
+		<a href="http://localhost" class="hidden">localhost</a>
+	</div>
+
+	<a name="test"></a>
+
+	<form class="hidden">
+		<input type="text" name="id"/>
+	</form>
+
+	<div id="test" class="a b" style="display:none">
+		<span><em>222</em></span>
+		<a href="#">test</a>
+	</div>
+
+	<!-- html.place -->
+	<div id="place" class="hidden">
+		<div id="p0">用于测试 place</div>
+	</div>
+
+	<!-- html.create -->
+	<div id="create" class="hidden"></div>
+
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/dom/html.js?t=' + new Date().getTime()], function(html) {
+
+			//method get
+			describe('html.byId', function() {
+				
+				it('Get element by id', function() {
+					
+					expect(html.byId('test').tagName.toLowerCase()).toBe('div');
+					expect(html.byId('test123')).toBeNull();
+					
+				});	
+				
+			});
+
+			//method children
+			describe('html.children', function() {
+
+				it('Get all children of an element', function() {
+
+					expect(html.children('test').length).toBe(2);	
+					expect(html.children('test')[0].tagName.toLowerCase()).toBe('span');	
+					expect(html.children('test')[1].tagName.toLowerCase()).toBe('a');	
+					expect(html.children('test', function(el) {return el.tagName.toLowerCase() === 'a';}).length).toBe(1);	
+					
+				});	
+				
+			});
+
+			//method first
+			describe('html.first', function() {
+
+				it('Get the first child of an element', function() {
+
+					expect(html.first('test').tagName.toLowerCase()).toBe('span');	
+					expect(html.first(html.first('in'))).toBeNull();
+					
+				});	
+				
+			});
+
+			//method last
+			describe('html.last', function() {
+
+				it('Get the last child of an element', function() {
+
+					expect(html.last('test').tagName.toLowerCase()).toBe('a');	
+					expect(html.last(html.last('in'))).toBeNull();
+					
+				});	
+				
+			});
+
+			//method next
+			describe('html.next', function() {
+
+				it('Get the next element of an element', function() {
+
+					expect(html.next(html.first('test')).tagName.toLowerCase()).toBe('a');	
+					expect(html.next('in', function(el) { return el.className === 'hidden'; }).tagName.toLowerCase()).toBe('form');	
+					expect(html.next('in', function(el) { return el.className === 'hidden222'; })).toBeNull();	
+					
+				});
+				
+			});
+
+			//method prev
+			describe('html.prev', function() {
+
+				it('Get the next element of an element', function() {
+
+					expect(html.prev(html.last('test')).tagName.toLowerCase()).toBe('span');	
+					expect(html.prev('in')).toBeNull();	
+					
+				});
+				
+			});
+
+			//method parent
+			describe('html.parent', function() {
+				
+				it('Get the element\'s parent by filter', function() {
+
+					expect(html.parent('test')).toBe(document.body);	
+					expect(html.parent(html.first(html.first('test')), function(el) { return el.tagName.toLowerCase() === 'div'; } )).toBe(html.byId('test'));	
+					
+				})
+				
+			});
+
+
+			//method isAncestor
+			describe('html.contains', function() {
+
+				it('Check is an element is anothor element\'s child', function() {
+
+					expect(html.contains('test', html.first('test'))).toBeTruthy();	
+					expect(html.contains('test', html.first('in'))).toBeFalsy();	
+					expect(html.contains('test', 'test')).toBeTruthy();	
+					
+				});	
+				
+			});
+
+			//method place
+			describe('html.place', function() {
+
+				it('Place an element by anthor element', function() {
+
+					var div = document.createElement('div');
+					div.id = 'p1';
+					html.place(div, 'p0', 'replace');
+					expect(html.children('place')[0]).toBe(div);
+				
+				});
+
+				it('Insert an element after anothor element', function() {
+
+					var div = document.createElement('div');
+					html.place(div, 'p1', 'after');
+					expect(html.last('place')).toBe(div);
+					
+				});	
+
+				it('Insert an element before anthor element', function() {
+
+					var div = document.createElement('div');
+					html.place(div, 'p1', 'before');
+					expect(html.first('place')).toBe(div);
+				
+				});
+				
+				it('Insert an element as anthor element\'s first child', function() {
+
+					var div = document.createElement('div');
+					html.place(div, 'p1', 'first');
+					expect(html.first('p1')).toBe(div);
+				
+				});
+
+				it('Insert an element as anthor element\'s last child', function() {
+
+					var div = document.createElement('div');
+					html.place(div, 'p1', 'last');
+					expect(html.last('p1')).toBe(div);
+				
+				});
+
+				it('Insert an element as anthor element\'s 2nd child', function() {
+
+					var div = document.createElement('div');
+					html.place(div, 'p1', 1);
+					expect(html.next(html.first('p1'))).toBe(div);
+				
+				});
+
+				it('Insert an element as anthor element\'s only child', function() {
+
+					var div = document.createElement('div');
+					html.place(div, 'p1', 'only');
+					expect(html.children('p1').length).toBe(1);
+					expect(html.children('p1')[0]).toBe(div);
+				
+				});
+
+
+			});
+
+			//method create
+			describe('html.create', function() {
+
+				it('Only create a new DOM node', function() {
+
+					var div = html.create('div', { 'class': 'create', 'data-url': '#' });	
+					expect(html.getAttribute(div, 'data-url')).toBe('#');
+					expect(html.getAttribute(div, 'class')).toBe('create');
+
+				});
+
+				it('Create a new DOM node and insert into an element\'s first.', function() {
+
+					var div = html.create('div', { innerHTML: '<span>222</span>'}, 'create', 'first');
+					expect(html.first('create')).toBe(div);
+					expect(html.first('create').innerHTML.toLowerCase()).toBe('<span>222</span>');
+
+				});
+
+				it('Create a img and insert into an element', function() {
+
+					var img = html.create('img', { src: 'about:blank', alt: 'no pic'}, html.first('create'), 'replace');
+					expect(html.children('create').length).toBe(1);
+					expect(html.children('create')[0]).toBe(img);
+
+				});
+
+				it('Create a input and insert into an element', function() {
+
+					var input = html.create('input', {value: '1', type: 'hidden'}, 'create', 'only');
+					expect(html.children('create').length).toBe(1);
+					expect(html.first('create')).toBe(input);
+					
+				});	
+
+				it('Create a node by html string', function() {
+					
+					var str = '<div id="html">' +
+								'<span class="a hidden">2222</span>' +
+							  '</div>',
+
+						el = html.create(str, document.body);
+
+					expect(html.byId('html')).toBe(el);
+					expect(html.children(el).length).toBe(1);
+					
+				});
+				
+			});
+
+			//method setAttribute
+			describe('html.setAttribute', function() {
+
+				it('Set the attribute of an element', function() {
+
+					html.setAttribute('test', 'data-id', '2');	
+					html.setAttribute('test', { 'data-url': '#', 'data-name': '3' } );	
+					expect(html.getAttribute('test', 'data-id')).toBe('2');
+					expect(html.getAttribute('test', 'data-url')).toBe('#');
+					expect(html.getAttribute('test', 'data-name')).toBe('3');
+					
+				});	
+				
+			});
+
+			//method getAttribute
+			describe('html.getAttribute', function() {
+
+				it('Get the attribute of an element', function() {
+					
+					expect(html.getAttribute('test', 'class')).toBe('a b');	
+					expect(html.getAttribute('test', 'class22')).toBeUndefined();	
+					
+				});
+
+			});
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>

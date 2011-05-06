@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Dom style module unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+	<style>
+		.hidden { display: none}
+	</style>
+</head>
+<body>
+	
+	<!-- class -->
+	<div id="class" class="reg-1 a"></div>
+
+	<!-- style -->
+	<div id="style" style="display:block;width:200px;height:auto;opacity:.2;filter:alpha(opacity=20);"></div>
+
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/dom/style.js?t=' + new Date().getTime()], function(style) {
+
+			//method hasClass
+			describe('style.hasClass', function() {
+
+				it('Check if an element has a class', function() {
+
+					expect(style.hasClass('class', 'a')).toBeTruthy();	
+					
+				});
+
+				it('Check if an element has a class with an regexp expression.', function() {
+
+					expect(style.hasClass('class', 'reg-\\d')).toBeTruthy();	
+					
+				});
+				
+			});
+
+			//method addClass
+			describe('style.addClass', function() {
+
+				it('Add some class to an element.', function() {
+
+					style.addClass('class', 'haha');
+					expect(style.hasClass('class', 'haha')).toBeTruthy();
+				
+				});
+			
+			});
+
+			//method removeClass
+			describe('style.removeClass', function() {
+
+				it('Remove some class to an element.', function() {
+
+					style.removeClass('class', 'hehe');
+					expect(style.hasClass('class', 'hehe')).toBeFalsy();
+					style.addClass('class', 'reg-2');
+					style.removeClass('class', 'reg-\\d');
+					expect(style.hasClass('class', 'reg-z')).toBeFalsy();
+				
+				})
+			
+			});
+
+			//method toggleClass
+			describe('style.toggleClass', function() {
+
+				it('Add or romove a class.', function() {
+				
+					style.toggleClass('class', 'toggle');
+					expect(style.hasClass('class', 'toggle')).toBeTruthy();
+					style.toggleClass('class', 'toggle');
+					expect(style.hasClass('class', 'toggle')).toBeFalsy();
+				
+				});
+			
+			});
+
+			//method getStyle
+			describe('style.getStyle', function() {
+			
+				it('Get style of an element.', function() {
+				
+					expect(style.getStyle('style', 'display')).toBe('block');
+					expect(style.getStyle('style', 'width')).toBe('200px');
+					expect(style.getStyle('style', 'height')).toBe('auto');
+					expect(style.getStyle('style', 'float')).toBe('none');
+					expect(style.getStyle('style', 'padding')).toBe('');
+					expect(style.getStyle('style', 'visibility')).toBe('visible');
+					expect(style.getStyle('style', 'opacity') * 1).toBe(0.2);
+				
+				});
+			
+			});
+
+			//method setStyle
+			describe('style.setStyle', function() {
+			
+				it('Set style of an element.', function() {
+				
+					style.setStyle('style', 'height', '100px');
+					style.setStyle('style', {float: 'right', display: 'none'});
+					expect(style.getStyle('style', 'display')).toBe('none');
+					expect(style.getStyle('style', 'height')).toBe('100px');
+					expect(style.getStyle('style', 'float')).toBe('right');
+				
+				});
+			
+			});
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>
+
+
