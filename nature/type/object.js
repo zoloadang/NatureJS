@@ -5,6 +5,9 @@
 
 define(function() {
 
+	//对象自有方法, 属性
+	var extraNames = ['hasOwnProperty', 'valueOf', 'isPrototypeOf', 'propertyIsEnumerable', 'toLocaleString', 'toString', 'constructor'];
+
 	/**
 	 * object 模块
 	 * @name object
@@ -16,6 +19,83 @@ define(function() {
 		 * @lends object
 		 * @static
 		 */
+
+		/**
+		 * 合并对象
+		 * @private
+		 * @param { Object } target 目标对象.
+		 * @param { Object } source 源对象.
+		 * @return { Object } target.
+		 */
+		_mixin: function(target, source) {
+
+			if (source) {
+
+				var i,
+					_s,
+					name,
+					empty = {},
+					len = extraNames.length;
+
+				for (name in source) {
+
+					_s = source[name];
+
+					if (
+						!target[name] ||
+						target[name] != _s && (!(name in empty) || _s != empty[name])
+					) {
+
+						target[name] = source[name];
+
+					}
+
+				}
+
+				//针对 ie 浏览器
+				for (i = 0; i < len; i++) {
+
+					name = extraNames[i];
+					_s = source[name];
+
+					if (
+						!target[name] ||
+						target[name] != _s && (!(name in empty) || _s != empty[name])
+					) {
+						target[name] = _s;
+					}
+
+				}
+
+			}
+
+			return target;
+
+		},
+
+		/**
+		 * 合并对象元素到目标对象
+		 * @param { Object } obj 目标对象.
+		 * @param { Object } props 源对象.
+		 * @return { Object } obj.
+		 */
+		mixin: function(obj, props) {
+
+			var host = this,
+				args = arguments,
+				i = 1,
+				o = obj || {},
+				len = args.length;
+
+			for (; i < len; i++) {
+
+				host._mixin(o, args[i]);
+
+			}
+
+			return o;
+
+		},
 
 		/**
 		 * 转换对象为字符串
