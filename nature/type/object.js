@@ -3,7 +3,7 @@
  * @author nanzhi<nanzhienai@163.com>
  */
 
-define(function() {
+define(['../type/lang.js'], function(lang) {
 
 	//对象自有方法, 属性
 	var extraNames = ['hasOwnProperty', 'valueOf', 'isPrototypeOf', 'propertyIsEnumerable', 'toLocaleString', 'toString', 'constructor'];
@@ -94,6 +94,19 @@ define(function() {
 			}
 
 			return o;
+
+		},
+
+		/**
+		 * 合并多个对象为一个对象
+		 * @param { Object } props 源对象.
+		 * @return { Object } 合并后的对象.
+		 */
+		merge: function() {
+
+			var o = {};
+
+			return this.mixin.apply(this, [o].concat(lang.toArray(arguments)));
 
 		},
 

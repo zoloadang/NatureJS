@@ -15,7 +15,7 @@
 
 		require(['../../nature/type/object.js'], function(object) {
 
-			//method trim
+			//method mixin
 			describe('object.mixin', function() {
 
 				it('Mix many object to one object', function() {
@@ -31,6 +31,24 @@
 
 				});
 
+			});
+
+			//method merge
+			describe('object.merge', function() {
+
+				it('Merge some object to one', function() {
+					
+					var o1 = { a: 'b' },
+						o2 = { c: 'd' },
+						o3 = { e: 'f' },
+						o = object.merge(o1, o2, o3);
+
+					expect(o['a']).toBe('b');
+					expect(o['c']).toBe('d');
+					expect(o['e']).toBe('f');
+					
+				});	
+				
 			});
 
 			//method toString
