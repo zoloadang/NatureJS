@@ -128,7 +128,7 @@ define(['../type/lang.js'], function(lang) {
 
 			for (i in obj) {
 
-				arr.push(i + sym[0] + (!needEncode ? obj[i] : escape(obj[i])));
+				arr.push(i + sym[0] + (!needEncode ? obj[i] : escape(obj[i].toString())));
 
 			}
 

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>JSON module unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+</head>
+<body>
+	
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/util/json.js'], function(json) {
+
+			//method parse
+			describe('json.parse', function() {
+
+				it('Translate json string to object', function() {
+
+					var t = '{ "a": "b" }',
+						obj = json.parse(t);
+
+					expect(obj['a']).toBe('b');
+
+				});
+
+			});
+
+			//method stringify
+			describe('json.stringify', function() {
+
+				it('Translate an object to json string', function() {
+					
+					expect(json.stringify({ "a": "b", "c": "d" })).toBe('{"a":"b","c":"d"}');
+					
+				});	
+				
+			});
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>
+
+
