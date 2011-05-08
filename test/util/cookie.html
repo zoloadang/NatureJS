@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Cookie module unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+</head>
+<body>
+	
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/util/cookie.js'], function(cookie) {
+
+			//method cookie.set, cookie.get
+			describe('cookie', function() {
+
+				it('Set and get cookie', function() {
+
+					cookie.set('nick', 'nanzhi', { 'max-age': 2, domain: 'localhost', path: '/github' });
+					cookie.set('name', '南芝');
+					cookie.set('mail', 'nanzhienai@163.com', { expires: new Date(new Date().getTime() + 24 * 60 * 60 * 3600) });
+
+					expect(cookie.get('nick')).toBe('nanzhi');
+					expect(cookie.get('name')).toBe('南芝');
+					expect(cookie.get('mail')).toBe('nanzhienai@163.com');
+
+				});
+
+			});
+
+			//method cookie.isEnable
+			describe('cokkie.isEnable', function() {
+
+				it('Check is cookie enabled', function() {
+					
+					expect(cookie.isEnable()).toBeTruthy();
+					
+				});	
+				
+			});
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>
+
+
+

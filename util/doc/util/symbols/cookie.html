@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - style</title>
+		<title>JsDoc Reference - cookie</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -191,11 +191,9 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
-	<li><a href="../symbols/html.html">html</a></li>
+	<li><a href="../symbols/cookie.html">cookie</a></li>
 	
-	<li><a href="../symbols/screen.html">screen</a></li>
-	
-	<li><a href="../symbols/style.html">style</a></li>
+	<li><a href="../symbols/json.html">json</a></li>
 	
 </ul>
 <hr />
@@ -206,7 +204,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Namespace style
+				Namespace cookie
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -217,13 +215,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/nature_dom_style.js.html">style.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/nature_util_cookie.js.html">cookie.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class style.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class cookie.">
 				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
@@ -236,9 +234,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/style.html#constructor">style</a></b>
+								<b><a href="../symbols/cookie.html#constructor">cookie</a></b>
 							</div>
-							<div class="description">样式操作</div>
+							<div class="description">cookie 模块</div>
 						</td>
 					</tr>
 				</tbody>
@@ -252,7 +250,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class style.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class cookie.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -265,54 +263,27 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.addClass">addClass</a></b>(node, cname)
+								<div class="fixedFont">cookie.<b><a href="../symbols/cookie.html#.get">get</a></b>(name)
 								</div>
-								<div class="description">为节点添加 class</div>
+								<div class="description">获取 cookie</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.getStyle">getStyle</a></b>(node, style)
+								<div class="fixedFont">cookie.<b><a href="../symbols/cookie.html#.isEnable">isEnable</a></b>()
 								</div>
-								<div class="description">获取节点 style</div>
+								<div class="description">检测浏览器是否支持 cookie</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.hasClass">hasClass</a></b>(node, cname)
+								<div class="fixedFont">cookie.<b><a href="../symbols/cookie.html#.set">set</a></b>(name, value, props)
 								</div>
-								<div class="description">判断节点是否有 class</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.removeClass">removeClass</a></b>(node, cname)
-								</div>
-								<div class="description">移除节点 class</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.setStyle">setStyle</a></b>(node, name, value)
-								</div>
-								<div class="description">设置节点 style</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.toggleClass">toggleClass</a></b>(node, cname)
-								</div>
-								<div class="description">添加或者移除节点 class</div>
+								<div class="description">设置 cookie</div>
 							</td>
 						</tr>
 					
@@ -333,11 +304,11 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>style</b>
+						<b>cookie</b>
 				</div>
 				
 				<div class="description">
-					样式操作
+					cookie 模块
 					
 				</div>
 				
@@ -364,15 +335,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".addClass"> </a>
+					<a name=".get"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{String}</span>
-					<span class="light">style.</span><b>addClass</b>(node, cname)
+					<span class="light">cookie.</span><b>get</b>(name)
 					
 					</div>
 					<div class="description">
-						为节点添加 class
+						获取 cookie
 						
 						
 					</div>
@@ -382,224 +353,12 @@ ul.inheritsList
 						
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{HTMLelement | String}</span> <b>node</b>
-									
-								</dt>
-								<dd>节点或者节点 id.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>cname</b>
-									
-								</dt>
-								<dd>需要添加的 class.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{String}</span> 添加的 class.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".getStyle"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{String}</span>
-					<span class="light">style.</span><b>getStyle</b>(node, style)
-					
-					</div>
-					<div class="description">
-						获取节点 style
-						
-						
-					</div>
-					
-					
-					
-					<pre class="code">		dom.getStyle('style', 'opacity');</pre>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{String | HTMLelement}</span> <b>node</b>
-									
-								</dt>
-								<dd>节点或者节点 id.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>style</b>
-									
-								</dt>
-								<dd>需要获取的 style 名.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{String}</span> style 值.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".hasClass"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Boolean}</span>
-					<span class="light">style.</span><b>hasClass</b>(node, cname)
-					
-					</div>
-					<div class="description">
-						判断节点是否有 class
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{HTMLelement | String}</span> <b>node</b>
-									
-								</dt>
-								<dd>节点或者节点 id.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>cname</b>
-									
-								</dt>
-								<dd>class 名字.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Boolean}</span> 如果有则返回 true, 否则返回 false.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".removeClass"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{String}</span>
-					<span class="light">style.</span><b>removeClass</b>(node, cname)
-					
-					</div>
-					<div class="description">
-						移除节点 class
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{HTMLelement | String}</span> <b>node</b>
-									
-								</dt>
-								<dd>节点或者节点 id.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>cname</b>
-									
-								</dt>
-								<dd>需要移除的 class.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{String}</span> 移除的 class.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".setStyle"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{String}</span>
-					<span class="light">style.</span><b>setStyle</b>(node, name, value)
-					
-					</div>
-					<div class="description">
-						设置节点 style
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{HTMLelement | String}</span> <b>node</b>
-									
-								</dt>
-								<dd>节点或者节点 id.</dd>
 							
 								<dt>
 									<span class="light fixedFont">{String}</span> <b>name</b>
 									
 								</dt>
-								<dd>属性名.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>value</b>
-									
-								</dt>
-								<dd>属性值.</dd>
+								<dd>cookie 名.</dd>
 							
 							</dl>
 						
@@ -610,7 +369,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> value 值.</dd>
+								<dd><span class="light fixedFont">{String}</span> cookie 值.</dd>
 							
 							</dl>
 						
@@ -619,15 +378,47 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".toggleClass"> </a>
+					<a name=".isEnable"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{String}</span>
-					<span class="light">style.</span><b>toggleClass</b>(node, cname)
+					<span class="light">{Boolean}</span>
+					<span class="light">cookie.</span><b>isEnable</b>()
 					
 					</div>
 					<div class="description">
-						添加或者移除节点 class
+						检测浏览器是否支持 cookie
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> 如果浏览器开启了 cookie. 则返回 true, 否则返回 false.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".set"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">cookie.</span><b>set</b>(name, value, props)
+					
+					</div>
+					<div class="description">
+						设置 cookie
 						
 						
 					</div>
@@ -639,16 +430,22 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{HTMLelement | String}</span> <b>node</b>
+									<span class="light fixedFont">{String}</span> <b>name</b>
 									
 								</dt>
-								<dd>节点或者节点 id.</dd>
+								<dd>cookie 名.</dd>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>cname</b>
+									<span class="light fixedFont">{String}</span> <b>value</b>
 									
 								</dt>
-								<dd>需要移除的 class.</dd>
+								<dd>cookie 值.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>props</b>
+									
+								</dt>
+								<dd>其它选项.</dd>
 							
 							</dl>
 						
@@ -659,7 +456,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> 添加/移除的 class.</dd>
+								<dd><span class="light fixedFont">{String}</span> cookie 值.</dd>
 							
 							</dl>
 						
@@ -680,7 +477,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon May 09 2011 07:52:05 GMT+0800 (CST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon May 09 2011 07:52:06 GMT+0800 (CST)
 		</div>
 	</body>
 </html>
