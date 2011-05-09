@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - style</title>
+		<title>JsDoc Reference - script</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -191,11 +191,9 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
-	<li><a href="../symbols/html.html">html</a></li>
+	<li><a href="../symbols/script.html">script</a></li>
 	
-	<li><a href="../symbols/screen.html">screen</a></li>
-	
-	<li><a href="../symbols/style.html">style</a></li>
+	<li><a href="../symbols/xhr.html">xhr</a></li>
 	
 </ul>
 <hr />
@@ -206,7 +204,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Namespace style
+				Namespace script
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -217,13 +215,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/nature_dom_style.js.html">style.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/nature_io_script.js.html">script.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class style.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class script.">
 				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
@@ -236,9 +234,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/style.html#constructor">style</a></b>
+								<b><a href="../symbols/script.html#constructor">script</a></b>
 							</div>
-							<div class="description">样式操作</div>
+							<div class="description">script 异步载入模块</div>
 						</td>
 					</tr>
 				</tbody>
@@ -252,7 +250,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class style.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class script.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -265,54 +263,36 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.addClass">addClass</a></b>(node, cname)
+								<div class="fixedFont">script.<b><a href="../symbols/script.html#.create">create</a></b>(url)
 								</div>
-								<div class="description">为节点添加 class</div>
+								<div class="description">创建 script 标签</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.getStyle">getStyle</a></b>(node, style)
+								<div class="fixedFont">script.<b><a href="../symbols/script.html#.get">get</a></b>(cfg)
 								</div>
-								<div class="description">获取节点 style</div>
+								<div class="description">载入 script</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.hasClass">hasClass</a></b>(node, cname)
+								<div class="fixedFont">script.<b><a href="../symbols/script.html#.jsonp">jsonp</a></b>(cfg)
 								</div>
-								<div class="description">判断节点是否有 class</div>
+								<div class="description">jsonp</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.removeClass">removeClass</a></b>(node, cname)
+								<div class="fixedFont">script.<b><a href="../symbols/script.html#.remove">remove</a></b>(node)
 								</div>
-								<div class="description">移除节点 class</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.setStyle">setStyle</a></b>(node, name, value)
-								</div>
-								<div class="description">设置节点 style</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">style.<b><a href="../symbols/style.html#.toggleClass">toggleClass</a></b>(node, cname)
-								</div>
-								<div class="description">添加或者移除节点 class</div>
+								<div class="description">移除 script 标签</div>
 							</td>
 						</tr>
 					
@@ -333,11 +313,11 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>style</b>
+						<b>script</b>
 				</div>
 				
 				<div class="description">
-					样式操作
+					script 异步载入模块
 					
 				</div>
 				
@@ -364,15 +344,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".addClass"> </a>
+					<a name=".create"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{String}</span>
-					<span class="light">style.</span><b>addClass</b>(node, cname)
+					<span class="light">{HTMLelement}</span>
+					<span class="light">script.</span><b>create</b>(url)
 					
 					</div>
 					<div class="description">
-						为节点添加 class
+						创建 script 标签
 						
 						
 					</div>
@@ -384,16 +364,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{HTMLelement | String}</span> <b>node</b>
+									<span class="light fixedFont">{String}</span> <b>url</b>
 									
 								</dt>
-								<dd>节点或者节点 id.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>cname</b>
-									
-								</dt>
-								<dd>需要添加的 class.</dd>
+								<dd>script 地址.</dd>
 							
 							</dl>
 						
@@ -404,7 +378,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> 添加的 class.</dd>
+								<dd><span class="light fixedFont">{HTMLelement}</span> script node.</dd>
 							
 							</dl>
 						
@@ -413,22 +387,18 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".getStyle"> </a>
+					<a name=".get"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{String}</span>
-					<span class="light">style.</span><b>getStyle</b>(node, style)
+					<span class="light">{HTMLelement}</span>
+					<span class="light">script.</span><b>get</b>(cfg)
 					
 					</div>
 					<div class="description">
-						获取节点 style
+						载入 script
 						
 						
 					</div>
-					
-					
-					
-					<pre class="code">		dom.getStyle('style', 'opacity');</pre>
 					
 					
 					
@@ -437,16 +407,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String | HTMLelement}</span> <b>node</b>
+									<span class="light fixedFont">{Object}</span> <b>cfg</b>
 									
 								</dt>
-								<dd>节点或者节点 id.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>style</b>
-									
-								</dt>
-								<dd>需要获取的 style 名.</dd>
+								<dd>配置项.</dd>
 							
 							</dl>
 						
@@ -457,7 +421,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> style 值.</dd>
+								<dd><span class="light fixedFont">{HTMLelement}</span> script node.</dd>
 							
 							</dl>
 						
@@ -466,15 +430,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".hasClass"> </a>
+					<a name=".jsonp"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Boolean}</span>
-					<span class="light">style.</span><b>hasClass</b>(node, cname)
+					
+					<span class="light">script.</span><b>jsonp</b>(cfg)
 					
 					</div>
 					<div class="description">
-						判断节点是否有 class
+						jsonp
 						
 						
 					</div>
@@ -486,44 +450,31 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{HTMLelement | String}</span> <b>node</b>
+									<span class="light fixedFont">{Object}</span> <b>cfg</b>
 									
 								</dt>
-								<dd>节点或者节点 id.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>cname</b>
-									
-								</dt>
-								<dd>class 名字.</dd>
+								<dd>配置项.</dd>
 							
 							</dl>
 						
 						
 						
 						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Boolean}</span> 如果有则返回 true, 否则返回 false.</dd>
-							
-							</dl>
 						
 						
 						
 
 					<hr />
 				
-					<a name=".removeClass"> </a>
+					<a name=".remove"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{String}</span>
-					<span class="light">style.</span><b>removeClass</b>(node, cname)
+					
+					<span class="light">script.</span><b>remove</b>(node)
 					
 					</div>
 					<div class="description">
-						移除节点 class
+						移除 script 标签
 						
 						
 					</div>
@@ -535,133 +486,16 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{HTMLelement | String}</span> <b>node</b>
+									<span class="light fixedFont">{HTMLelement}</span> <b>node</b>
 									
 								</dt>
-								<dd>节点或者节点 id.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>cname</b>
-									
-								</dt>
-								<dd>需要移除的 class.</dd>
+								<dd>script node.</dd>
 							
 							</dl>
 						
 						
 						
 						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{String}</span> 移除的 class.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".setStyle"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{String}</span>
-					<span class="light">style.</span><b>setStyle</b>(node, name, value)
-					
-					</div>
-					<div class="description">
-						设置节点 style
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{HTMLelement | String}</span> <b>node</b>
-									
-								</dt>
-								<dd>节点或者节点 id.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>name</b>
-									
-								</dt>
-								<dd>属性名.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>value</b>
-									
-								</dt>
-								<dd>属性值.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{String}</span> value 值.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".toggleClass"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{String}</span>
-					<span class="light">style.</span><b>toggleClass</b>(node, cname)
-					
-					</div>
-					<div class="description">
-						添加或者移除节点 class
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{HTMLelement | String}</span> <b>node</b>
-									
-								</dt>
-								<dd>节点或者节点 id.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>cname</b>
-									
-								</dt>
-								<dd>需要移除的 class.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{String}</span> 添加/移除的 class.</dd>
-							
-							</dl>
 						
 						
 						
@@ -680,7 +514,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue May 10 2011 07:57:12 GMT+0800 (CST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue May 10 2011 07:57:13 GMT+0800 (CST)
 		</div>
 	</body>
 </html>

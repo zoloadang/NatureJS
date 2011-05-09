@@ -1,9 +1,9 @@
 /**
- * @fileoverview script 异步载入模块
+ * @fileoverview script 异步载入模块.
  * @author nanzhi<nanzhienai@163.com>
  */
 define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(event, browser, lang) {
-		
+
 	var win = window,
 		doc = document;
 
@@ -20,16 +20,16 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 		 */
 
 		/**
-		 * 载入 script 
-		 * @param { Object } cfg 配置项
-		 * @return { HTMLelement } script node
+		 * 载入 script
+		 * @param { Object } cfg 配置项.
+		 * @return { HTMLelement } script node.
 		 */
 		get: function(cfg) {
 
 			var host = this,
 				node = host.create(cfg.url);
 
-			event.add(node, browser.isIE < 9 ? 'readystatechange' : 'load', cfg.success || function() {} );
+			event.add(node, browser.isIE < 9 ? 'readystatechange' : 'load', cfg.success || function() {});
 
 			return node;
 
@@ -37,8 +37,8 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 
 		/**
 		 * 创建 script 标签
-		 * @param { String } url script 地址
-		 * @return { HTMLelement } script node
+		 * @param { String } url script 地址.
+		 * @return { HTMLelement } script node.
 		 */
 		create: function(url) {
 
@@ -54,7 +54,7 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 
 		/**
 		 * 移除 script 标签
-		 * @param { HTMLelement } node script node
+		 * @param { HTMLelement } node script node.
 		 */
 		remove: function(node) {
 
@@ -64,7 +64,7 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 
 		/**
 		 * jsonp
-		 * @param { Object } cfg 配置项
+		 * @param { Object } cfg 配置项.
 		 */
 		jsonp: function(cfg) {
 
@@ -77,7 +77,7 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 
 			if (isFunction) {
 
-				id = 'nature_jsonp_' + new Date().getTime(); 
+				id = 'nature_jsonp_' + new Date().getTime();
 				win[id] = success;
 
 			} else {
@@ -87,7 +87,7 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 			}
 
 			s = host.get({
-			
+
 				url: url + (url.indexOf('?') > -1 ? '&' : '?') + 'callback=' + id,
 
 				success: function() {
@@ -97,7 +97,7 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 					isFunction && delete win[id];
 
 				}
-					
+
 			});
 
 		}
