@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>IO script test</title>
+	<script src="../../nature/require.js"></script>
+</head>
+<body>
+
+	<script>
+		require(['../../nature/io/script.js'], function(script) {
+
+			//method get
+			script.get({
+
+				url: '../../nature/util/json.js',
+				success: function() {
+
+					alert(2);
+
+				}
+				
+			});
+
+			//method jsonp
+			script.jsonp({
+				
+				url: 'jsonp.php',
+				success: function(data) {
+
+					alert('jsonp ok, data: ' + data);
+
+				}
+				
+			});
+			
+		});
+	</script>
+
+</body>
+</html>
