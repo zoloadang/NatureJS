@@ -44,9 +44,9 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 
 			var s = doc.createElement('script');
 
-			s.src = url;
-
 			s.charset = 'utf-8';
+
+			s.src = url;
 
 			return doc.head.appendChild(s);
 

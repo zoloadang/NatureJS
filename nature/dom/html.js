@@ -553,6 +553,13 @@ define(['../type/lang.js', '../bom/browser.js', '../type/array.js', '../type/str
 
 				}
 
+				//兼容 ie7, 6
+				if ('class' === name && browser.isIE < 8) {
+
+					name = 'className';
+
+				}
+
 				el.setAttribute(name, value);
 
 				return value;

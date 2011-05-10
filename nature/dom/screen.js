@@ -72,6 +72,7 @@ define(['../bom/browser.js', './html.js'], function(browser, html) {
 		 * @param { HTMLelement | String } node 节点或者节点 id.
 		 * @param { Boolean } includeScroll 计算时是否包含滚动条.
 		 * @return { Object } { x: 100, y: 100, w: 100, h: 100 }.
+		 * @TODO fix ie7 2px bug
 		 */
 		position: function(node, includeScroll) {
 

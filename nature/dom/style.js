@@ -3,7 +3,7 @@
  * @author nanzhi<nanzhienai@163.com>
  */
 
-define(['../type/lang.js', '../type/string.js', './html.js'], function(lang, string, html) {
+define(['../type/lang.js', '../type/string.js', './html.js', '../bom/browser.js'], function(lang, string, html, browser) {
 
 	var win = window,
 		doc = document,
@@ -109,24 +109,24 @@ define(['../type/lang.js', '../type/string.js', './html.js'], function(lang, str
 		/**
 		 * 获取节点 style
 		 * @param { String | HTMLelement } node 节点或者节点 id.
-		 * @param { String } style 需要获取的 style 名.
+		 * @param { String } name 需要获取的 style 名.
 		 * @return { String } style 值.
 		 * @example
 		 * 		dom.getStyle('style', 'opacity');
 		 */
-		getStyle: function(node, style) {
+		getStyle: function(node, name) {
 
 			var host = this,
 				el = html.byId(node),
 				property,
 				value,
 				computed,
-				so = 'opacity' === style,
-				sf = 'float' === style;
+				so = 'opacity' === name,
+				sf = 'float' === name;
 
 			if (win['getComputedStyle']) {
 
-				property = sf ? 'cssFloat' : style;
+				property = sf ? 'cssFloat' : name;
 				value = el['style'][property];
 
 				if (!value) {
@@ -141,8 +141,6 @@ define(['../type/lang.js', '../type/string.js', './html.js'], function(lang, str
 
 				}
 
-				return value;
-
 			} else if (el['currentStyle']) {
 
 				if (so) {
@@ -151,11 +149,65 @@ define(['../type/lang.js', '../type/string.js', './html.js'], function(lang, str
 
 				}
 
-				property = sf ? 'styleFloat' : style;
+				property = sf ? 'styleFloat' : name;
 
-				return el['currentStyle'][property];
+				value = el['currentStyle'][property];
 
 			}
+
+			return host._fixStyle(el, name, value);
+
+		},
+
+		/**
+		 * 修改获取的 style 值, 保持各浏览器一致
+		 * @private
+		 * @param { HTMLelement } node 节点.
+		 * @param { String } name style 名.
+		 * @param { String } value style 值.
+		 * @return { String } style 值.
+		 */
+		_fixStyle: function(node, name, value) {
+
+			var host = this,
+				_pixelRegExp = /margin|padding|width|height|max|min|offset/;
+
+			if ('auto' === value && browser.isIE < 8) {
+				//非 ie 以及 ie8 以上浏览器下恒为 0
+
+				if ('width' === name) {
+
+					return node.offsetWidth;
+
+				}
+
+				if ('height' === name) {
+
+					return node.offsetHeight;
+
+				}
+
+			}
+
+			if (_pixelRegExp.test(name)) {
+
+				return host._fixPixel(value);
+
+			}
+
+			return value;
+
+		},
+
+		/**
+		 * 修改获取的 style 类型为 px 值的 style
+		 * @private
+		 * @param { String } value style 值.
+		 * @return { String } style 值.
+		 */
+		_fixPixel: function(value) {
+
+			return parseFloat(value) || 0;
 
 		},
 
