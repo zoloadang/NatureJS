@@ -40,7 +40,7 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 						cb();
 
 					}
-						
+
 				});
 
 			} else {
@@ -122,7 +122,7 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 
 							delete win[id];
 
-						} catch(e) {
+						} catch (e) {
 
 							//
 
