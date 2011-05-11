@@ -7,6 +7,7 @@ define(['../type/lang.js', '../type/string.js', './html.js', '../bom/browser.js'
 
 	var win = window,
 		doc = document,
+		docElem = doc.documentElement,
 		SPACE = ' ';
 
 	/**
@@ -172,6 +173,7 @@ define(['../type/lang.js', '../type/string.js', './html.js', '../bom/browser.js'
 			var host = this,
 				_pixelRegExp = /margin|padding|width|height|max|min|offset/;
 
+			//fix auto, only fix width and height
 			if ('auto' === value && browser.isIE < 8) {
 				//非 ie 以及 ie8 以上浏览器下恒为 0
 
@@ -189,11 +191,25 @@ define(['../type/lang.js', '../type/string.js', './html.js', '../bom/browser.js'
 
 			}
 
+			//fix px
 			if (_pixelRegExp.test(name)) {
 
 				return host._fixPixel(value);
 
 			}
+
+			//@TODO fix inherit
+			/*
+			if ('inherit' === value && browser.isIE) {
+
+				if (docElem != node) {
+
+					return host.getStyle(node.parentNode, name);
+
+				}
+
+			}
+			*/
 
 			return value;
 

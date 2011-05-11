@@ -27,9 +27,27 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 		get: function(cfg) {
 
 			var host = this,
-				node = host.create(cfg.url);
+				node = host.create(cfg.url),
+				cb = cfg.success || function() {},
+				status = /loaded|complete/;
 
-			event.add(node, browser.isIE < 9 ? 'readystatechange' : 'load', cfg.success || function() {});
+			if (browser.isIE < 9) {
+
+				event.add(node, 'readystatechange', function() {
+
+					if (status.test(node.readyState)) {
+
+						cb();
+
+					}
+						
+				});
+
+			} else {
+
+				event.add(node, 'load', cb);
+
+			}
 
 			return node;
 
@@ -42,13 +60,16 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 		 */
 		create: function(url) {
 
-			var s = doc.createElement('script');
+			var s = doc.createElement('script'),
+				head = doc.head || doc.getElementsByTagName('head')[0];
+
+			s.type = 'text/javascript';
 
 			s.charset = 'utf-8';
 
 			s.src = url;
 
-			return doc.head.appendChild(s);
+			return head.appendChild(s);
 
 		},
 
@@ -94,7 +115,20 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 
 					host.remove(s);
 
-					isFunction && delete win[id];
+					if (isFunction) {
+
+						//under ie, can make an error
+						try {
+
+							delete win[id];
+
+						} catch(e) {
+
+							//
+
+						}
+
+					}
 
 				}
 
