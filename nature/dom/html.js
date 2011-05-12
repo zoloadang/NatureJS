@@ -452,13 +452,13 @@ define(['../type/lang.js', '../bom/browser.js', '../type/array.js', '../type/str
 
 			}
 
-
 			return n;
 
 		},
 
 		/**
 		 * 创建一个节点
+		 * @TODO script tag, style tag, iframe, etc.
 		 * @param { String } tag 需要创建的标签.
 		 * @param { Object } attrs 标签属性, 可选.
 		 * @param { HTMLelement | String } refNode 需要插入的节点或者节点 id, 可选.
@@ -472,6 +472,7 @@ define(['../type/lang.js', '../bom/browser.js', '../type/array.js', '../type/str
 			var host = this,
 				isHTML = /<.+>/.test(tag),
 				node,
+				children,
 				temp;
 
 			if (isHTML) {
@@ -479,7 +480,14 @@ define(['../type/lang.js', '../bom/browser.js', '../type/array.js', '../type/str
 				//通过 html 字符串创建节点
 				temp = doc.createElement('div');
 				temp.innerHTML = tag;
-				node = host.first(temp);
+				node = doc.createDocumentFragment();
+
+				while (children = host.children(temp)) {
+
+					node.appendChild(children[0]);
+
+				}
+
 				pos = refNode;
 				refNode = attrs;
 
@@ -498,9 +506,7 @@ define(['../type/lang.js', '../bom/browser.js', '../type/array.js', '../type/str
 
 			if (refNode) {
 
-				refNode = host.byId(refNode);
-
-				refNode && host.place(node, refNode, pos);
+				return host.place(node, refNode, pos);
 
 			}
 

@@ -33,6 +33,35 @@
 
 			});
 
+			//method extend
+			describe('object.extend', function() {
+
+				it('Extend constructor\'s prototype.', function() {
+
+					function Bird(name) {
+
+						this.name = name;
+
+					}	
+
+					object.extend(Bird, {
+
+						cry: function() {
+
+							return this.name;
+
+						}	
+						
+					});
+
+					var nbird = new Bird('swan');
+					
+					expect(nbird.cry()).toBe('swan');
+					
+				});	
+				
+			});
+
 			//method merge
 			describe('object.merge', function() {
 

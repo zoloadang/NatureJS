@@ -98,6 +98,29 @@ define(['../type/lang.js'], function(lang) {
 		},
 
 		/**
+		 * 为原型添加方法
+		 * @param { Function } constructor 构造函数.
+		 * @param { Object } props 源对象.
+		 * @return { Function } 构造函数.
+		 */
+		extend: function(constructor, props) {
+
+			var host = this,
+				args = arguments,
+				i = 1,
+				len = args.length;
+
+			for (; i < len; i++) {
+
+				host._mixin(constructor.prototype, args[i]);
+
+			}
+
+			return constructor;
+
+		},
+
+		/**
 		 * 合并多个对象为一个对象
 		 * @param { Object } props 源对象.
 		 * @return { Object } 合并后的对象.

@@ -243,14 +243,17 @@
 
 				it('Create a node by html string', function() {
 					
-					var str = '<div id="html">' +
-								'<span class="a hidden">2222</span>' +
+					var str = '<div id="html" class="hidden">' +
+								'<span class="a">2222</span>' +
+							  '</div>' +
+							  '<div id="html2" class="hidden">' +
+								  '<b>11</b>' +
 							  '</div>',
 
 						el = html.create(str, document.body);
 
-					expect(html.byId('html')).toBe(el);
-					expect(html.children(el).length).toBe(1);
+					expect(html.children('html').length).toBe(1);
+					expect(html.byId('html2').innerHTML.toLowerCase()).toBe('<b>11</b>');
 					
 				});
 				
