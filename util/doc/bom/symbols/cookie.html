@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - string</title>
+		<title>JsDoc Reference - cookie</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -191,13 +191,9 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
-	<li><a href="../symbols/array.html">array</a></li>
+	<li><a href="../symbols/browser.html">browser</a></li>
 	
-	<li><a href="../symbols/lang.html">lang</a></li>
-	
-	<li><a href="../symbols/object.html">object</a></li>
-	
-	<li><a href="../symbols/string.html">string</a></li>
+	<li><a href="../symbols/cookie.html">cookie</a></li>
 	
 </ul>
 <hr />
@@ -208,7 +204,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Namespace string
+				Namespace cookie
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -219,13 +215,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/nature_type_string.js.html">string.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/nature_bom_cookie.js.html">cookie.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class string.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class cookie.">
 				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
@@ -238,9 +234,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/string.html#constructor">string</a></b>
+								<b><a href="../symbols/cookie.html#constructor">cookie</a></b>
 							</div>
-							<div class="description">string 模块</div>
+							<div class="description">cookie 模块</div>
 						</td>
 					</tr>
 				</tbody>
@@ -254,7 +250,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class string.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class cookie.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -267,27 +263,27 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">string.<b><a href="../symbols/string.html#.substitute">substitute</a></b>(template, data, prefix, postfix, postfix)
+								<div class="fixedFont">cookie.<b><a href="../symbols/cookie.html#.get">get</a></b>(name)
 								</div>
-								<div class="description">模板/对象匹配替换</div>
+								<div class="description">获取 cookie</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">string.<b><a href="../symbols/string.html#.toUpper">toUpper</a></b>(str)
+								<div class="fixedFont">cookie.<b><a href="../symbols/cookie.html#.isEnable">isEnable</a></b>()
 								</div>
-								<div class="description">将首字母大写</div>
+								<div class="description">检测浏览器是否支持 cookie</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">string.<b><a href="../symbols/string.html#.trim">trim</a></b>(str, isBigText)
+								<div class="fixedFont">cookie.<b><a href="../symbols/cookie.html#.set">set</a></b>(name, value, props)
 								</div>
-								<div class="description">去除字符串两边空格</div>
+								<div class="description">设置 cookie</div>
 							</td>
 						</tr>
 					
@@ -308,11 +304,11 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>string</b>
+						<b>cookie</b>
 				</div>
 				
 				<div class="description">
-					string 模块
+					cookie 模块
 					
 				</div>
 				
@@ -339,75 +335,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".substitute"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">string.</span><b>substitute</b>(template, data, prefix, postfix, postfix)
-					
-					</div>
-					<div class="description">
-						模板/对象匹配替换
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>template</b>
-									
-								</dt>
-								<dd>需要替换的模板.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{Object}</span> <b>data</b>
-									
-								</dt>
-								<dd>相匹配的数据对象.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>prefix</b>
-									
-								</dt>
-								<dd>匹配的前缀, 可选.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>postfix</b>
-									
-								</dt>
-								<dd>匹配的后缀, 可选.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>postfix</b>
-									
-								</dt>
-								<dd>匹配的后缀.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".toUpper"> </a>
+					<a name=".get"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{String}</span>
-					<span class="light">string.</span><b>toUpper</b>(str)
+					<span class="light">cookie.</span><b>get</b>(name)
 					
 					</div>
 					<div class="description">
-						将首字母大写
+						获取 cookie
 						
 						
 					</div>
@@ -419,10 +355,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>str</b>
+									<span class="light fixedFont">{String}</span> <b>name</b>
 									
 								</dt>
-								<dd>字符串.</dd>
+								<dd>cookie 名.</dd>
 							
 							</dl>
 						
@@ -433,7 +369,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> 转换后的字符串.</dd>
+								<dd><span class="light fixedFont">{String}</span> cookie 值.</dd>
 							
 							</dl>
 						
@@ -442,15 +378,47 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".trim"> </a>
+					<a name=".isEnable"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{String}</span>
-					<span class="light">string.</span><b>trim</b>(str, isBigText)
+					<span class="light">{Boolean}</span>
+					<span class="light">cookie.</span><b>isEnable</b>()
 					
 					</div>
 					<div class="description">
-						去除字符串两边空格
+						检测浏览器是否支持 cookie
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> 如果浏览器开启了 cookie. 则返回 true, 否则返回 false.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".set"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">cookie.</span><b>set</b>(name, value, props)
+					
+					</div>
+					<div class="description">
+						设置 cookie
 						
 						
 					</div>
@@ -462,16 +430,22 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>str</b>
+									<span class="light fixedFont">{String}</span> <b>name</b>
 									
 								</dt>
-								<dd>需要清理的字符串.</dd>
+								<dd>cookie 名.</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Boolean}</span> <b>isBigText</b>
+									<span class="light fixedFont">{String}</span> <b>value</b>
 									
 								</dt>
-								<dd>是否是大字符串.</dd>
+								<dd>cookie 值.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>props</b>
+									
+								</dt>
+								<dd>其它选项.</dd>
 							
 							</dl>
 						
@@ -482,7 +456,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> 返回清除后的字符串.</dd>
+								<dd><span class="light fixedFont">{String}</span> cookie 值.</dd>
 							
 							</dl>
 						
@@ -503,7 +477,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Fri May 13 2011 07:47:41 GMT+0800 (CST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Fri May 13 2011 07:47:42 GMT+0800 (CST)
 		</div>
 	</body>
 </html>
