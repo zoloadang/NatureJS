@@ -6,7 +6,8 @@
 define(['../type/lang.js'], function(lang) {
 
 	//对象自有方法, 属性
-	var extraNames = ['hasOwnProperty', 'valueOf', 'isPrototypeOf', 'propertyIsEnumerable', 'toLocaleString', 'toString', 'constructor'];
+	var win = window,
+		extraNames = ['hasOwnProperty', 'valueOf', 'isPrototypeOf', 'propertyIsEnumerable', 'toLocaleString', 'toString', 'constructor'];
 
 	/**
 	 * object 模块
@@ -208,8 +209,75 @@ define(['../type/lang.js'], function(lang) {
 
 			return this.toObject(str, ['=', '&'], true);
 
-		}
+		},
 
+		/**
+		 * 获取对象
+		 * @private
+		 * @param { String } parts 名字.
+		 * @param { Boolean } create 是否创建对象.
+		 * @param { Object } context 上下文对象.
+		 * @return { Object } 对象.
+		 */
+		_getProp: function(parts, create, context) {
+
+			var obj = context || win,
+				len = parts.length,
+				i = 0;
+
+			for (; i < len; i++) {
+
+				if (obj[parts[i]]) {
+
+					obj = obj[parts[i]];
+					continue;
+
+				} else {
+
+					obj = create ? (obj[parts[i]] = {}) : 'undefined';
+
+				}
+
+			}
+
+			return obj;
+
+		},
+
+		/**
+		 * 设置对象
+		 * @param { String } name 名字.
+		 * @param { Anything } value 值.
+		 * @param { Object } context 上下文对象.
+		 * @return { Object } 要设置的对象.
+		 */
+		set: function(name, value, context) {
+
+			var host = this,
+				parts = name.split('.'),
+				p = parts.pop(),
+				obj = host._getProp(parts, true, context);
+
+			if (obj && p) {
+
+				return (obj[p] = value);
+
+			}
+
+		},
+
+		/**
+		 * 根据字符串获取对象
+		 * @param { String } name 名字.
+		 * @param { Boolean } create 如果对象不存在是否创建.
+		 * @param { Object } context 上下文对象.
+		 * @return { Object } 对象.
+		 */
+		get: function(name, create, context) {
+
+			return this._getProp(name.split('.'), create, context);
+
+		}
 
 	};
 
