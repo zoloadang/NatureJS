@@ -130,8 +130,21 @@
 					expect(o['a']).toBe('b');
 					expect(o['c']).toBe('d');
 					
-				})	
+				});	
 				
+			});
+
+			//method set, get
+			describe('object.set and object.get', function() {
+			
+				it('set object', function() {
+				
+					object.set('nature.dom', { name: 'dom' });
+					var o = object.get('nature.dom');
+					expect(o.name).toBe('dom');
+				
+				});
+			
 			});
 
 			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
