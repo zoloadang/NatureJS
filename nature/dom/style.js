@@ -28,13 +28,38 @@ define(['../type/lang.js', '../type/string.js', './html.js', '../bom/browser.js'
 		 * @param { HTMLelement | String } node 节点或者节点 id.
 		 * @param { String } cname class 名字.
 		 * @return { Boolean } 如果有则返回 true, 否则返回 false.
-		 * @TODO 同时检测子元素
 		 */
 		hasClass: function(node, cname) {
 
 			var	reg = new RegExp('(?:^|\\s+)' + cname + '(?:\\s+|$)');
 
 			return reg.test(html.getAttribute(node, 'class'));
+
+		},
+
+		/**
+		 * 判断节点或者父节点是否有 class
+		 * @param { HTMLelement | String } node 节点或者节点 id.
+		 * @param { String } cname class 名字.
+		 * @return { Boolean } 如果有或者父节点有则返回 true, 否则返回 false.
+		 */
+		hasAncestor: function(node, cname) {
+
+			var host = this,
+				ret = host.hasClass(node, cname);
+
+			if (!ret) {
+
+				//尝试获取含有 class 的父节点
+				ret = html.parent(node, function(el) {
+
+					      return host.hasClass(el, cname);
+
+					  });
+
+			}
+
+			return !!ret;
 
 		},
 

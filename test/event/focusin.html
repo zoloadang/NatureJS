@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Event focusin and focusout test</title>
+	<script src="../../nature/require.js"></script>
+</head>
+<body>
+
+	<div id="result"></div>
+	<div id="target" style="width:400px; height:400px; border:1px solid green">
+		<input type="text" />
+	</div>
+
+	<script>
+		require(['../../nature/event/event.js', '../../nature/dom/html.js'], function(event, html) {
+
+			var func = function(ev) {
+
+				console.log(ev);
+				var target = ev.target;
+
+				if ('input' === target.tagName.toLowerCase()) {
+
+					html.byId('result').innerHTML = ev.type;
+
+				}
+
+			};
+
+			event.add('target', 'focusin', func);	
+			event.add('target', 'focusout', func);	
+			
+		});
+	</script>
+
+</body>
+</html>
+
+

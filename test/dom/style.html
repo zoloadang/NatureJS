@@ -11,7 +11,7 @@
 <body>
 	
 	<!-- class -->
-	<div id="class" class="reg-1 a"></div>
+	<div id="class" class="reg-1 a"><div id="sub-class"></div></div>
 
 	<!-- style -->
 	<div id="style" style="display:block;width:200px;height:auto;opacity:.2;filter:alpha(opacity=20);"></div>
@@ -38,6 +38,18 @@
 					expect(style.hasClass('class', 'reg-\\d')).toBeTruthy();	
 					
 				});
+				
+			});
+
+			//method hasAncestor
+			describe('style.hasAncestor', function() {
+
+				it('Check if an element or element\'s parent has a class', function() {
+					
+					expect(style.hasAncestor('class', 'a')).toBeTruthy();
+					expect(style.hasAncestor('sub-class', 'a')).toBeTruthy();
+					
+				});	
 				
 			});
 

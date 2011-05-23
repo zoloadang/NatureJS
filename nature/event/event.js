@@ -2,7 +2,7 @@
  * @fileoveview 事件注册
  * @author nanzhi<nanzhienai@163.com>
  */
-define(['../type/lang.js', '../dom/html.js'], function(lang, html) {
+define(['../type/lang.js', '../dom/html.js', '../bom/browser.js'], function(lang, html, browser) {
 
 	var win = window,
 		doc = document,
@@ -29,8 +29,39 @@ define(['../type/lang.js', '../dom/html.js'], function(lang, html) {
 			var host = this,
 				fp = function(ev) {
 					return host._fixCallback(type, func).call(this, ev);
-				};
+				},
+				enter_reg = /mouseenter|mouseleave/i,
+				focus_reg = /focusin|focusout/i,
+				m;
 
+			//fix mouseenter, mouseleave
+			m = type.match(enter_reg);
+			if (m && m[0] && !browser.isIE) {
+
+				type = 'mouseenter' === m[0] ? 'mouseover' : 'mouseout';
+
+				//非 ie 浏览器
+				fp = function(ev) {
+
+					if (!html.contains(node, ev.relatedTarget)) {
+
+						return host._fixCallback(type, func).call(this, ev);
+
+					}
+
+				}
+
+			}
+
+			//fix focusin, focusout
+			m = type.match(focus_reg);
+			if (m && m[0] && !browser.isIE) {
+
+				return node.addEventListener('focusin' === m[0] ? 'focus' : 'blur', fp, true);
+
+			}
+
+			//兼容性处理
 			if (hasAdd) {
 
 				node.addEventListener(type, fp, false);
@@ -96,6 +127,13 @@ define(['../type/lang.js', '../dom/html.js'], function(lang, html) {
 			ev = ev || win.event;
 
 			var host = this;
+
+			//target
+			if (!ev.target) {
+
+				ev.target = ev.srcElement;
+
+			}
 
 			//阻止默认事件
 			if (!ev.preventDefault) {

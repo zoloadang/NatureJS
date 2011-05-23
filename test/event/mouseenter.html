@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Event mouseenter and mouseleave test</title>
+	<script src="../../nature/require.js"></script>
+</head>
+<body>
+
+	<div id="result"></div>
+	<div style="width:400px; height:400px; border:1px solid green">
+		<a href="#" id="J_Alert" style="display:block; width:200px; background:#eaeaea;"><span>注册一个 mouseenter 和 mouseleave 事件</span></a>
+	</div>
+
+	<script>
+		require(['../../nature/event/event.js', '../../nature/dom/html.js'], function(event, html) {
+
+			var func = function(ev) {
+
+				html.byId('result').innerHTML = ev.type;
+
+			};
+
+			event.add('J_Alert', 'mouseenter', func);	
+			event.add('J_Alert', 'mouseleave', func);	
+			
+		});
+	</script>
+
+</body>
+</html>
+

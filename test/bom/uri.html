@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>uri test</title>
+		<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+	</head>
+	<body>
+		<script src="../../nature/require.js"></script>
+		<script src="../jasmine-1.0.2/jasmine.js"></script>
+		<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+		<script>
+			require(['../../nature/bom/uri.js?t=' + new Date().getTime()], function(uri) {
+
+				//method checkQmark
+				describe('uri.checkQmark', function() {
+
+					it('Check if a url has qmark', function() {
+
+						expect(uri.checkQmark('http://www.12sui.cn/')).toBeFalsy();	
+						expect(uri.checkQmark('http://www.12sui.cn/?page=1')).toBeTruthy();	
+						
+					});
+
+				});
+
+				//method addStamp
+				describe('url.addStamp', function() {
+
+					it('add a time stamp for a url', function() {
+						
+						expect(uri.addStamp('http://www.12sui.cn/').indexOf('http://www.12sui.cn/?t=') > -1).toBeTruthy();
+						
+					});	
+					
+				});
+
+				//method buildUri
+				describe('uri.buildUri', function() {
+
+					it('build a url by some params', function() {
+						
+						expect(uri.buildUri('http://www.12sui.cn/', { page: '1' })).toBe('http://www.12sui.cn/?page=1');
+		 				expect(uri.buildUri('http://www.12sui.cn/', 'page=1')).toBe('http://www.12sui.cn/?page=1');
+						
+					});	
+					
+				});
+
+				jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+				jasmine.getEnv().execute();
+
+			});
+		</script>	
+	</body>
+</html>
