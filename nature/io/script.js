@@ -28,7 +28,8 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 
 			var host = this,
 				node = host.create(cfg.url),
-				cb = cfg.success || function() {},
+				success = cfg.success || function() {},
+				failure = cfg.failure || function() {},
 				status = /loaded|complete/;
 
 			if (browser.isIE < 9) {
@@ -37,7 +38,7 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 
 					if (status.test(node.readyState)) {
 
-						cb();
+						success();
 
 					}
 
@@ -45,7 +46,8 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 
 			} else {
 
-				event.add(node, 'load', cb);
+				event.add(node, 'load', success);
+				event.add(node, 'error', failure);
 
 			}
 
@@ -117,7 +119,7 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 
 					if (isFunction) {
 
-						//under ie, can make an error
+						//under ie, it can make an error
 						try {
 
 							delete win[id];
@@ -129,6 +131,12 @@ define(['../event/event.js', '../bom/browser.js', '../type/lang.js'], function(e
 						}
 
 					}
+
+				},
+
+				failure: function() {
+
+					cfg.failure();
 
 				}
 
