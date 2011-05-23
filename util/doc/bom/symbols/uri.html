@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - json</title>
+		<title>JsDoc Reference - uri</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -191,7 +191,11 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
-	<li><a href="../symbols/json.html">json</a></li>
+	<li><a href="../symbols/browser.html">browser</a></li>
+	
+	<li><a href="../symbols/cookie.html">cookie</a></li>
+	
+	<li><a href="../symbols/uri.html">uri</a></li>
 	
 </ul>
 <hr />
@@ -202,7 +206,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Namespace json
+				Namespace uri
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -213,13 +217,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/nature_util_json.js.html">json.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/nature_bom_uri.js.html">uri.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class json.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class uri.">
 				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
@@ -232,9 +236,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/json.html#constructor">json</a></b>
+								<b><a href="../symbols/uri.html#constructor">uri</a></b>
 							</div>
-							<div class="description">JSON 模块</div>
+							<div class="description"></div>
 						</td>
 					</tr>
 				</tbody>
@@ -248,7 +252,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class json.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class uri.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -261,18 +265,27 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">json.<b><a href="../symbols/json.html#.parse">parse</a></b>(str)
+								<div class="fixedFont">uri.<b><a href="../symbols/uri.html#.addStamp">addStamp</a></b>(url)
 								</div>
-								<div class="description">解析 json</div>
+								<div class="description">添加时间戳</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">json.<b><a href="../symbols/json.html#.stringify">stringify</a></b>(obj)
+								<div class="fixedFont">uri.<b><a href="../symbols/uri.html#.buildUri">buildUri</a></b>(url, params)
 								</div>
-								<div class="description">转换 json 为字符串</div>
+								<div class="description">构建 url</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">uri.<b><a href="../symbols/uri.html#.checkQmark">checkQmark</a></b>(url)
+								</div>
+								<div class="description">检查是否包含 ?</div>
 							</td>
 						</tr>
 					
@@ -293,11 +306,11 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>json</b>
+						<b>uri</b>
 				</div>
 				
 				<div class="description">
-					JSON 模块
+					
 					
 				</div>
 				
@@ -324,22 +337,18 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".parse"> </a>
+					<a name=".addStamp"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Object}</span>
-					<span class="light">json.</span><b>parse</b>(str)
+					<span class="light">{String}</span>
+					<span class="light">uri.</span><b>addStamp</b>(url)
 					
 					</div>
 					<div class="description">
-						解析 json
+						添加时间戳
 						
 						
 					</div>
-					
-					
-					
-					<pre class="code">		json.parse('{"a": "b"}') // {"a": "b"}</pre>
 					
 					
 					
@@ -348,10 +357,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>str</b>
+									<span class="light fixedFont">{String}</span> <b>url</b>
 									
 								</dt>
-								<dd>JSON 字符串.</dd>
+								<dd>需要添加时间戳的 url.</dd>
 							
 							</dl>
 						
@@ -362,7 +371,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Object}</span> 解析后的 JSON 对象.</dd>
+								<dd><span class="light fixedFont">{String}</span> 添加时间戳后的 url.</dd>
 							
 							</dl>
 						
@@ -371,22 +380,23 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".stringify"> </a>
+					<a name=".buildUri"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{String}</span>
-					<span class="light">json.</span><b>stringify</b>(obj)
+					<span class="light">uri.</span><b>buildUri</b>(url, params)
 					
 					</div>
 					<div class="description">
-						转换 json 为字符串
+						构建 url
 						
 						
 					</div>
 					
 					
 					
-					<pre class="code">		json.stringify({"a":"b"}) // {"a":"b"}</pre>
+					<pre class="code">		uri.buildUri('http://www.12sui.cn/', { page: '1' }) // http://www.12sui.cn/?page=1
+		uri.buildUri('http://www.12sui.cn/', 'page=1') // http://www.12sui.cn/?page=1</pre>
 					
 					
 					
@@ -395,10 +405,16 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>obj</b>
+									<span class="light fixedFont">{String}</span> <b>url</b>
 									
 								</dt>
-								<dd>json 对象.</dd>
+								<dd>初始 url.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String | Object}</span> <b>params</b>
+									
+								</dt>
+								<dd>要拼接的参数串.</dd>
 							
 							</dl>
 						
@@ -409,7 +425,50 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> 转换后的字符串.</dd>
+								<dd><span class="light fixedFont">{String}</span> 构建好的字符串.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".checkQmark"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">uri.</span><b>checkQmark</b>(url)
+					
+					</div>
+					<div class="description">
+						检查是否包含 ?
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>url</b>
+									
+								</dt>
+								<dd>需要检查的 url.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> 如果含有 ?, 返回 true, 否则返回 false.</dd>
 							
 							</dl>
 						
@@ -430,7 +489,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon May 23 2011 23:03:53 GMT+0800 (CST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon May 23 2011 23:03:50 GMT+0800 (CST)
 		</div>
 	</body>
 </html>
