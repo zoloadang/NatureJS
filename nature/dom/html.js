@@ -582,6 +582,79 @@ define(['../type/lang.js', '../bom/browser.js', '../type/array.js', '../type/str
 
 			}
 
+		},
+
+		/**
+		 * 获取/设置 data-* 属性.
+		 * @param { HTMLelement | String } node 节点或者节点 id.
+		 * @param { String } name 属性名, 不含 data-.
+		 * @param { String } value 属性值.
+		 * @return { Object | String } 当 name 不存在时, 返回 data-* 对象, 否则返回属性值.
+		 */
+		dataset: function(node, name, value) {
+
+			var host = this,
+				el = host.byId(node),
+				attrs, attr,
+				ret = {},
+				i, len,
+				reg, match,
+				supportDataset = !!('dataset' in el);
+
+			if (!supportDataset) {
+
+				if (!name) {
+
+					attrs = el.attributes;
+
+					reg = /^data-(\S+)$/i;
+
+					for (i = 0, len = attrs.length; i < len; i++) {
+
+						attr = attrs[i];
+
+						if (match = attr['name'].match(reg)) {
+
+							match[1] && (ret[match[1]] = attr['value']);
+
+						}
+
+					}
+
+					return ret;
+
+				} else {
+
+					if (value) {
+
+						return host.setAttribute(el, 'data-' + name, value);
+
+					}
+
+					return host.getAttribute(el, 'data-' + name);
+
+				}
+
+			} else {
+
+				attrs = el.dataset;
+
+				if (!name) {
+
+					return attrs;
+
+				}
+
+				if (value) {
+
+					return attrs[name] = value;
+
+				}
+
+				return attrs[name];
+
+			}
+
 		}
 
 	};

@@ -120,7 +120,15 @@ define(['../type/lang.js', '../type/string.js', './html.js', '../bom/browser.js'
 		 */
 		toggleClass: function(node, cname) {
 
-			var host = this;
+			var	host = this,
+				el = html.byId(node),
+				supportToggle = !!('classList' in el)/* && !!('toggle' in el['classList'])*/;
+
+			if (supportToggle) {
+
+				return el['classList'].toggle(cname);
+
+			}
 
 			if (host.hasClass(node, cname)) {
 

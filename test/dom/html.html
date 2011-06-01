@@ -33,6 +33,9 @@
 	<!-- html.create -->
 	<div id="create" class="hidden"></div>
 
+	<!-- html.dataset -->
+	<div id="dataset" data-a="a" data-b="b"></div>
+
 	<script src="../../nature/require.js"></script>
 	<script src="../jasmine-1.0.2/jasmine.js"></script>
 	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
@@ -284,6 +287,25 @@
 					
 				});
 
+			});
+
+			//method dataset
+			describe('html.dataset', function() {
+
+				it('Get the dataset of an element.', function() {
+				
+					html.dataset('dataset', 'c', 'c');
+					var data1 = html.dataset('dataset'),
+						data2 = html.dataset('dataset', 'c');
+
+					expect(data2).toBe('c');
+					expect(data1['a']).toBe('a');
+					expect(data1['b']).toBe('b');
+					expect(data1['c']).toBe('c');
+				
+				});
+			
+			
 			});
 
 			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
