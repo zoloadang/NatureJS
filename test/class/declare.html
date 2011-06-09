@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Declare unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+</head>
+<body>
+	
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/class/declare.js'], function(declare) {
+
+			//method cookie.set, cookie.get
+			describe('declare', function() {
+
+				it('Create a constructor inherited from one constructor', function() {
+
+					function Shape(w, h) {
+						this.width = w;
+						this.height = h;
+					}
+
+					Shape.prototype = {
+
+						area: function() {
+
+							return this.width * this.height;
+
+						}
+
+					};
+
+					declare('Square', Shape, {
+						
+						constructor: function() {
+
+
+						}
+						
+					});
+
+					var ins = new Square();
+
+					expect(ins instanceof Shape).toBeTruthy();
+					expect(ins instanceof Square).toBeTruthy();
+					expect(Square.superclass).toBe(Shape);
+
+				});
+
+			});
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>

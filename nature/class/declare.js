@@ -1,20 +1,30 @@
 /**
- * @fileoverview 类的声明, 继承
+ * @fileoverview 类的声明, 继承.
  * @author nanzhi<nanzhienai@163.com>
  */
 define(['../type/lang.js', '../type/array.js', '../type/object'], function(lang, array, object) {
-	
+
 	/**
-	 * 声明/继承一个或者多个类
+	 * 创建一个构造函数
 	 * @name declare
-	 * @function
+	 * @namespace
+	 */
+
+	/**
+	 * @lends declare
+	 * @static
+	 */
+
+	/**
+	 * 创建一个构造函数
 	 * @param { String } name 类名.
 	 * @param { Array | Function } superclass 多个超类或者一个超类.
-	 * @param { Object } prop 类包含的方法.
+	 * @param { Object } props 类包含的方法.
 	 * @return { Object } 新生成的 constructor.
 	 */
-	return function(name, superclass, prop) {
-		
+	function declare(name, superclass, props) {
+
+
 		var proto = {},
 			args = arguments,
 			_ctor,
@@ -26,10 +36,10 @@ define(['../type/lang.js', '../type/array.js', '../type/object'], function(lang,
 		if (lang.isArray(superclass)) {
 
 
-		}	
+		}
 		*/
 
-		if(lang.isFunction(superclass)) {
+		if (lang.isFunction(superclass)) {
 
 			F.prototype = superclass.prototype;
 
@@ -53,17 +63,19 @@ define(['../type/lang.js', '../type/array.js', '../type/object'], function(lang,
 
 			ctor.superclass = superclass;
 
-			ctor.declaredClass = className;
+			ctor.declaredClass = name;
 
 			ctor.prototype = proto;
 
-			object.set(className, ctor);
+			object.set(name, ctor);
 
 			return ctor;
 
 		}
 
-		
-	};	
-	
+
+	};
+
+	return declare;
+
 });

@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - json</title>
+		<title>JsDoc Reference - declare</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -191,7 +191,7 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
-	<li><a href="../symbols/json.html">json</a></li>
+	<li><a href="../symbols/declare.html">declare</a></li>
 	
 </ul>
 <hr />
@@ -202,7 +202,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Namespace json
+				Namespace declare
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -213,13 +213,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/nature_util_json.js.html">json.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/nature_class_declare.js.html">declare.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class json.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class declare.">
 				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
@@ -232,9 +232,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/json.html#constructor">json</a></b>
+								<b><a href="../symbols/declare.html#constructor">declare</a></b>
 							</div>
-							<div class="description">JSON 模块</div>
+							<div class="description">创建一个构造函数</div>
 						</td>
 					</tr>
 				</tbody>
@@ -248,7 +248,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class json.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class declare.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -259,20 +259,11 @@ ul.inheritsList
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&lt;inner&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">json.<b><a href="../symbols/json.html#.parse">parse</a></b>(str)
+								<div class="fixedFont"><b><a href="../symbols/declare.html#-declare">declare</a></b>(name, superclass, props)
 								</div>
-								<div class="description">解析 json</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">json.<b><a href="../symbols/json.html#.stringify">stringify</a></b>(obj)
-								</div>
-								<div class="description">转换 json 为字符串</div>
+								<div class="description">创建一个构造函数</div>
 							</td>
 						</tr>
 					
@@ -293,11 +284,11 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>json</b>
+						<b>declare</b>
 				</div>
 				
 				<div class="description">
-					JSON 模块
+					创建一个构造函数
 					
 				</div>
 				
@@ -324,22 +315,18 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".parse"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="-declare"> </a>
+					<div class="fixedFont">&lt;inner&gt; 
 					
 					<span class="light">{Object}</span>
-					<span class="light">json.</span><b>parse</b>(str)
+					<b>declare</b>(name, superclass, props)
 					
 					</div>
 					<div class="description">
-						解析 json
+						创建一个构造函数
 						
 						
 					</div>
-					
-					
-					
-					<pre class="code">		json.parse('{"a": "b"}') // {"a": "b"}</pre>
 					
 					
 					
@@ -348,10 +335,22 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>str</b>
+									<span class="light fixedFont">{String}</span> <b>name</b>
 									
 								</dt>
-								<dd>JSON 字符串.</dd>
+								<dd>类名.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array | Function}</span> <b>superclass</b>
+									
+								</dt>
+								<dd>多个超类或者一个超类.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>props</b>
+									
+								</dt>
+								<dd>类包含的方法.</dd>
 							
 							</dl>
 						
@@ -362,54 +361,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Object}</span> 解析后的 JSON 对象.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".stringify"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{String}</span>
-					<span class="light">json.</span><b>stringify</b>(obj)
-					
-					</div>
-					<div class="description">
-						转换 json 为字符串
-						
-						
-					</div>
-					
-					
-					
-					<pre class="code">		json.stringify({"a":"b"}) // {"a":"b"}</pre>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Object}</span> <b>obj</b>
-									
-								</dt>
-								<dd>json 对象.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{String}</span> 转换后的字符串.</dd>
+								<dd><span class="light fixedFont">{Object}</span> 新生成的 constructor.</dd>
 							
 							</dl>
 						
@@ -430,7 +382,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jun 09 2011 22:40:04 GMT+0800 (CST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jun 09 2011 22:40:06 GMT+0800 (CST)
 		</div>
 	</body>
 </html>
