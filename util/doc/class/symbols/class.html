@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - string</title>
+		<title>JsDoc Reference - class</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -191,13 +191,9 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
-	<li><a href="../symbols/array.html">array</a></li>
+	<li><a href="../symbols/class.html">class</a></li>
 	
-	<li><a href="../symbols/lang.html">lang</a></li>
-	
-	<li><a href="../symbols/object.html">object</a></li>
-	
-	<li><a href="../symbols/string.html">string</a></li>
+	<li><a href="../symbols/declare.html">declare</a></li>
 	
 </ul>
 <hr />
@@ -208,7 +204,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Namespace string
+				Namespace class
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -219,13 +215,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/nature_type_string.js.html">string.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/nature_class_extend.js.html">extend.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class string.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class class.">
 				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
@@ -238,9 +234,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/string.html#constructor">string</a></b>
+								<b><a href="../symbols/class.html#constructor">class</a></b>
 							</div>
-							<div class="description">string 模块</div>
+							<div class="description"></div>
 						</td>
 					</tr>
 				</tbody>
@@ -254,7 +250,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class string.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class class.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -265,29 +261,20 @@ ul.inheritsList
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&lt;inner&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">string.<b><a href="../symbols/string.html#.substitute">substitute</a></b>(template, data, prefix, postfix, postfix)
+								<div class="fixedFont"><b><a href="../symbols/class.html#-extend">extend</a></b>(r, s, px, sx)
 								</div>
-								<div class="description">模板/对象匹配替换</div>
+								<div class="description">扩展类的方法</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&lt;inner&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">string.<b><a href="../symbols/string.html#.toUpper">toUpper</a></b>(str)
+								<div class="fixedFont"><b><a href="../symbols/class.html#-object">object</a></b>(o)
 								</div>
-								<div class="description">将首字母大写</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">string.<b><a href="../symbols/string.html#.trim">trim</a></b>(str, isBigText)
-								</div>
-								<div class="description">去除字符串两边空格</div>
+								<div class="description">创建原型实例</div>
 							</td>
 						</tr>
 					
@@ -308,11 +295,11 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>string</b>
+						<b>class</b>
 				</div>
 				
 				<div class="description">
-					string 模块
+					
 					
 				</div>
 				
@@ -339,15 +326,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".substitute"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="-extend"> </a>
+					<div class="fixedFont">&lt;inner&gt; 
 					
-					
-					<span class="light">string.</span><b>substitute</b>(template, data, prefix, postfix, postfix)
+					<span class="light">{Function}</span>
+					<b>extend</b>(r, s, px, sx)
 					
 					</div>
 					<div class="description">
-						模板/对象匹配替换
+						扩展类的方法
 						
 						
 					</div>
@@ -359,70 +346,28 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>template</b>
+									<span class="light fixedFont">{Function}</span> <b>r</b>
 									
 								</dt>
-								<dd>需要替换的模板.</dd>
+								<dd>需要接收扩展的 constructor.</dd>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>data</b>
+									<span class="light fixedFont">{Function}</span> <b>s</b>
 									
 								</dt>
-								<dd>相匹配的数据对象.</dd>
+								<dd>需要提供扩展的 constructor.</dd>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>prefix</b>
+									<span class="light fixedFont">{Object}</span> <b>px</b>
 									
 								</dt>
-								<dd>匹配的前缀, 可选.</dd>
+								<dd>需要添加的原型方法集合.</dd>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>postfix</b>
+									<span class="light fixedFont">{Object}</span> <b>sx</b>
 									
 								</dt>
-								<dd>匹配的后缀, 可选.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>postfix</b>
-									
-								</dt>
-								<dd>匹配的后缀.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".toUpper"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{String}</span>
-					<span class="light">string.</span><b>toUpper</b>(str)
-					
-					</div>
-					<div class="description">
-						将首字母大写
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>str</b>
-									
-								</dt>
-								<dd>字符串.</dd>
+								<dd>需要添加的静态方法集合.</dd>
 							
 							</dl>
 						
@@ -433,7 +378,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> 转换后的字符串.</dd>
+								<dd><span class="light fixedFont">{Function}</span> 构造器 r.</dd>
 							
 							</dl>
 						
@@ -442,15 +387,18 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".trim"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="-object"> </a>
+					<div class="fixedFont">&lt;inner&gt; 
 					
-					<span class="light">{String}</span>
-					<span class="light">string.</span><b>trim</b>(str, isBigText)
+					<span class="light">{Object}</span>
+					<b>object</b>(o)
 					
 					</div>
 					<div class="description">
-						去除字符串两边空格
+						创建原型实例
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/nature_class_object.js.html">object.js</a>.
 						
 						
 					</div>
@@ -462,16 +410,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>str</b>
+									<span class="light fixedFont">{Object}</span> <b>o</b>
 									
 								</dt>
-								<dd>需要清理的字符串.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{Boolean}</span> <b>isBigText</b>
-									
-								</dt>
-								<dd>是否是大字符串.</dd>
+								<dd>原型对象.</dd>
 							
 							</dl>
 						
@@ -482,7 +424,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> 返回清除后的字符串.</dd>
+								<dd><span class="light fixedFont">{Object}</span> 实例.</dd>
 							
 							</dl>
 						
@@ -503,7 +445,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 13 2011 22:25:13 GMT+0800 (CST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 13 2011 22:25:24 GMT+0800 (CST)
 		</div>
 	</body>
 </html>
