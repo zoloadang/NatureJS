@@ -37,7 +37,7 @@ define(['./object.js', '../type/object.js'], function(create, object) {
 
 		r.prototype = proto;
 		proto.constructor = r;
-		r.superclass = s;
+		r.superclass = sp;
 
 		//处理来源函数
 		if (Object != s && s != sp.constructor) {
