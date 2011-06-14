@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Declare unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+</head>
+<body>
+	
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/class/declare.js'], function(declare) {
+
+			describe("类的声明, 继承.", function() {
+
+            it("Inherited from one Class.", function() {
+                var A = function() {};
+                var B = declare(A);
+                var c = new B;
+                expect(c instanceof A).toBe(true);
+                expect(c.isInstanceOf(A)).toBe(true);
+                
+            });
+
+            it("Inherited from multi Classes.", function() {
+                var A = function() {};
+                var B = declare(A);
+                var C = declare([A, B]);
+                var d = new C;
+                expect(d instanceof A).toBe(true);
+                expect(d instanceof B).toBe(false);
+                expect(d.isInstanceOf(A)).toBe(true);
+                expect(d.isInstanceOf(B)).toBe(true);
+            });
+
+        });
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>

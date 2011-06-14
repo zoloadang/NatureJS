@@ -2,7 +2,7 @@
  * @fileoverview 类的声明, 继承.
  * @author nanzhi<nanzhienai@163.com>
  */
-define(['../type/lang.js', '../type/array.js', '../type/object'], function(lang, array, object) {
+define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'], function(lang, array, object, extend) {
 
 	/**
 	 * 创建一个构造函数
@@ -16,131 +16,125 @@ define(['../type/lang.js', '../type/array.js', '../type/object'], function(lang,
 	 */
 
 	/**
+	 * 获取 base
+	 * @private
+	 * @param { Array } cls 超类集合.
+	 * @return { Array } base 集合.
+	 */
+	function _getBases(cls) {
+
+		var i = 0,
+			len = cls.length,
+			ret = [], base;
+
+		for (; i < len; i++) {
+
+			base = cls[i];
+
+			var _meta = base['_meta'],
+				cli = [];
+
+			if (_meta) {
+
+				cli = _meta['bases'];
+
+			}
+
+			if (cli && cli.length) {
+
+				ret.concat(cli);
+
+			}
+
+		}
+
+		return ret;
+
+	}
+
+	/**
+	 * 检测是否是子类
+	 * @private
+	 * @param { Function } superclass 超类.
+	 * @return 如果是, 返回 true, 否则 返回 false.
+	 */
+	function isInstanceOf(superclass) {
+
+		var host = this;
+
+		return array.indexOf(host.constructor['_meta']['bases'], superclass) > -1 || host instanceof superclass;
+
+	}
+
+	/**
 	 * 创建一个构造函数
 	 * @param { String } name 类名.
 	 * @param { Array | Function } superclass 多个超类或者一个超类, 如果是数组, 那么默认第一个为超类.
 	 * @param { Object } props 类包含的方法.
 	 * @return { Object } 新生成的 constructor.
-	 * @spec Inherited form one Class.
+	 * @spec Inherited from one Class.
 	 * @example
-	 * 	function Shape(name) {
-	 *		this.name = name;
-	 * 	}
-	 * 	Shape.prototype.toString = function() {
+	 * 	var A = function() {};
+	 * 	var B = declare(A);
+	 * 	var c = new B;
+	 * 	c instanceof A => true
+	 * 	c.isInstanceOf(A) => true
 	 *
-	 * 		return this.name;
-	 *
-	 * 	}
-	 * 	declare('Square', Shape, {
-	 *
-	 * 		constructor: function(name, width, height) {
-	 *
-	 * 			this.name = name;
-	 * 			this.width = width;
-	 * 			this.height = height;
-	 *
-	 * 		},
-	 *
-	 * 		getArea: function() {
-	 *
-	 * 			return this.width * this.height;
-	 *
-	 * 		}
-	 *
-	 * 	});
-	 * 	var haha = new Square('haha', 1, 2);
-	 * 	haha.toString() => 'haha'
-	 * 	haha.getArea() => 2
-	 *
-	 * 	@spec Inherited form multi Classes.
-	 * 	@example:
-     *  dojo.declare("VanillaSoftServe", null, {
-     *    constructor: function() { console.debug ("mixing in Vanilla"); }
-     *  });
-     *  
-     *  dojo.declare("MandMs", null, {
-     *    constructor: function() { console.debug("mixing in MandM's"); },
-     *    kind: "plain"
-     *  });
-     *  
-     *  dojo.declare("CookieDough", null, {
-     *    chunkSize: "medium"
-     *  });
-     *  
-     *  dojo.declare("Blizzard", [VanillaSoftServe, MandMs, CookieDough], {
-     *  	  constructor: function() {
-     *  		   console.debug("A blizzard with " +
-     *  			   this.kind + " M and Ms and " +
-     *  			   this.chunkSize +" chunks of cookie dough."
-     *  		   );
-     *  	  }
-     *  });
-     *  
-     *  // make a Blizzard:
-     *  var bb = new Blizzard();
-     *  bb.kind => 'plain'
-     *  bb.chunkSize => 'medium'
-     *  bb instanceof VanillasoftServe => true
-     *  bb instanceof MandMs => false
-     *  bb instanceof CookieDoug => false
+	 * @spec Inherited from multi Classes.
+	 * 	var A = function() {};
+	 * 	var B = declare(A);
+	 * 	var C = declare([A, B]);
+	 * 	var d = new C;
+	 * 	d instanceof A => true
+	 * 	d instanceof B => false
+	 * 	d.isInstanceOf(A) => true
+	 * 	d.isInstanceOf(B) => true
 	 */
 	function declare(name, superclass, props) {
 
-		var proto,
-			_ctor, ctor,
-			cls, i, len, obj = {},
-			F = new Function;
+		var proto = {},
+			ctor,
+			cls, i, len, obj = {};
 
 		if (!lang.isString(name)) {
 
 			props = superclass;
 			superclass = name;
+			ctor = function() {};
+
+		} else {
+
+			ctor = object.get(name, true);
 
 		}
+
+		//add meta
+		ctor['_meta'] = { bases: [] };
 
 		if (lang.isArray(superclass)) {
 
-			cls = superclass.concat();
+			cls = _getBases(superclass);
 
-			superclass = cls[0];
-			
+			superclass = superclass[0];
+
 			for (i = 1, len = cls.length; i < len; i++) {
 
 				object.mixin(obj, cls[i].prototype);
+				ctor['_meta']['bases'].push(cls[i]);
 
 			}
 
-			props = object.mixin(obj, props)
+			props = object.mixin(obj, props);
 
 		}
-
-		F.prototype = superclass.prototype;
-
-		proto = new F;
-
-		F.prototype = null;
 
 		object.mixin(proto, props);
 
-		_ctor = props.constructor;
+		//add instanceof
+		proto.isInstanceOf = isInstanceOf;
 
-		ctor = function() {
-
-			if (_ctor) {
-
-				_ctor.apply(this, arguments);
-
-			}
-
-		}
-
-		ctor.superclass = superclass;
-
-		ctor.declaredClass = name;
-
-		ctor.prototype = proto;
-
-		lang.isString(name) && object.set(name, ctor);
+		//extend
+		extend(ctor, superclass, proto, { extend: extend });
 
 		return ctor;
 

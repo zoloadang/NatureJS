@@ -19,24 +19,19 @@ def common_prefix(*sequences):
 		#print elements
         # unless all elements are equal, bail out of the loop 
 		if not all_equal(elements): 
-			break 
+			break
         # got one more common element, append it and keep looping 
-        common.append(elements[0])
+		common.append(elements[0])
     # return the common prefix and unique tails 
 	#print common
 	#print [ sequence[len(common) - 1:] for sequence in sequences ]
-	return common, [ sequence[len(common) - 1:] for sequence in sequences ]
+	return common, [ sequence[len(common):] for sequence in sequences ]
 
 def relpath(p1, p2, sep=os.path.sep, pardir=os.path.pardir):
+
 	common, (u1, u2) = common_prefix(p1.split(sep), p2.split(sep))
-	if not common:
-		return p2 
-	if u2[0] == '.':
-		u2 = u2[1:]
-		length = len(u1) - 1
-	else:
-		length = len(u1)
-	return sep.join([pardir] * length + u2)
+
+	return sep.join([pardir] * len(u1) + u2)
 
 #get arg
 def getArg():
@@ -168,6 +163,13 @@ def createSpec(ret, source, fname, arg):
 	#匹配 js 地址
 	jspath = re.compile(r'\{JS_PATH\}')
 
+	#匹配 js 文件名
+	jsname = re.compile(r'\{JS_NAME\}')
+
+	#匹配后缀
+	postfix = re.compile(r'(\..+)+')
+
+
 	if len(ret) > 0:
 
 		#生成代码
@@ -217,10 +219,10 @@ def createSpec(ret, source, fname, arg):
 			html = ''.join(html)
 
 		testFi = open(outdir + '/' + fname + '.' + getPostfix(template), 'w')
+		html = jsname.sub(postfix.sub('', fname), html)
 		testFi.write(jasmineTag.sub(''.join(code), html))
 		testFi.close()
 		fi.close()
-
 
 #run
 def run():

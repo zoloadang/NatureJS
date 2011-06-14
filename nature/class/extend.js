@@ -2,7 +2,7 @@
  * @fileoverview 扩展类的方法.
  * @author nanzhi<nanzhienai@163.com>
  */
-define(['./object.js', '../type/object.js'], function(create, object) {
+define(['./object.js', '../type/object.js', '../type/array.js'], function(create, object, array) {
 
 	/**
 	 * @name class
@@ -13,6 +13,46 @@ define(['./object.js', '../type/object.js'], function(create, object) {
 	 * @lends class
 	 * @static
 	 */
+
+	/**
+	 * 添加 meta
+	 * @private
+	 * @param { Function } ctor 子类.
+	 * @param { Function } stor 超类.
+	 * @return { Array } _meta.
+	 */
+	function _addMeta(ctor, stor) {
+
+		//add meta
+		var _meta = ctor['_meta'],
+			bases;
+
+		if (!_meta) {
+
+			_meta = ctor['_meta'] = {};
+
+		}
+
+		//add base
+		bases = _meta['bases'];
+
+		if (!bases) {
+
+			bases = _meta['bases'] = [];
+
+		}
+
+		bases.push(stor);
+
+		//add parents
+		_meta['parents'] = stor;
+
+		//add ctor
+		_meta['ctor'] = ctor;
+
+		return _meta;
+
+	}
 
 	/**
 	 * 扩展类的方法
@@ -31,6 +71,12 @@ define(['./object.js', '../type/object.js'], function(create, object) {
 	 * 	c instanceof B => true
 	 */
 	function extend(r, s, px, sx) {
+
+		if (!r || !s) {
+
+			return false;
+
+		}
 
 		var sp = s.prototype,
 			proto = create(sp);
@@ -51,6 +97,8 @@ define(['./object.js', '../type/object.js'], function(create, object) {
 		if (sx) {
 			object.mixin(r, sx);
 		}
+
+		_addMeta(r, s);
 
 		return r;
 
