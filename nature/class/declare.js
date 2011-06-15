@@ -38,11 +38,15 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 
 				cli = _meta['bases'];
 
+			} else {
+
+				0 !== i && (cli = [base]);
+
 			}
 
 			if (cli && cli.length) {
 
-				ret.concat(cli);
+				ret = ret.concat(cli);
 
 			}
 
@@ -81,14 +85,16 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 	 * 	c.isInstanceOf(A) => true
 	 *
 	 * @spec Inherited from multi Classes.
-	 * 	var A = function() {};
+	 * 	var A = declare(null);
 	 * 	var B = declare(A);
 	 * 	var C = declare([A, B]);
 	 * 	var d = new C;
 	 * 	d instanceof A => true
 	 * 	d instanceof B => false
+	 * 	d instanceof C => true
 	 * 	d.isInstanceOf(A) => true
 	 * 	d.isInstanceOf(B) => true
+	 * 	d.isInstanceOf(C) => true
 	 */
 	function declare(name, superclass, props) {
 
@@ -117,7 +123,7 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 
 			superclass = superclass[0];
 
-			for (i = 1, len = cls.length; i < len; i++) {
+			for (i = 0, len = cls.length; i < len; i++) {
 
 				object.mixin(obj, cls[i].prototype);
 				ctor['_meta']['bases'].push(cls[i]);
@@ -130,7 +136,7 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 
 		object.mixin(proto, props);
 
-		//add instanceof
+		//add standard method to the prototype, must be added before extend
 		proto.isInstanceOf = isInstanceOf;
 
 		//extend

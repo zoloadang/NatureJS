@@ -27,14 +27,16 @@
             });
 
             it("Inherited from multi Classes.", function() {
-                var A = function() {};
+                var A = declare(null);
                 var B = declare(A);
                 var C = declare([A, B]);
                 var d = new C;
                 expect(d instanceof A).toBe(true);
                 expect(d instanceof B).toBe(false);
+                expect(d instanceof C).toBe(true);
                 expect(d.isInstanceOf(A)).toBe(true);
                 expect(d.isInstanceOf(B)).toBe(true);
+                expect(d.isInstanceOf(C)).toBe(true);
             });
 
         });
