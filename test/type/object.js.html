@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>object unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+</head>
+<body>
+	
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/type/object.js'], function(object) {
+
+			describe("object 模块.", function() {
+
+            it("Mix many object to one object.", function() {
+                var t = { a: 'b' },
+                a = { c: 'd' },
+                b = { e: 'f' };
+                object.mixin(t, a, b)
+                expect(t['c']).toBe('d');
+                expect(t['e']).toBe('f');
+            });
+
+            it("Merge some object to one.", function() {
+                var o1 = { a: 'b' },
+                o2 = { c: 'd' },
+                o3 = { e: 'f' },
+                o = object.merge(o1, o2, o3);
+                expect(o['a']).toBe('b');
+                expect(o['c']).toBe('d');
+                expect(o['e']).toBe('f');
+            });
+
+            it("Translate an object to string.", function() {
+                expect(object.toString({ a: 'b', c: 'd' })).toBe('a:b,c:d');
+                expect(object.toString({ a: 'b', c: 'd' }, ['=', '&'])).toBe('a=b&c=d');
+            });
+
+            it("Translate a string to object.", function() {
+                var o1 = object.toObject('a:b,c:d'),
+                o2 = object.toObject('a=b&c=d', ['=', '&']);
+                expect(o1['a']).toBe('b');
+                expect(o1['c']).toBe('d');
+                expect(o2['a']).toBe('b');
+                expect(o2['c']).toBe('d');
+            });
+
+            it("Translate object to param string.", function() {
+                expect(object.param({a:'b', c:'d'})).toBe('a=b&c=d');
+            });
+
+            it("Translate param string to object.", function() {
+                var o = object.unparam('a=b&c=d');
+                expect(o['a']).toBe('b');
+                expect(o['c']).toBe('d');
+            });
+
+            it("set and get object.", function() {
+                object.set('nature.dom', { name: 'dom' });
+                var o = object.get('nature.dom');
+                expect(o.name).toBe('dom');
+            });
+
+        });
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>

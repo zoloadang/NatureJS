@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>lang unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+</head>
+<body>
+	
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/type/lang.js'], function(lang) {
+
+			describe("lang 模块, 常用类型判断.", function() {
+
+            it("check it is or not a string.", function() {
+                expect(lang.isString('nanzhi')).toBe(true);
+                expect(!!lang.isString(undefined)).toBe(false);
+                expect(lang.isString(12)).toBe(false);
+                expect(!!lang.isString(null)).toBe(false);
+                expect(lang.isString([1, 2])).toBe(false);
+                expect(lang.isString(Array)).toBe(false);
+            });
+
+            it("check it is or not a number.", function() {
+                expect(lang.isNumber(12)).toBe(true);
+                expect(lang.isNumber('nanzhi')).toBe(false);
+                expect(!!lang.isNumber(undefined)).toBe(false);
+                expect(!!lang.isNumber(null)).toBe(false);
+                expect(lang.isNumber([1, 2])).toBe(false);
+                expect(lang.isNumber(Array)).toBe(false);
+            });
+
+            it("check it is or not an array.", function() {
+                expect(lang.isArray([1, 2])).toBe(true);
+                expect(lang.isArray('nanzhi')).toBe(false);
+                expect(!!lang.isArray(undefined)).toBe(false);
+                expect(lang.isArray(12)).toBe(false);
+                expect(!!lang.isArray(null)).toBe(false);
+                expect(lang.isArray(Array)).toBe(false);
+                expect(lang.isArray(arguments)).toBe(false);
+                expect(lang.isArray(document.getElementsByTagName('head'))).toBe(false);
+            });
+
+            it("check it is or not like array.", function() {
+                expect(lang.isArrayLike([1, 2])).toBe(true);
+                expect(lang.isArrayLike(arguments)).toBe(true);
+                expect(lang.isArrayLike(document.getElementsByTagName('head'))).toBe(true);
+                expect(lang.isArrayLike('nanzhi')).toBe(false);
+                expect(!!lang.isArrayLike(undefined)).toBe(false);
+                expect(lang.isArrayLike(12)).toBe(false);
+                expect(!!lang.isArrayLike(null)).toBe(false);
+                expect(lang.isArrayLike(Array)).toBe(false);
+            });
+
+            it("check it is or not a object.", function() {
+                expect(lang.isObject(null)).toBe(true);
+                expect(lang.isObject([1, 2])).toBe(true);
+                expect(lang.isObject(Array)).toBe(true);
+                expect(lang.isObject(function() {})).toBe(true);
+                expect(lang.isObject(arguments)).toBe(true);
+                expect(lang.isObject('nanzhi')).toBe(false);
+                expect(lang.isObject(undefined)).toBe(false);
+                expect(lang.isObject(12)).toBe(false);
+            });
+
+            it("check it is or not a Function.", function() {
+                expect(lang.isFunction(function() {})).toBe(true);
+                expect(lang.isFunction('nanzhi')).toBe(false);
+                expect(!!lang.isFunction(undefined)).toBe(false);
+                expect(lang.isFunction(12)).toBe(false);
+                expect(!!lang.isFunction(null)).toBe(false);
+                expect(lang.isFunction([1, 2])).toBe(false);
+                expect(lang.isFunction(Array)).toBe(true);
+                expect(lang.isFunction(arguments)).toBe(false);
+            });
+
+            it("heck it is or not null.", function() {
+                expect(lang.isNull(null)).toBe(true);
+                expect(lang.isNull('nanzhi')).toBe(false);
+                expect(lang.isNull(undefined)).toBe(false);
+                expect(lang.isNull(12)).toBe(false);
+                expect(lang.isNull([1, 2])).toBe(false);
+                expect(lang.isNull(Array)).toBe(false);
+                expect(lang.isNull(arguments)).toBe(false);
+            });
+
+            it("heck it is or not undefined.", function() {
+                expect(lang.isUndefined(undefined)).toBe(true);
+                expect(lang.isUndefined('nanzhi')).toBe(false);
+                expect(lang.isUndefined(12)).toBe(false);
+                expect(lang.isUndefined(null)).toBe(false);
+                expect(lang.isUndefined([1, 2])).toBe(false);
+                expect(lang.isUndefined(Array)).toBe(false);
+                expect(lang.isUndefined(arguments)).toBe(false);
+            });
+
+        });
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>

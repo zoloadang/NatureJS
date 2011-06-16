@@ -97,7 +97,7 @@ def getSpec(source):
 	isCase = 0
 
 	#匹配注释行首
-	tab = re.compile(r'\s*\t*\*\s*\t*')
+	tab = re.compile(r'^\s*\t*\*\s*\t*')
 
 	#匹配 spec
 	spec = re.compile(r'\s*\*\s*@spec\s*')
@@ -169,6 +169,9 @@ def createSpec(ret, source, fname, arg):
 	#匹配后缀
 	postfix = re.compile(r'(\..+)+')
 
+	#匹配末尾分号
+	semi = re.compile(r';\s*$')
+
 
 	if len(ret) > 0:
 
@@ -191,6 +194,7 @@ def createSpec(ret, source, fname, arg):
 				text = wrap.sub('', case)
 				code.append(ident * space)
 				if center.search(text):
+					text = semi.sub('', text)
 					code.append('expect(' + center.sub(').toBe(', text, 1) + ');')
 				else:
 					code.append(text);
@@ -224,6 +228,7 @@ def createSpec(ret, source, fname, arg):
 		testFi.close()
 		fi.close()
 
+
 #run
 def run():
 	arg = getArg()
@@ -237,3 +242,4 @@ def run():
 
 if __name__ == '__main__':
 	run()
+

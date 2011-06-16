@@ -20,7 +20,7 @@
             it("set and get cookie.", function() {
                 cookie.set('nick', 'nanzhi', { 'max-age': 2, domain: location.host });
                 cookie.set('name', '南芝');
-                cookie.set('mail', 'nanzhienai@163.com', { expires: new Date(new Date().getTime() + 2460603600) });
+                cookie.set('mail', 'nanzhienai@163.com', { expires: new Date(new Date().getTime() + 24 * 60 * 60 * 3600) });
                 expect(cookie.get('nick')).toBe('nanzhi');
                 expect(cookie.get('name')).toBe('南芝');
                 expect(cookie.get('mail')).toBe('nanzhienai@163.com');

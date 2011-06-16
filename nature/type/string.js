@@ -24,6 +24,12 @@ define(function() {
 		 * @param { String } str 需要清理的字符串.
 		 * @param { Boolean } isBigText 是否是大字符串.
 		 * @return { String } 返回清除后的字符串.
+		 * @spec romove both ends of the blank string.
+		 * @example
+		 *  string.trim(' test ') => 'test';
+		 *	string.trim('      I am nanzhi.') => 'I am nanzhi.';
+		 *	string.trim('      I am nanzhi.     ') => 'I am nanzhi.';
+		 *	string.trim('      I am nanzhi.     ', true) => 'I am nanzhi.';
 		 */
 		trim: function(str, isBigText) {
 
@@ -55,6 +61,12 @@ define(function() {
 		 * @param { String } prefix 匹配的前缀, 可选.
 		 * @param { String } postfix 匹配的后缀, 可选.
 		 * @param { String } postfix 匹配的后缀.
+		 * @return { String } 替换后的字符串.
+		 * @spec replace specific character by data.
+		 * @example
+		 * 	var str = '{person} is a {role}.',
+		 *		data = { person: 'Nanzhi', role: 'Developer' };
+		 *	string.substitute(str, data) => 'Nanzhi is a Developer.';
 		 */
 		substitute: function(template, data, prefix, postfix) {
 
