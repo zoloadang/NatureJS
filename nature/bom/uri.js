@@ -23,6 +23,10 @@ define(['../type/lang.js', '../type/object.js'], function(lang, object) {
 		 * 检查是否包含 ?
 		 * @param { String } url 需要检查的 url.
 		 * @return { Boolean } 如果含有 ?, 返回 true, 否则返回 false.
+		 * @spec check is uri has ?.
+		 * @example:
+		 * 	uri.checkQmark('http://www.12sui.cn/') => false
+		 *	uri.checkQmark('http://www.12sui.cn/?page=1') => true
 		 */
 		checkQmark: function(url) {
 
@@ -34,8 +38,9 @@ define(['../type/lang.js', '../type/object.js'], function(lang, object) {
 		 * 添加时间戳
 		 * @param { String } url 需要添加时间戳的 url.
 		 * @return { String } 添加时间戳后的 url.
+		 * @spec add time stamp to an url.
 		 * @example:
-		 * 		uri.addStamp('http://www.12sui.cn/'); //print: http://www.12sui.cn/?t=1232421394
+		 * 	uri.addStamp('http://www.12sui.cn/').indexOf('http://www.12sui.cn/?t=') > -1 => true
 		 */
 		addStamp: function(url) {
 
@@ -48,9 +53,10 @@ define(['../type/lang.js', '../type/object.js'], function(lang, object) {
 		 * @param { String } url 初始 url.
 		 * @param { String | Object } params 要拼接的参数串.
 		 * @return { String } 构建好的字符串.
-		 * @example
-		 * 		uri.buildUri('http://www.12sui.cn/', { page: '1' }) // http://www.12sui.cn/?page=1
-		 * 		uri.buildUri('http://www.12sui.cn/', 'page=1') // http://www.12sui.cn/?page=1
+		 * @spec build a url by some params.
+		 * @example:
+		 * 	uri.buildUri('http://www.12sui.cn/', { page: '1' }) => 'http://www.12sui.cn/?page=1'
+		 * 	uri.buildUri('http://www.12sui.cn/', 'page=1') => 'http://www.12sui.cn/?page=1'
 		 */
 		buildUri: function(url, params) {
 

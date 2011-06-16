@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>JSON module unit test</title>
+	<title>json unit test</title>
 	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
 </head>
 <body>
@@ -15,30 +15,18 @@
 
 		require(['../../nature/util/json.js'], function(json) {
 
-			//method parse
-			describe('json.parse', function() {
+			describe("JSON 模块.", function() {
 
-				it('Translate json string to object', function() {
+            it("translate json string to object.", function() {
+                var a = json.parse('{"a": "b"}');
+                expect(a['a']).toBe('b');
+            });
 
-					var t = '{ "a": "b" }',
-						obj = json.parse(t);
+            it("translate json object to string.", function() {
+                expect(json.stringify({"a":"b"})).toBe('{"a":"b"}');
+            });
 
-					expect(obj['a']).toBe('b');
-
-				});
-
-			});
-
-			//method stringify
-			describe('json.stringify', function() {
-
-				it('Translate an object to json string', function() {
-					
-					expect(json.stringify({ "a": "b", "c": "d" })).toBe('{"a":"b","c":"d"}');
-					
-				});	
-				
-			});
+        });
 
 			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
 			jasmine.getEnv().execute();
@@ -49,5 +37,3 @@
 
 </body>
 </html>
-
-

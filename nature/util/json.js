@@ -22,8 +22,10 @@ define(['../type/object.js'], function(object) {
 		 * 解析 json
 		 * @param { String } str JSON 字符串.
 		 * @return { Object } 解析后的 JSON 对象.
+		 * @spec translate json string to object.
 		 * @example
-		 * 		json.parse('{"a": "b"}') // {"a": "b"}
+		 * 	var a = json.parse('{"a": "b"}');
+		 * 	a['a'] => 'b'
 		 */
 		parse: function(str) {
 
@@ -41,8 +43,9 @@ define(['../type/object.js'], function(object) {
 		 * 转换 json 为字符串
 		 * @param { Object } obj json 对象.
 		 * @return { String } 转换后的字符串.
+		 * @spec translate json object to string.
 		 * @example
-		 * 		json.stringify({"a":"b"}) // {"a":"b"}
+		 * 	json.stringify({"a":"b"}) => '{"a":"b"}'
 		 */
 		stringify: function(obj) {
 

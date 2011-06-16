@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>uri unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+</head>
+<body>
+	
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/bom/uri.js'], function(uri) {
+
+			describe("uri 处理.", function() {
+
+            it("check is uri has ?.", function() {
+                expect(uri.checkQmark('http://www.12sui.cn/')).toBe(false);
+                expect(uri.checkQmark('http://www.12sui.cn/?page=1')).toBe(true);
+            });
+
+            it("add time stamp to an url.", function() {
+                expect(uri.addStamp('http://www.12sui.cn/').indexOf('http://www.12sui.cn/?t=') > -1).toBe(true);
+            });
+
+            it("build a url by some params.", function() {
+                expect(uri.buildUri('http://www.12sui.cn/', { page: '1' })).toBe('http://www.12sui.cn/?page=1');
+                expect(uri.buildUri('http://www.12sui.cn/', 'page=1')).toBe('http://www.12sui.cn/?page=1');
+            });
+
+        });
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>
