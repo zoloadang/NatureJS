@@ -6,12 +6,12 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 
 	/**
 	 * 创建一个构造函数
-	 * @name declare
+	 * @name class
 	 * @namespace
 	 */
 
 	/**
-	 * @lends declare
+	 * @lends class 
 	 * @static
 	 */
 

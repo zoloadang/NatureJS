@@ -62,13 +62,13 @@ define(['./object.js', '../type/object.js', '../type/array.js'], function(create
 	 * @param { Object } sx 需要添加的静态方法集合.
 	 * @return { Function } 构造器 r.
 	 * @spec extend a constructor
-	 * @example:
-	 * 	var A = function() {};
-	 * 	var B = function() {};
-	 * 	extend(B, A);
-	 * 	var c = new B;
-	 * 	c instanceof A => true
-	 * 	c instanceof B => true
+	 * @example
+	 *      var A = function() {};
+	 *      var B = function() {};
+	 *      extend(B, A);
+	 *      var c = new B;
+	 *      c instanceof A => true
+	 *      c instanceof B => true
 	 */
 	function extend(r, s, px, sx) {
 

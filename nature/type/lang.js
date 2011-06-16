@@ -27,12 +27,12 @@ define(function() {
 		 * @return { Boolean } 如果是字符串, 返回 true, 否则返回 false.
 		 * @spec check it is or not a string.
 		 * @example
-		 * 	lang.isString('nanzhi') => true;
-		 *	!!lang.isString(undefined) => false;
-		 *	lang.isString(12) => false;
-		 *	!!lang.isString(null) => false;
-		 *	lang.isString([1, 2]) => false;
-		 *	lang.isString(Array) => false;
+		 *          lang.isString('nanzhi') => true;
+		 *      !!lang.isString(undefined) => false;
+		 *      lang.isString(12) => false;
+		 *      !!lang.isString(null) => false;
+		 *      lang.isString([1, 2]) => false;
+		 *      lang.isString(Array) => false;
 		 */
 		isString: function(it) {
 
@@ -46,12 +46,12 @@ define(function() {
 		 * @return { Boolean } 如果是数字, 返回 true, 否则返回 false.
 		 * @spec check it is or not a number.
 		 * @example
-		 *  lang.isNumber(12) => true;
-		 *	lang.isNumber('nanzhi') => false;
-		 *	!!lang.isNumber(undefined) => false;
-		 *	!!lang.isNumber(null) => false;
-		 *	lang.isNumber([1, 2]) => false;
-		 *	lang.isNumber(Array) => false;
+		 *      lang.isNumber(12) => true;
+		 *      lang.isNumber('nanzhi') => false;
+		 *      !!lang.isNumber(undefined) => false;
+		 *      !!lang.isNumber(null) => false;
+		 *      lang.isNumber([1, 2]) => false;
+		 *      lang.isNumber(Array) => false;
 		 */
 		isNumber: function(it) {
 
@@ -65,14 +65,14 @@ define(function() {
 		 * @return { Boolean } 如果是数组, 返回 true, 否则返回 false.
 		 * @spec check it is or not an array.
 		 * @example
-		 * 	lang.isArray([1, 2]) => true;
-		 *	lang.isArray('nanzhi') => false;
-		 *	!!lang.isArray(undefined) => false;
-		 *	lang.isArray(12) => false;
-		 *	!!lang.isArray(null) => false;
-		 *	lang.isArray(Array) => false;
-		 *	lang.isArray(arguments) => false;
-		 *	lang.isArray(document.getElementsByTagName('head')) => false;
+		 *      lang.isArray([1, 2]) => true;
+		 *      lang.isArray('nanzhi') => false;
+		 *      !!lang.isArray(undefined) => false;
+		 *      lang.isArray(12) => false;
+		 *      !!lang.isArray(null) => false;
+		 *      lang.isArray(Array) => false;
+		 *      lang.isArray(arguments) => false;
+		 *      lang.isArray(document.getElementsByTagName('head')) => false;
 		 */
 		isArray: function(it) {
 
@@ -86,14 +86,14 @@ define(function() {
 		 * @return { Boolean } 它比 isArray 更宽松一点, 如果是类似数组的东西(节点, arguments)或者数组, 返回 true, 否则返回 false.
 		 * @spec check it is or not like array.
 		 * @example
-		 *  lang.isArrayLike([1, 2]) => true;
-		 *	lang.isArrayLike(arguments) => true;
-		 *	lang.isArrayLike(document.getElementsByTagName('head')) => true;
-		 *	lang.isArrayLike('nanzhi') => false;
-		 *	!!lang.isArrayLike(undefined) => false;
-		 *	lang.isArrayLike(12) => false;
-		 *	!!lang.isArrayLike(null) => false;
-		 *	lang.isArrayLike(Array) => false;
+		 *      lang.isArrayLike([1, 2]) => true;
+		 *      lang.isArrayLike(arguments) => true;
+		 *      lang.isArrayLike(document.getElementsByTagName('head')) => true;
+		 *      lang.isArrayLike('nanzhi') => false;
+		 *      !!lang.isArrayLike(undefined) => false;
+		 *      lang.isArrayLike(12) => false;
+		 *      !!lang.isArrayLike(null) => false;
+		 *      lang.isArrayLike(Array) => false;
 		 */
 		isArrayLike: function(it) {
 
@@ -111,14 +111,14 @@ define(function() {
 		 * @return { Boolean } 如果是对象, 返回 true, 否则返回 false.
 		 * @spec check it is or not a object.
 		 * @example
-		 *  lang.isObject(null) => true;
-		 *	lang.isObject([1, 2]) => true;
-		 *	lang.isObject(Array) => true;
-		 *	lang.isObject(function() {}) => true;
-		 *	lang.isObject(arguments) => true;
-		 *	lang.isObject('nanzhi') => false;
-		 *	lang.isObject(undefined) => false;
-		 *	lang.isObject(12) => false;
+		 *      lang.isObject(null) => true;
+		 *      lang.isObject([1, 2]) => true;
+		 *      lang.isObject(Array) => true;
+		 *      lang.isObject(function() {}) => true;
+		 *      lang.isObject(arguments) => true;
+		 *      lang.isObject('nanzhi') => false;
+		 *      lang.isObject(undefined) => false;
+		 *      lang.isObject(12) => false;
 		 */
 		isObject: function(it) {
 
@@ -134,14 +134,14 @@ define(function() {
 		 * @return { Boolean } 如果是函数, 返回 true, 否则返回 false.
 		 * @spec check it is or not a Function.
 		 * @example
-		 *  lang.isFunction(function() {}) => true;
-		 *	lang.isFunction('nanzhi') => false;
-		 *	!!lang.isFunction(undefined) => false;
-		 *	lang.isFunction(12) => false;
-		 *	!!lang.isFunction(null) => false;
-		 *	lang.isFunction([1, 2]) => false;
-		 *	lang.isFunction(Array) => true;
-		 *	lang.isFunction(arguments) => false;
+		 *      lang.isFunction(function() {}) => true;
+		 *      lang.isFunction('nanzhi') => false;
+		 *      !!lang.isFunction(undefined) => false;
+		 *      lang.isFunction(12) => false;
+		 *      !!lang.isFunction(null) => false;
+		 *      lang.isFunction([1, 2]) => false;
+		 *      lang.isFunction(Array) => true;
+		 *      lang.isFunction(arguments) => false;
 		 */
 		isFunction: function(it) {
 
@@ -155,13 +155,13 @@ define(function() {
 		 * @return { Boolean } 如果是 null, 返回 true, 否则返回 false.
 		 * @spec heck it is or not null.
 		 * @example
-		 *  lang.isNull(null) => true;
-		 *	lang.isNull('nanzhi') => false;
-		 *	lang.isNull(undefined) => false;
-		 *	lang.isNull(12) => false;
-		 *	lang.isNull([1, 2]) => false;
-		 *	lang.isNull(Array) => false;
-		 *	lang.isNull(arguments) => false;
+		 *      lang.isNull(null) => true;
+		 *      lang.isNull('nanzhi') => false;
+		 *      lang.isNull(undefined) => false;
+		 *      lang.isNull(12) => false;
+		 *      lang.isNull([1, 2]) => false;
+		 *      lang.isNull(Array) => false;
+		 *      lang.isNull(arguments) => false;
 		 */
 		isNull: function(it) {
 
@@ -175,13 +175,13 @@ define(function() {
 		 * @return { Boolean } 如果是 undefined, 返回 true, 否则返回 false.
 		 * @spec heck it is or not undefined.
 		 * @example
-		 *  lang.isUndefined(undefined) => true;
-		 *	lang.isUndefined('nanzhi') => false;
-		 *	lang.isUndefined(12) => false;
-		 *	lang.isUndefined(null) => false;
-		 *	lang.isUndefined([1, 2]) => false;
-		 *	lang.isUndefined(Array) => false;
-		 *	lang.isUndefined(arguments) => false;
+		 *      lang.isUndefined(undefined) => true;
+		 *      lang.isUndefined('nanzhi') => false;
+		 *      lang.isUndefined(12) => false;
+		 *      lang.isUndefined(null) => false;
+		 *      lang.isUndefined([1, 2]) => false;
+		 *      lang.isUndefined(Array) => false;
+		 *      lang.isUndefined(arguments) => false;
 		 */
 		isUndefined: function(it) {
 

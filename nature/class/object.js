@@ -19,12 +19,12 @@ define(function() {
 	 * @param { Object } o 原型对象.
 	 * @return { Object } 实例.
 	 * @spec create an instance
-	 * @example:
-	 * 	var A = function() {};
-	 * 	A.prototype.toString = function() { return '1'; };
-	 * 	var b = object(A.prototype);
-	 * 	b instanceof A => true
-	 * 	b.toString() => '1'
+	 * @example
+	 *      var A = function() {};
+	 *      A.prototype.toString = function() { return '1'; };
+	 *      var b = object(A.prototype);
+	 *      b instanceof A => true
+	 *      b.toString() => '1'
 	 */
 	function object(o) {
 

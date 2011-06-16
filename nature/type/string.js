@@ -26,10 +26,10 @@ define(function() {
 		 * @return { String } 返回清除后的字符串.
 		 * @spec romove both ends of the blank string.
 		 * @example
-		 *  string.trim(' test ') => 'test';
-		 *	string.trim('      I am nanzhi.') => 'I am nanzhi.';
-		 *	string.trim('      I am nanzhi.     ') => 'I am nanzhi.';
-		 *	string.trim('      I am nanzhi.     ', true) => 'I am nanzhi.';
+		 *      string.trim(' test ') => 'test';
+		 *      string.trim('      I am nanzhi.') => 'I am nanzhi.';
+		 *      string.trim('      I am nanzhi.     ') => 'I am nanzhi.';
+		 *      string.trim('      I am nanzhi.     ', true) => 'I am nanzhi.';
 		 */
 		trim: function(str, isBigText) {
 
@@ -64,9 +64,9 @@ define(function() {
 		 * @return { String } 替换后的字符串.
 		 * @spec replace specific character by data.
 		 * @example
-		 * 	var str = '{person} is a {role}.',
-		 *		data = { person: 'Nanzhi', role: 'Developer' };
-		 *	string.substitute(str, data) => 'Nanzhi is a Developer.';
+		 *      var str = '{person} is a {role}.',
+		 *      	data = { person: 'Nanzhi', role: 'Developer' };
+		 *      string.substitute(str, data) => 'Nanzhi is a Developer.';
 		 */
 		substitute: function(template, data, prefix, postfix) {
 

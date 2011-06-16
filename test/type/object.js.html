@@ -50,16 +50,6 @@
                 expect(o2['c']).toBe('d');
             });
 
-            it("Translate object to param string.", function() {
-                expect(object.param({a:'b', c:'d'})).toBe('a=b&c=d');
-            });
-
-            it("Translate param string to object.", function() {
-                var o = object.unparam('a=b&c=d');
-                expect(o['a']).toBe('b');
-                expect(o['c']).toBe('d');
-            });
-
             it("set and get object.", function() {
                 object.set('nature.dom', { name: 'dom' });
                 var o = object.get('nature.dom');

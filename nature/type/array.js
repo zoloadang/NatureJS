@@ -31,10 +31,10 @@ define(['./lang.js'], function(lang) {
 		 * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf
 		 * @spec locates the first index of the provided value in the passed array.
 		 * @example
-		 * 	array.indexOf([1, 2, 1, 4], 1) => 0
-		 *	array.indexOf([1, 2, 1, 4], 1, 1) => 2
-		 *	array.indexOf([1, 2, 1, 4], 1,  -1) => -1
-		 *	array.indexOf([1, 2, 1, 4], 1, -2) => 2
+		 *      array.indexOf([1, 2, 1, 4], 1) => 0
+		 *      array.indexOf([1, 2, 1, 4], 1, 1) => 2
+		 *      array.indexOf([1, 2, 1, 4], 1,  -1) => -1
+		 *      array.indexOf([1, 2, 1, 4], 1, -2) => 2
 		 */
 		indexOf: function(arr, value, fromindex, fromlast) {
 
@@ -83,10 +83,10 @@ define(['./lang.js'], function(lang) {
 		 * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/lastIndexOf
 		 * @spec locates the last index of the provided value in the passed array.
 		 * @example
-		 * 	array.lastIndexOf([1, 2, 1, 4], 1) => 2
-		 *	array.lastIndexOf([1, 2, 1, 4], 1, 1) => 0
-		 *	array.lastIndexOf([1, 2, 1, 4], 1, -1) => 2
-		 *	array.lastIndexOf([1, 2, 1, 4], 1, -2) => 2
+		 *      array.lastIndexOf([1, 2, 1, 4], 1) => 2
+		 *      array.lastIndexOf([1, 2, 1, 4], 1, 1) => 0
+		 *      array.lastIndexOf([1, 2, 1, 4], 1, -1) => 2
+		 *      array.lastIndexOf([1, 2, 1, 4], 1, -2) => 2
 		 */
 		lastIndexOf: function(arr, value, fromindex) {
 
@@ -108,11 +108,11 @@ define(['./lang.js'], function(lang) {
 		 * @see https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/array/foreach
 		 * @spec for every item in arr, callback is invoked.
 		 * @example
-		 * 	var str = '';
-		 *	array.forEach([1, 2], function(item, i, a) {
-		 *		str += item + ',' + i + ',' + a.join(',');	
-		 *	});	
-		 *	str => '1,0,1,22,1,1,2'
+		 *      var str = '';
+		 *      array.forEach([1, 2], function(item, i, a) {
+		 *      	str += item + ',' + i + ',' + a.join(',');	
+		 *      });	
+		 *      str => '1,0,1,22,1,1,2'
 		 */
 		forEach: function(arr, callback, thisObject) {
 
@@ -139,14 +139,14 @@ define(['./lang.js'], function(lang) {
 		 * @see https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/every
 		 * @spec Determines whether or not every item in arr satisfies the condition implemented by callback.
 		 * @example
-		 * 	var a = array.every([1, 2], function(i) {
-		 *		 		return 'number' == typeof i;
-		 *		 	}),	
-		 *	 	b = array.every([1, '2'], function(i) {
-		 *	 		    return 'number' == typeof i;
-		 *	 	    });
-		 *	a => true
-		 *	b => false
+		 *      var a = array.every([1, 2], function(i) {
+		 *      	 		return 'number' == typeof i;
+		 *      	 	}),	
+		 *       	b = array.every([1, '2'], function(i) {
+		 *       		    return 'number' == typeof i;
+		 *       	    });
+		 *      a => true
+		 *      b => false
 		 */
 		every: function(arr, callback, thisObject) {
 
@@ -200,18 +200,18 @@ define(['./lang.js'], function(lang) {
 		 * @see https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/some
 		 * @spec Determines whether or not any item in arr satisfies the condition implemented by callback.
 		 * @example
-		 * 	var a = array.some([1, 2], function(i) {
-		 *				return 'number' == typeof i;
-		 *			}),
-		 *		b = array.some([1, '2'], function(i) {
-		 *				return 'number' == typeof i;
-		 *			}),	
-		 *		c = array.some(['1', '2'], function(i) {
-		 *				return 'number' == typeof i;
-		 *			});
-		 *	a => true
-		 *	b => true
-		 *	c => false
+		 *      var a = array.some([1, 2], function(i) {
+		 *      			return 'number' == typeof i;
+		 *      		}),
+		 *      	b = array.some([1, '2'], function(i) {
+		 *      			return 'number' == typeof i;
+		 *      		}),	
+		 *      	c = array.some(['1', '2'], function(i) {
+		 *      			return 'number' == typeof i;
+		 *      		});
+		 *      a => true
+		 *      b => true
+		 *      c => false
 		 */
 		some: function(arr, callback, thisObject) {
 
@@ -234,10 +234,10 @@ define(['./lang.js'], function(lang) {
 		 * @see https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/map
 		 * @spec applies callback to each element of arr and returns an Array with the results.
 		 * @example
-		 * 	var r = array.map([1, 2, 3], function(i) {
-		 *		        return i * 2;	
-		 *			});
-		 *	r.join(',') => '2,4,6'
+		 *      var r = array.map([1, 2, 3], function(i) {
+		 *      	        return i * 2;	
+		 *      		});
+		 *      r.join(',') => '2,4,6'
 		 */
 		map: function(arr, callback, thisObject) {
 
@@ -268,10 +268,10 @@ define(['./lang.js'], function(lang) {
 		 * @see https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/filter
 		 * @spec Returns a new Array with those items from arr that match the condition implemented by callback.
 		 * @example
-		 *  var r = array.filter([1, 2, '3'], function(i) {
-	 	 *				return 'number' == typeof i;
-		 *			});
-		 *	r.join(',') => '1,2'
+		 *      var r = array.filter([1, 2, '3'], function(i) {
+	 	 *      			return 'number' == typeof i;
+		 *      		});
+		 *      r.join(',') => '1,2'
 		 */
 		filter: function(arr, callback, thisObject) {
 

@@ -24,13 +24,13 @@ define(['../type/object.js', '../type/string.js'], function(object, string) {
 		 * @param { String } name cookie 名.
 		 * @return { String } cookie 值.
 		 * @spec set and get cookie.
-		 * @example:
-  		 *	cookie.set('nick', 'nanzhi', { 'max-age': 2, domain: location.host });
-		 *	cookie.set('name', '南芝');
-		 *	cookie.set('mail', 'nanzhienai@163.com', { expires: new Date(new Date().getTime() + 24 * 60 * 60 * 3600) });
-		 *	cookie.get('nick') => 'nanzhi'
-		 *	cookie.get('name') => '南芝'
-		 *	cookie.get('mail') => 'nanzhienai@163.com'
+		 * @example
+  		 *      cookie.set('nick', 'nanzhi', { 'max-age': 2, domain: location.host });
+		 *      cookie.set('name', '南芝');
+		 *      cookie.set('mail', 'nanzhienai@163.com', { expires: new Date(new Date().getTime() + 24 * 60 * 60 * 3600) });
+		 *      cookie.get('nick') => 'nanzhi'
+		 *      cookie.get('name') => '南芝'
+		 *      cookie.get('mail') => 'nanzhienai@163.com'
 		 */
 		get: function(name) {
 
@@ -48,10 +48,10 @@ define(['../type/object.js', '../type/string.js'], function(object, string) {
 		 * @param { String } value cookie 值.
 		 * @param { Object } props 其它选项.
 		 * @return { String } cookie 值.
-		 * @example:
-  		 *	cookie.set('nick', 'nanzhi', { 'max-age': 2, domain: location.host });
-		 *	cookie.set('name', '南芝');
-		 *	cookie.set('mail', 'nanzhienai@163.com', { expires: new Date(new Date().getTime() + 24 * 60 * 60 * 3600) });
+		 * @example
+  		 *      cookie.set('nick', 'nanzhi', { 'max-age': 2, domain: location.host });
+		 *      cookie.set('name', '南芝');
+		 *      cookie.set('mail', 'nanzhienai@163.com', { expires: new Date(new Date().getTime() + 24 * 60 * 60 * 3600) });
 		 */
 		set: function(name, value, props) {
 
@@ -81,7 +81,8 @@ define(['../type/object.js', '../type/string.js'], function(object, string) {
 		 * 检测浏览器是否支持 cookie
 		 * @return { Boolean } 如果浏览器开启了 cookie. 则返回 true, 否则返回 false.
 		 * @spec check browser is supported cookie.
-		 *  cookie.isEnable() => true
+		 * @example
+		 *      cookie.isEnable() => true
 		 */
 		isEnable: function() {
 

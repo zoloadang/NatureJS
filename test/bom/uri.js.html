@@ -31,6 +31,16 @@
                 expect(uri.buildUri('http://www.12sui.cn/', 'page=1')).toBe('http://www.12sui.cn/?page=1');
             });
 
+            it("Translate object to param string.", function() {
+                expect(uri.param({a:'b', c:'d'})).toBe('a=b&c=d');
+            });
+
+            it("Translate param string to object.", function() {
+                var o = uri.unparam('a=b&c=d');
+                expect(o['a']).toBe('b');
+                expect(o['c']).toBe('d');
+            });
+
         });
 
 			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());

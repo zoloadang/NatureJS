@@ -81,12 +81,12 @@ define(['../type/lang.js'], function(lang) {
 		 * @return { Object } obj.
 		 * @spec Mix many object to one object.
 		 * @example
-		 * 	var t = { a: 'b' },
-		 *		a = { c: 'd' },
-		 *		b = { e: 'f' };
-		 *	object.mixin(t, a, b)
-		 *	t['c'] => 'd';
-		 *	t['e'] => 'f';
+		 *      var t = { a: 'b' },
+		 *      	a = { c: 'd' },
+		 *      	b = { e: 'f' };
+		 *      object.mixin(t, a, b)
+		 *      t['c'] => 'd';
+		 *      t['e'] => 'f';
 		 */
 		mixin: function(obj, props) {
 
@@ -112,13 +112,13 @@ define(['../type/lang.js'], function(lang) {
 		 * @return { Object } 合并后的对象.
 		 * @spec Merge some object to one.
 		 * @example
-		 * 	var o1 = { a: 'b' },
-		 *		o2 = { c: 'd' },
-		 *		o3 = { e: 'f' },
-		 *		o = object.merge(o1, o2, o3);
-		 *	o['a'] => 'b';
-		 *	o['c'] => 'd';
-		 *	o['e'] => 'f';
+		 *      var o1 = { a: 'b' },
+		 *      	o2 = { c: 'd' },
+		 *      	o3 = { e: 'f' },
+		 *      	o = object.merge(o1, o2, o3);
+		 *      o['a'] => 'b';
+		 *      o['c'] => 'd';
+		 *      o['e'] => 'f';
 		 */
 		merge: function() {
 
@@ -136,8 +136,8 @@ define(['../type/lang.js'], function(lang) {
 		 * @return { String } 转换成的字符串.
 		 * @spec Translate an object to string.
 		 * @example
-		 * 	object.toString({ a: 'b', c: 'd' }) => 'a:b,c:d'
-		 * 	object.toString({ a: 'b', c: 'd' }, ['=', '&']) => 'a=b&c=d'
+		 *      object.toString({ a: 'b', c: 'd' }) => 'a:b,c:d'
+		 *      object.toString({ a: 'b', c: 'd' }, ['=', '&']) => 'a=b&c=d'
 		 */
 		toString: function(obj, symbol, needEncode) {
 
@@ -163,12 +163,12 @@ define(['../type/lang.js'], function(lang) {
 		 * @return { Object } 对象.
 		 * @spec Translate a string to object.
 		 * @example
-		 * 	var o1 = object.toObject('a:b,c:d'),
-		 *		o2 = object.toObject('a=b&c=d', ['=', '&']);
-		 *	o1['a'] => 'b';
-		 *	o1['c'] => 'd';
-		 *	o2['a'] => 'b';
-		 *	o2['c'] => 'd';
+		 *      var o1 = object.toObject('a:b,c:d'),
+		 *      	o2 = object.toObject('a=b&c=d', ['=', '&']);
+		 *      o1['a'] => 'b';
+		 *      o1['c'] => 'd';
+		 *      o2['a'] => 'b';
+		 *      o2['c'] => 'd';
 		 */
 		toObject: function(str, symbol, needDecode) {
 
@@ -186,36 +186,6 @@ define(['../type/lang.js'], function(lang) {
 			}
 
 			return obj;
-
-		},
-
-		/**
-		 * 转换对象为 url 参数
-		 * @param { Object } obj 对象.
-		 * @return { String } url 参数字符串.
-		 * @spec Translate object to param string.
-		 * @example
-		 *  object.param({a:'b', c:'d'}) => 'a=b&c=d';
-		 */
-		param: function(obj) {
-
-			return this.toString(obj, ['=', '&'], true);
-
-		},
-
-		/**
-		 * 转换 url 参数为字符串
-		 * @param { String } str url 参数字符串.
-		 * @return { Object } 对象.
-		 * @spec Translate param string to object.
-		 * @example
-		 *  var o = object.unparam('a=b&c=d');
-		 *	o['a'] => 'b';
-		 *	o['c'] => 'd';
-		 */
-		unparam: function(str) {
-
-			return this.toObject(str, ['=', '&'], true);
 
 		},
 
@@ -282,9 +252,9 @@ define(['../type/lang.js'], function(lang) {
 		 * @return { Object } 对象.
 		 * @spec set and get object.
 		 * @example
-		 *  object.set('nature.dom', { name: 'dom' });
-		 *	var o = object.get('nature.dom');
-		 *	o.name => 'dom';
+		 *      object.set('nature.dom', { name: 'dom' });
+		 *      var o = object.get('nature.dom');
+		 *      o.name => 'dom';
 		 */
 		get: function(name, create, context) {
 

@@ -267,15 +267,6 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">object.<b><a href="../symbols/object.html#.extend">extend</a></b>(constructor, props)
-								</div>
-								<div class="description">为原型添加方法</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
 								<div class="fixedFont">object.<b><a href="../symbols/object.html#.get">get</a></b>(name, create, context)
 								</div>
 								<div class="description">根据字符串获取对象</div>
@@ -303,15 +294,6 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">object.<b><a href="../symbols/object.html#.param">param</a></b>(obj)
-								</div>
-								<div class="description">转换对象为 url 参数</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
 								<div class="fixedFont">object.<b><a href="../symbols/object.html#.set">set</a></b>(name, value, context)
 								</div>
 								<div class="description">设置对象</div>
@@ -333,15 +315,6 @@ ul.inheritsList
 								<div class="fixedFont">object.<b><a href="../symbols/object.html#.toString">toString</a></b>(obj, symbol, needEncode)
 								</div>
 								<div class="description">转换对象为字符串</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">object.<b><a href="../symbols/object.html#.unparam">unparam</a></b>(str)
-								</div>
-								<div class="description">转换 url 参数为字符串</div>
 							</td>
 						</tr>
 					
@@ -393,55 +366,6 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".extend"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Function}</span>
-					<span class="light">object.</span><b>extend</b>(constructor, props)
-					
-					</div>
-					<div class="description">
-						为原型添加方法
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Function}</span> <b>constructor</b>
-									
-								</dt>
-								<dd>构造函数.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{Object}</span> <b>props</b>
-									
-								</dt>
-								<dd>源对象.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Function}</span> 构造函数.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
 					<a name=".get"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -454,6 +378,12 @@ ul.inheritsList
 						
 						
 					</div>
+					
+					
+					
+					<pre class="code">     object.set('nature.dom', { name: 'dom' });
+     var o = object.get('nature.dom');
+     o.name => 'dom';</pre>
 					
 					
 					
@@ -512,6 +442,16 @@ ul.inheritsList
 					
 					
 					
+					<pre class="code">     var o1 = { a: 'b' },
+     	o2 = { c: 'd' },
+     	o3 = { e: 'f' },
+     	o = object.merge(o1, o2, o3);
+     o['a'] => 'b';
+     o['c'] => 'd';
+     o['e'] => 'f';</pre>
+					
+					
+					
 						
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
@@ -555,6 +495,15 @@ ul.inheritsList
 					
 					
 					
+					<pre class="code">     var t = { a: 'b' },
+     	a = { c: 'd' },
+     	b = { e: 'f' };
+     object.mixin(t, a, b)
+     t['c'] => 'd';
+     t['e'] => 'f';</pre>
+					
+					
+					
 						
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
@@ -581,49 +530,6 @@ ul.inheritsList
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{Object}</span> obj.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".param"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{String}</span>
-					<span class="light">object.</span><b>param</b>(obj)
-					
-					</div>
-					<div class="description">
-						转换对象为 url 参数
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Object}</span> <b>obj</b>
-									
-								</dt>
-								<dd>对象.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{String}</span> url 参数字符串.</dd>
 							
 							</dl>
 						
@@ -702,8 +608,12 @@ ul.inheritsList
 					
 					
 					
-					<pre class="code">		object.toObject('a:b,c:d') //{a:'b',c:'d'}
-		object.toObject('a=b&c=b', ['=', '&']) //{a:'b',c:'d'}</pre>
+					<pre class="code">     var o1 = object.toObject('a:b,c:d'),
+     	o2 = object.toObject('a=b&c=d', ['=', '&']);
+     o1['a'] => 'b';
+     o1['c'] => 'd';
+     o2['a'] => 'b';
+     o2['c'] => 'd';</pre>
 					
 					
 					
@@ -762,8 +672,8 @@ ul.inheritsList
 					
 					
 					
-					<pre class="code">		object.toString({ a: 'b', c: 'd' }) //a:b,c:d
-		object.toString({ a: 'b', c: 'd' }, ['=', '&']) //a=b&c=d</pre>
+					<pre class="code">     object.toString({ a: 'b', c: 'd' }) => 'a:b,c:d'
+     object.toString({ a: 'b', c: 'd' }, ['=', '&']) => 'a=b&c=d'</pre>
 					
 					
 					
@@ -805,49 +715,6 @@ ul.inheritsList
 						
 						
 
-					<hr />
-				
-					<a name=".unparam"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Object}</span>
-					<span class="light">object.</span><b>unparam</b>(str)
-					
-					</div>
-					<div class="description">
-						转换 url 参数为字符串
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>str</b>
-									
-								</dt>
-								<dd>url 参数字符串.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Object}</span> 对象.</dd>
-							
-							</dl>
-						
-						
-						
-
 					
 				
 			
@@ -862,7 +729,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 13 2011 22:25:13 GMT+0800 (CST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jun 16 2011 23:20:46 GMT+0800 (CST)
 		</div>
 	</body>
 </html>
