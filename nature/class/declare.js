@@ -78,23 +78,24 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 	 * @return { Object } 新生成的 constructor.
 	 * @spec Inherited from one Class.
 	 * @example
-	 * 	var A = function() {};
-	 * 	var B = declare(A);
-	 * 	var c = new B;
-	 * 	c instanceof A => true
-	 * 	c.isInstanceOf(A) => true
+	 * 		var A = function() {};
+	 * 		var B = declare(A);
+	 * 		var c = new B;
+	 * 		c instanceof A => true
+	 * 		c.isInstanceOf(A) => true
 	 *
 	 * @spec Inherited from multi Classes.
-	 * 	var A = declare(null);
-	 * 	var B = declare(A);
-	 * 	var C = declare([A, B]);
-	 * 	var d = new C;
-	 * 	d instanceof A => true
-	 * 	d instanceof B => false
-	 * 	d instanceof C => true
-	 * 	d.isInstanceOf(A) => true
-	 * 	d.isInstanceOf(B) => true
-	 * 	d.isInstanceOf(C) => true
+	 * @example
+	 * 		var A = declare(null);
+	 * 		var B = declare(A);
+	 * 		var C = declare([A, B]);
+	 * 		var d = new C;
+	 * 		d instanceof A => true
+	 * 		d instanceof B => false
+	 * 		d instanceof C => true
+	 * 		d.isInstanceOf(A) => true
+	 * 		d.isInstanceOf(B) => true
+	 * 		d.isInstanceOf(C) => true
 	 */
 	function declare(name, superclass, props) {
 

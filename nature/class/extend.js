@@ -28,21 +28,23 @@ define(['./object.js', '../type/object.js', '../type/array.js'], function(create
 			bases;
 
 		if (!_meta) {
-
 			_meta = ctor['_meta'] = {};
-
 		}
 
 		//add base
 		bases = _meta['bases'];
 
 		if (!bases) {
-
 			bases = _meta['bases'] = [];
-
+			//断言, 存在 bases, 一定已经包含
+			if (-1 === array.indexOf(bases, ctor)) {
+				bases.push(ctor);
+			}
 		}
 
-		bases.push(stor);
+		if (-1 === array.indexOf(bases, stor)) {
+			bases.push(stor);
+		}
 
 		//add parents
 		_meta['parents'] = stor;
