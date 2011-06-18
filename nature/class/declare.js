@@ -11,7 +11,7 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 	 */
 
 	var count = 0,
-		prefix = 'Nature_Class_',
+		prefix = 'NatureJS_Class_',
 		DECLARED_CLASS = 'declaredClass',
 		_META = '_meta',
 		BASES = 'bases';

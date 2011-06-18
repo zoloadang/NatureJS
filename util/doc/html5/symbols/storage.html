@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - cookie</title>
+		<title>JsDoc Reference - storage</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -191,11 +191,7 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
-	<li><a href="../symbols/browser.html">browser</a></li>
-	
-	<li><a href="../symbols/cookie.html">cookie</a></li>
-	
-	<li><a href="../symbols/uri.html">uri</a></li>
+	<li><a href="../symbols/storage.html">storage</a></li>
 	
 </ul>
 <hr />
@@ -206,7 +202,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Namespace cookie
+				Namespace storage
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -217,13 +213,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/nature_bom_cookie.js.html">cookie.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/nature_html5_storage.js.html">storage.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class cookie.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class storage.">
 				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
@@ -236,9 +232,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/cookie.html#constructor">cookie</a></b>
+								<b><a href="../symbols/storage.html#constructor">storage</a></b>
 							</div>
-							<div class="description">cookie 模块</div>
+							<div class="description"></div>
 						</td>
 					</tr>
 				</tbody>
@@ -252,7 +248,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class cookie.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class storage.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -265,27 +261,36 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">cookie.<b><a href="../symbols/cookie.html#.get">get</a></b>(name)
+								<div class="fixedFont">storage.<b><a href="../symbols/storage.html#.clear">clear</a></b>()
 								</div>
-								<div class="description">获取 cookie</div>
+								<div class="description">清除所有本地存储</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">cookie.<b><a href="../symbols/cookie.html#.isEnable">isEnable</a></b>()
+								<div class="fixedFont">storage.<b><a href="../symbols/storage.html#.getItem">getItem</a></b>(key)
 								</div>
-								<div class="description">检测浏览器是否支持 cookie</div>
+								<div class="description">读取本地存储.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">cookie.<b><a href="../symbols/cookie.html#.set">set</a></b>(name, value, props)
+								<div class="fixedFont">storage.<b><a href="../symbols/storage.html#.removeItem">removeItem</a></b>(key)
 								</div>
-								<div class="description">设置 cookie</div>
+								<div class="description">移除本地存储.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">storage.<b><a href="../symbols/storage.html#.setItem">setItem</a></b>(key, value)
+								</div>
+								<div class="description">写入本地存储</div>
 							</td>
 						</tr>
 					
@@ -306,11 +311,11 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>cookie</b>
+						<b>storage</b>
 				</div>
 				
 				<div class="description">
-					cookie 模块
+					
 					
 				</div>
 				
@@ -337,41 +342,21 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".get"> </a>
+					<a name=".clear"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{String}</span>
-					<span class="light">cookie.</span><b>get</b>(name)
+					
+					<span class="light">storage.</span><b>clear</b>()
 					
 					</div>
 					<div class="description">
-						获取 cookie
+						清除所有本地存储
 						
 						
 					</div>
 					
 					
 					
-					<pre class="code">     cookie.set('nick', 'nanzhi', { 'max-age': 2, domain: location.host });
-     cookie.set('name', '南芝');
-     cookie.set('mail', 'nanzhienai@163.com', { expires: new Date(new Date().getTime() + 24 * 60 * 60 * 3600) });
-     cookie.get('nick') => 'nanzhi'
-     cookie.get('name') => '南芝'
-     cookie.get('mail') => 'nanzhienai@163.com'</pre>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>name</b>
-									
-								</dt>
-								<dd>cookie 名.</dd>
-							
-							</dl>
 						
 						
 						
@@ -380,7 +365,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> cookie 值.</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -389,60 +374,22 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".isEnable"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Boolean}</span>
-					<span class="light">cookie.</span><b>isEnable</b>()
-					
-					</div>
-					<div class="description">
-						检测浏览器是否支持 cookie
-						
-						
-					</div>
-					
-					
-					
-					<pre class="code">     cookie.isEnable() => true</pre>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Boolean}</span> 如果浏览器开启了 cookie. 则返回 true, 否则返回 false.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".set"> </a>
+					<a name=".getItem"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{String}</span>
-					<span class="light">cookie.</span><b>set</b>(name, value, props)
+					<span class="light">storage.</span><b>getItem</b>(key)
 					
 					</div>
 					<div class="description">
-						设置 cookie
+						读取本地存储.
 						
 						
 					</div>
 					
 					
 					
-					<pre class="code">     cookie.set('nick', 'nanzhi', { 'max-age': 2, domain: location.host });
-     cookie.set('name', '南芝');
-     cookie.set('mail', 'nanzhienai@163.com', { expires: new Date(new Date().getTime() + 24 * 60 * 60 * 3600) });</pre>
+					<pre class="code">		storage.setItem('a', 'h');		storage.setItem('b', {'c': 'd'});		storage.getItem('a') => 'h';		storage.getItem('b') => '{"c":"d"}';		storage.removeItem('b');		storage.getItem('b') => null;		storage.clear();		storage.getItem('a') => null;</pre>
 					
 					
 					
@@ -451,22 +398,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>name</b>
+									<span class="light fixedFont">{String}</span> <b>key</b>
 									
 								</dt>
-								<dd>cookie 名.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>value</b>
-									
-								</dt>
-								<dd>cookie 值.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{Object}</span> <b>props</b>
-									
-								</dt>
-								<dd>其它选项.</dd>
+								<dd>存储名.</dd>
 							
 							</dl>
 						
@@ -477,9 +412,87 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> cookie 值.</dd>
+								<dd><span class="light fixedFont">{String}</span> 本地存储值.</dd>
 							
 							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".removeItem"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">storage.</span><b>removeItem</b>(key)
+					
+					</div>
+					<div class="description">
+						移除本地存储.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>key</b>
+									
+								</dt>
+								<dd>存储名.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".setItem"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">storage.</span><b>setItem</b>(key, value)
+					
+					</div>
+					<div class="description">
+						写入本地存储
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>key</b>
+									
+								</dt>
+								<dd>存储名.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Anything}</span> <b>value</b>
+									
+								</dt>
+								<dd>需要存储的值.</dd>
+							
+							</dl>
+						
+						
+						
+						
 						
 						
 						
@@ -498,7 +511,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Jun 18 2011 14:10:52 GMT+0800 (CST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Jun 18 2011 14:10:58 GMT+0800 (CST)
 		</div>
 	</body>
 </html>

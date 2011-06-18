@@ -2,7 +2,7 @@
  * @fileoverview JSON 模块.
  * @author nanzhi<nanzhienai@163.com>
  */
-define(['../type/object.js'], function(object) {
+define(function(object) {
 
 	var json = window['JSON'];
 

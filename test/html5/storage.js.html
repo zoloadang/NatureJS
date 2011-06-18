@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>storage unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+</head>
+<body>
+	
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/html5/storage.js'], function(storage) {
+
+			describe("本地存储", function() {
+
+            it("set and get localstorage", function() {
+                storage.setItem('a', 'h');
+                storage.setItem('b', {'c': 'd'});
+                expect(storage.getItem('a')).toBe('h');
+                expect(storage.getItem('b')).toBe('{"c":"d"}');
+                storage.removeItem('b');
+                expect(storage.getItem('b')).toBe(null);
+                storage.clear();
+                expect(storage.getItem('a')).toBe(null);
+            });
+
+        });
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>
