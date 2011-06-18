@@ -26,6 +26,7 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 	 * @private
 	 * @param { Array } cls 超类集合.
 	 * @return { Array } base 集合.
+	 * @see http://en.wikipedia.org/wiki/C3_linearization
 	 * @see http://www.python.org/download/releases/2.3/mro/
 	 */
 	function c3mro(bases) {
