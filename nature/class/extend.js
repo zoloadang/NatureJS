@@ -2,7 +2,7 @@
  * @fileoverview 扩展类的方法.
  * @author nanzhi<nanzhienai@163.com>
  */
-define(['./object.js', '../type/object.js', '../type/array.js'], function(create, object, array) {
+define(['../type/object.js', '../type/array.js'], function(object, array) {
 
 	/**
 	 * @name class
@@ -13,48 +13,6 @@ define(['./object.js', '../type/object.js', '../type/array.js'], function(create
 	 * @lends class
 	 * @static
 	 */
-
-	/**
-	 * 添加 meta
-	 * @private
-	 * @param { Function } ctor 子类.
-	 * @param { Function } stor 超类.
-	 * @return { Array } _meta.
-	 */
-	function _addMeta(ctor, stor) {
-
-		//add meta
-		var _meta = ctor['_meta'],
-			bases;
-
-		if (!_meta) {
-			_meta = ctor['_meta'] = {};
-		}
-
-		//add base
-		bases = _meta['bases'];
-
-		if (!bases) {
-			bases = _meta['bases'] = [];
-			//断言, 存在 bases, 一定已经包含
-			if (-1 === array.indexOf(bases, ctor)) {
-				bases.push(ctor);
-			}
-		}
-
-		if (-1 === array.indexOf(bases, stor)) {
-			bases.push(stor);
-		}
-
-		//add parents
-		_meta['parents'] = stor;
-
-		//add ctor
-		_meta['ctor'] = ctor;
-
-		return _meta;
-
-	}
 
 	/**
 	 * 扩展类的方法
@@ -74,23 +32,27 @@ define(['./object.js', '../type/object.js', '../type/array.js'], function(create
 	 */
 	function extend(r, s, px, sx) {
 
-		if (!r || !s) {
-
+		if (!r) {
 			return false;
-
 		}
 
-		var sp = s.prototype,
-			proto = create(sp);
+		var sp,
+			proto = {};
+
+		if (s) {
+
+			sp = s.prototype;
+			proto = object.create(sp);
+			//处理来源函数
+			if (Object != s && s != sp.constructor) {
+				sp.constructor = s;
+			}
+			r.superclass = sp;
+
+		}
 
 		r.prototype = proto;
 		proto.constructor = r;
-		r.superclass = sp;
-
-		//处理来源函数
-		if (Object != s && s != sp.constructor) {
-			sp.constructor = s;
-		}
 
 		if (px) {
 			object.mixin(proto, px);
@@ -99,8 +61,6 @@ define(['./object.js', '../type/object.js', '../type/array.js'], function(create
 		if (sx) {
 			object.mixin(r, sx);
 		}
-
-		_addMeta(r, s);
 
 		return r;
 

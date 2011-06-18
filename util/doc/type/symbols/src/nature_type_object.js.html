@@ -267,9 +267,29 @@
 <span class='line'>260</span> 
 <span class='line'>261</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this._getProp</span><span class="PUNC">(</span><span class="NAME">name.split</span><span class="PUNC">(</span><span class="STRN">'.'</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">create</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">context</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>262</span> 
-<span class='line'>263</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>263</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>264</span> 
-<span class='line'>265</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>266</span> 
-<span class='line'>267</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>268</span> </span></pre></body></html>
+<span class='line'>265</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>266</span> 		 * 创建原型实例
+<span class='line'>267</span> 		 * @param { Object } o 原型对象.
+<span class='line'>268</span> 		 * @return { Object } 实例.
+<span class='line'>269</span> 		 * @spec create an instance
+<span class='line'>270</span> 		 * @example
+<span class='line'>271</span> 		 *      var A = function() {};
+<span class='line'>272</span> 		 *      A.prototype.toString = function() { return '1'; };
+<span class='line'>273</span> 		 *      var b = object.create(A.prototype);
+<span class='line'>274</span> 		 *      b instanceof A => true
+<span class='line'>275</span> 		 *      b.toString() => '1'
+<span class='line'>276</span> 		 */</span><span class="WHIT">
+<span class='line'>277</span> </span><span class="WHIT">		</span><span class="NAME">create</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">o</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>278</span> 
+<span class='line'>279</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">F</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>280</span> </span><span class="WHIT">			</span><span class="NAME">F.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">o</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>281</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">F</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>282</span> 
+<span class='line'>283</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>284</span> 
+<span class='line'>285</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>286</span> 
+<span class='line'>287</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>288</span> </span></pre></body></html>

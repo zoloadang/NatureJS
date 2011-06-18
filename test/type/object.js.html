@@ -56,6 +56,14 @@
                 expect(o.name).toBe('dom');
             });
 
+            it("create an instance", function() {
+                var A = function() {};
+                A.prototype.toString = function() { return '1'; };
+                var b = object.create(A.prototype);
+                expect(b instanceof A).toBe(true);
+                expect(b.toString()).toBe('1');
+            });
+
         });
 
 			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());

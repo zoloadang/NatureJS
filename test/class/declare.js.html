@@ -29,14 +29,25 @@
             it("Inherited from multi Classes.", function() {
                 var A = declare(null);
                 var B = declare(A);
-                var C = declare([A, B]);
-                var d = new C;
+                var C = declare([B, A]);
+                var D = declare('haha', [C, B, A]);
+                var c = new C;
+                var d = new D;
+                expect(c instanceof A).toBe(true);
+                expect(c instanceof B).toBe(false);
+                expect(c instanceof C).toBe(true);
+                expect(c.isInstanceOf(A)).toBe(true);
+                expect(c.isInstanceOf(B)).toBe(true);
+                expect(c.isInstanceOf(C)).toBe(true);
                 expect(d instanceof A).toBe(true);
-                expect(d instanceof B).toBe(false);
+                expect(d instanceof B).toBe(true);
                 expect(d instanceof C).toBe(true);
+                expect(d instanceof D).toBe(true);
                 expect(d.isInstanceOf(A)).toBe(true);
                 expect(d.isInstanceOf(B)).toBe(true);
                 expect(d.isInstanceOf(C)).toBe(true);
+                expect(d.isInstanceOf(D)).toBe(true);
+                expect(d.declaredClass).toBe('haha');
             });
 
         });

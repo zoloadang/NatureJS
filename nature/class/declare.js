@@ -1,63 +1,125 @@
 /**
- * @fileoverview 类的声明, 继承.
+ * @fileoverview 类的声明, 继承, 模拟多继承(聚合).
  * @author nanzhi<nanzhienai@163.com>
  */
 define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'], function(lang, array, object, extend) {
 
 	/**
-	 * 创建一个构造函数
+	 * 类的创建, 继承.
 	 * @name class
 	 * @namespace
 	 */
 
+	var count = 0,
+		prefix = 'Nature_Class_',
+		DECLARED_CLASS = 'declaredClass';
+
 	/**
-	 * @lends class 
+	 * @lends class
 	 * @static
 	 */
 
 	/**
-	 * 获取 base
+	 * 获取 mro 序列.
 	 * @private
 	 * @param { Array } cls 超类集合.
 	 * @return { Array } base 集合.
+	 * @see http://www.python.org/download/releases/2.3/mro/
 	 */
-	function _getBases(cls) {
+	function c3mro(bases) {
 
-		var i = 0,
-			len = cls.length,
-			ret = [], base;
+		var i, len, base,
+			_meta, lin, j, proto, rec, name, top,
+			namemap = {}, clsCount = 1,
+			result = [], refs,
+			roots = [{cls: 0, refs: []}];//与 namemap 对应
 
-		for (; i < len; i++) {
+		// build a list of bases naming them if needed
+		for (i = 0, len = bases.length; i < len; i++) {
 
-			base = cls[i];
+			base = bases[i];
+			_meta = base['_meta'];
+			lin = _meta ? _meta['bases'] : [base];
 
-			var _meta = base['_meta'],
-				cli = [];
+			top = 0;
 
-			if (_meta) {
+			for (j = lin.length - 1; j >= 0; j--) {
 
-				cli = _meta['bases'];
+				proto = lin[j].prototype;
 
-			} else {
+				if (!proto.hasOwnProperty(DECLARED_CLASS)) {
+					proto[DECLARED_CLASS] = prefix + count++;
+				}
 
-				0 !== i && (cli = [base]);
+				name = proto[DECLARED_CLASS];
+
+				if (!namemap.hasOwnProperty(name)) {
+
+					namemap[name] = { count: 0, refs: [], cls: lin[j]};
+					clsCount++;
+
+				}
+
+				rec = namemap[name];
+
+				if (top && top !== rec) {
+					rec.refs.push(top);
+					++top.count;
+				}
+
+				top = rec;
 
 			}
 
-			if (cli && cli.length) {
+			++top.count;
+			roots[0].refs.push(top);
 
-				ret = ret.concat(cli);
+		}
 
+		// remove classes without external references recursively
+		while (roots.length) {
+			top = roots.pop();
+			result.push(top.cls);
+			--clsCount;
+
+			while (refs = top.refs, refs.length == 1) {
+				top = refs[0];
+				//end
+				if (!top || --top.count) {
+					top = 0;
+					break;
+				}
+				result.push(top.cls);
+				--clsCount;
+			}
+
+			if (top) {
+				for (i = 0, len = refs.length; i < len; i++) {
+					top = refs[i];
+					if (!--top.count) {
+						roots.push(top);
+					}
+				}
 			}
 
 		}
 
-		return ret;
+		if (clsCount) {
+			throw new Error('error');
+		}
+
+		// calculate the superclass offset
+		base = bases[0];
+		result[0] = base ?
+					base._meta && base === result[result.length - base._meta.bases.length] ? base._meta.bases.length : 1
+					: 0;
+
+		return result;
 
 	}
 
 	/**
-	 * 检测是否是子类
+	 * 检测是否是子类.
 	 * @private
 	 * @param { Function } superclass 超类.
 	 * @return 如果是, 返回 true, 否则 返回 false.
@@ -65,13 +127,12 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 	function isInstanceOf(superclass) {
 
 		var host = this;
-
 		return array.indexOf(host.constructor['_meta']['bases'], superclass) > -1 || host instanceof superclass;
 
 	}
 
 	/**
-	 * 创建一个构造函数
+	 * 创建一个构造函数, 并从超类或者一个聚合继承属性, 方法.
 	 * @param { String } name 类名.
 	 * @param { Array | Function } superclass 多个超类或者一个超类, 如果是数组, 那么默认第一个为超类.
 	 * @param { Object } props 类包含的方法.
@@ -88,46 +149,62 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 	 * @example
 	 * 		var A = declare(null);
 	 * 		var B = declare(A);
-	 * 		var C = declare([A, B]);
-	 * 		var d = new C;
+	 * 		var C = declare([B, A]);
+	 * 		var D = declare('haha', [C, B, A]);
+	 * 		var c = new C;
+	 * 		var d = new D;
+	 * 		c instanceof A => true
+	 * 		c instanceof B => false
+	 * 		c instanceof C => true
+	 * 		c.isInstanceOf(A) => true
+	 * 		c.isInstanceOf(B) => true
+	 * 		c.isInstanceOf(C) => true
 	 * 		d instanceof A => true
-	 * 		d instanceof B => false
+	 * 		d instanceof B => true
 	 * 		d instanceof C => true
+	 * 		d instanceof D => true
 	 * 		d.isInstanceOf(A) => true
 	 * 		d.isInstanceOf(B) => true
 	 * 		d.isInstanceOf(C) => true
+	 * 		d.isInstanceOf(D) => true
+	 * 		d.declaredClass => 'haha'
 	 */
 	function declare(name, superclass, props) {
 
 		var proto = {},
-			ctor,
-			cls, i, len, obj = {};
+			ctor = new Function,
+			mixin = 1,
+			bases, i, len, obj = {};
 
 		if (!lang.isString(name)) {
 
 			props = superclass;
 			superclass = name;
-			ctor = function() {};
-
-		} else {
-
-			ctor = object.get(name, true);
 
 		}
 
-		//add meta
-		ctor['_meta'] = { bases: [] };
-
 		if (lang.isArray(superclass)) {
 
-			cls = _getBases(superclass);
+			bases = c3mro(superclass);
 
-			superclass = superclass[0];
+			mixin = bases.length - bases[0];
 
-			for (i = 0, len = cls.length; i < len; i++) {
+			superclass = bases[mixin];
 
-				object.mixin(obj, cls[i].prototype);
-				ctor['_meta']['bases'].push(cls[i]);
+		} else {
+
+			bases = [0];
+			if (superclass) {
+				bases.push(superclass);
+			}
+
+		}
+
+		if (superclass) {
+
+			for (i = mixin - 1; i > 0; i--) {
+
+				object.mixin(obj, bases[i].prototype);
 
 			}
 
@@ -142,6 +219,16 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 
 		//extend
 		extend(ctor, superclass, proto, { extend: extend });
+
+		bases[0] = ctor;
+		ctor['_meta'] = { bases: bases, parent: superclass };
+
+		proto = ctor.prototype;
+		//add declaredClass
+		if (name && lang.isString(name)) {
+			object.set(name, ctor);
+			proto[DECLARED_CLASS] = name;
+		}
 
 		return ctor;
 
