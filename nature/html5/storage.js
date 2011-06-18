@@ -5,6 +5,7 @@
 define(['../type/lang.js', '../util/json.js'], function(lang, json) {
 
 	/**
+	 * 本地存储.
 	 * @name storage
 	 * @namespace
 	 */
@@ -28,7 +29,7 @@ define(['../type/lang.js', '../util/json.js'], function(lang, json) {
 			 * 读取本地存储.
 			 * @param { String } key 存储名.
 			 * @return { String } 本地存储值.
-			 * @spec set and get localstorage
+			 * @spec set and get localstorage.
 			 * @example
 			 * 		storage.setItem('a', 'h');
 			 * 		storage.setItem('b', {'c': 'd'});
@@ -46,7 +47,7 @@ define(['../type/lang.js', '../util/json.js'], function(lang, json) {
 			},
 
 			/**
-			 * 写入本地存储
+			 * 写入本地存储, 当 value 值为对象时会转换为 json 格式进行存储, 当为其他类型时转换为 toString() 来存储.
 			 * @param { String } key 存储名.
 			 * @param { Anything } value 需要存储的值.
 			 */
@@ -75,7 +76,7 @@ define(['../type/lang.js', '../util/json.js'], function(lang, json) {
 			},
 
 			/**
-			 * 清除所有本地存储
+			 * 清除所有本地存储.
 			 * @return
 			 */
 			clear: function() {

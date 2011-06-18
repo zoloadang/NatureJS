@@ -103,76 +103,89 @@
 <span class='line'> 96</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'> 97</span> 
 <span class='line'> 98</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'> 99</span> 		 * 获取文档大小
-<span class='line'>100</span> 		 * @return { Array } 数组, 第一个是文档宽度, 第二个是文档高度.
-<span class='line'>101</span> 		 */</span><span class="WHIT">
-<span class='line'>102</span> </span><span class="WHIT">		</span><span class="NAME">docSize</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>103</span> 
-<span class='line'>104</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
-<span class='line'>105</span> 
-<span class='line'>106</span> </span><span class="WHIT">				</span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NAME">body</span><span class="PUNC">[</span><span class="NAME">OFFSET_WIDTH</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">docElem</span><span class="PUNC">[</span><span class="NAME">OFFSET_WIDTH</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>107</span> </span><span class="WHIT">				</span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NAME">body</span><span class="PUNC">[</span><span class="NAME">OFFSET_HEIGHT</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">docElem</span><span class="PUNC">[</span><span class="NAME">OFFSET_HEIGHT</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 99</span> 		 * 判断节点是否在可视范围内
+<span class='line'>100</span> 		 * @param { HTMLelement | String } node 节点或者节点 id.
+<span class='line'>101</span> 		 * @return { Boolean } 如果在可视范围内, 则返回 true, 否则返回 false.
+<span class='line'>102</span> 		 */</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">		</span><span class="NAME">inView</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">node</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>104</span> 
+<span class='line'>105</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">pos</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.position</span><span class="PUNC">(</span><span class="NAME">node</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>106</span> 
+<span class='line'>107</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">pos</span><span class="PUNC">[</span><span class="STRN">'x'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">pos</span><span class="PUNC">[</span><span class="STRN">'y'</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>108</span> 
-<span class='line'>109</span> </span><span class="WHIT">			</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>110</span> 
-<span class='line'>111</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>112</span> 
-<span class='line'>113</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>114</span> 		 * 获取文档高度
-<span class='line'>115</span> 		 * @return { Number } 文档高度.
-<span class='line'>116</span> 		 */</span><span class="WHIT">
-<span class='line'>117</span> </span><span class="WHIT">		</span><span class="NAME">docHeight</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>112</span> 		 * 获取文档大小
+<span class='line'>113</span> 		 * @return { Array } 数组, 第一个是文档宽度, 第二个是文档高度.
+<span class='line'>114</span> 		 */</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">		</span><span class="NAME">docSize</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>116</span> 
+<span class='line'>117</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
 <span class='line'>118</span> 
-<span class='line'>119</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.docSize</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>120</span> 
-<span class='line'>121</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>122</span> 
-<span class='line'>123</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>124</span> 		 * 获取文档宽度
-<span class='line'>125</span> 		 * @return { Number } 文档宽度.
-<span class='line'>126</span> 		 */</span><span class="WHIT">
-<span class='line'>127</span> </span><span class="WHIT">		</span><span class="NAME">docWidth</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>128</span> 
-<span class='line'>129</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.docSize</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>130</span> 
-<span class='line'>131</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>132</span> 
-<span class='line'>133</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>134</span> 		 * 获取文档可视大小
-<span class='line'>135</span> 		 * @return { Array } 文档可视大小, 第一个元素为可视宽度, 第二个为可视高度.
-<span class='line'>136</span> 		 */</span><span class="WHIT">
-<span class='line'>137</span> </span><span class="WHIT">		</span><span class="NAME">viewport</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>138</span> 
-<span class='line'>139</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
-<span class='line'>140</span> 
-<span class='line'>141</span> </span><span class="WHIT">				</span><span class="NAME">win</span><span class="PUNC">[</span><span class="NAME">INNER_WIDTH</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">docElem</span><span class="PUNC">[</span><span class="NAME">CLIENT_WIDTH</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>142</span> </span><span class="WHIT">				</span><span class="NAME">win</span><span class="PUNC">[</span><span class="NAME">INNER_HEIGHT</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">docElem</span><span class="PUNC">[</span><span class="NAME">CLIENT_HEIGHT</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">				</span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NAME">body</span><span class="PUNC">[</span><span class="NAME">OFFSET_WIDTH</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">docElem</span><span class="PUNC">[</span><span class="NAME">OFFSET_WIDTH</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">				</span><span class="NAME">Math.max</span><span class="PUNC">(</span><span class="NAME">body</span><span class="PUNC">[</span><span class="NAME">OFFSET_HEIGHT</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">docElem</span><span class="PUNC">[</span><span class="NAME">OFFSET_HEIGHT</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>121</span> 
+<span class='line'>122</span> </span><span class="WHIT">			</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>123</span> 
+<span class='line'>124</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>125</span> 
+<span class='line'>126</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>127</span> 		 * 获取文档高度
+<span class='line'>128</span> 		 * @return { Number } 文档高度.
+<span class='line'>129</span> 		 */</span><span class="WHIT">
+<span class='line'>130</span> </span><span class="WHIT">		</span><span class="NAME">docHeight</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>131</span> 
+<span class='line'>132</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.docSize</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>133</span> 
+<span class='line'>134</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>135</span> 
+<span class='line'>136</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>137</span> 		 * 获取文档宽度
+<span class='line'>138</span> 		 * @return { Number } 文档宽度.
+<span class='line'>139</span> 		 */</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">		</span><span class="NAME">docWidth</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>141</span> 
+<span class='line'>142</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.docSize</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>143</span> 
-<span class='line'>144</span> </span><span class="WHIT">			</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>145</span> 
-<span class='line'>146</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>147</span> 
-<span class='line'>148</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>149</span> 		 * 获取文档可视宽度
-<span class='line'>150</span> 		 * @return { Number } 文档可视宽度.
-<span class='line'>151</span> 		 */</span><span class="WHIT">
-<span class='line'>152</span> </span><span class="WHIT">		</span><span class="NAME">viewportWidth</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>147</span> 		 * 获取文档可视大小
+<span class='line'>148</span> 		 * @return { Array } 文档可视大小, 第一个元素为可视宽度, 第二个为可视高度.
+<span class='line'>149</span> 		 */</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">		</span><span class="NAME">viewport</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>151</span> 
+<span class='line'>152</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
 <span class='line'>153</span> 
-<span class='line'>154</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.viewport</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>155</span> 
-<span class='line'>156</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>157</span> 
-<span class='line'>158</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>159</span> 		 * 获取文档可视高度
-<span class='line'>160</span> 		 * @return { Number } 文档可视高度.
-<span class='line'>161</span> 		 */</span><span class="WHIT">
-<span class='line'>162</span> </span><span class="WHIT">		</span><span class="NAME">viewportHeight</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>163</span> 
-<span class='line'>164</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.viewport</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>165</span> 
-<span class='line'>166</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>167</span> 
-<span class='line'>168</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>169</span> 
-<span class='line'>170</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>171</span> </span></pre></body></html>
+<span class='line'>154</span> </span><span class="WHIT">				</span><span class="NAME">win</span><span class="PUNC">[</span><span class="NAME">INNER_WIDTH</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">docElem</span><span class="PUNC">[</span><span class="NAME">CLIENT_WIDTH</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">				</span><span class="NAME">win</span><span class="PUNC">[</span><span class="NAME">INNER_HEIGHT</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">docElem</span><span class="PUNC">[</span><span class="NAME">CLIENT_HEIGHT</span><span class="PUNC">]</span><span class="WHIT">
+<span class='line'>156</span> 
+<span class='line'>157</span> </span><span class="WHIT">			</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> 
+<span class='line'>159</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>160</span> 
+<span class='line'>161</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>162</span> 		 * 获取文档可视宽度
+<span class='line'>163</span> 		 * @return { Number } 文档可视宽度.
+<span class='line'>164</span> 		 */</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">		</span><span class="NAME">viewportWidth</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>166</span> 
+<span class='line'>167</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.viewport</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>168</span> 
+<span class='line'>169</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>170</span> 
+<span class='line'>171</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>172</span> 		 * 获取文档可视高度
+<span class='line'>173</span> 		 * @return { Number } 文档可视高度.
+<span class='line'>174</span> 		 */</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">		</span><span class="NAME">viewportHeight</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>176</span> 
+<span class='line'>177</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.viewport</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>178</span> 
+<span class='line'>179</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>180</span> 
+<span class='line'>181</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>182</span> 
+<span class='line'>183</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span></pre></body></html>

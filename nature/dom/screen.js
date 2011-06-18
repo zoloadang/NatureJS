@@ -96,6 +96,19 @@ define(['../bom/browser.js', './html.js'], function(browser, html) {
 		},
 
 		/**
+		 * 判断节点是否在可视范围内
+		 * @param { HTMLelement | String } node 节点或者节点 id.
+		 * @return { Boolean } 如果在可视范围内, 则返回 true, 否则返回 false.
+		 */
+		inView: function(node) {
+
+			var pos = this.position(node);
+
+			return pos['x'] > 0 && pos['y'] > 0;
+
+		},
+
+		/**
 		 * 获取文档大小
 		 * @return { Array } 数组, 第一个是文档宽度, 第二个是文档高度.
 		 */
