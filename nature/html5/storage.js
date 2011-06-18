@@ -10,10 +10,9 @@ define(['../type/lang.js', '../util/json.js'], function(lang, json) {
 	 */
 	var	win = window,
 		doc = document,
-		IDENTITY = 'NatureJS_Storage',
+		IDENTITY = location.host,
 		ls = win['localStorage'],
 		elem,
-		EMPTY = '',
 		storage;
 
 	if (ls) {
@@ -61,7 +60,7 @@ define(['../type/lang.js', '../util/json.js'], function(lang, json) {
 
 				}
 
-				return ls.setItem(key, ret);
+				return ls.setItem(key, ret.toString());
 
 			},
 
@@ -91,8 +90,8 @@ define(['../type/lang.js', '../util/json.js'], function(lang, json) {
 
 		elem = doc.createElement('input');
 		elem.type = 'hidden';
-		elem.addBehavior('behavior:url(#default#userData)');
-		doc.body.appendChild(el);
+		elem.style.behavior = 'url(#default#userData)';
+		doc.body.appendChild(elem);
 
 		storage = {
 
@@ -113,9 +112,18 @@ define(['../type/lang.js', '../util/json.js'], function(lang, json) {
 
 			setItem: function(key, value) {
 
+				var ret = value;
+
+				if (lang.isObject(ret)) {
+
+					ret = json.stringify(value);
+
+				}
+
 				try {
-					elem.setAttribute(key, value);
-					el.save(IDENTITY);
+					elem.load(IDENTITY);
+					elem.setAttribute(key, ret.toString());
+					elem.save(IDENTITY);
 				} catch (e) {
 					//
 				}
@@ -127,7 +135,7 @@ define(['../type/lang.js', '../util/json.js'], function(lang, json) {
 				try {
 					elem.load(IDENTITY);
 					elem.removeAttribute(key);
-					el.save(IDENTITY);
+					elem.save(IDENTITY);
 				} catch (e) {
 					//
 				}
@@ -138,7 +146,7 @@ define(['../type/lang.js', '../util/json.js'], function(lang, json) {
 
 				try {
 					elem.load(IDENTITY);
-					elem.expires = new Date(1).toUTCString();
+					elem.expires = new Date(new Date().getTime() - 10000).toUTCString();
 					elem.save(IDENTITY);
 				} catch (e) {
 					//
