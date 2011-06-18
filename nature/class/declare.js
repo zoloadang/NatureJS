@@ -12,7 +12,9 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 
 	var count = 0,
 		prefix = 'Nature_Class_',
-		DECLARED_CLASS = 'declaredClass';
+		DECLARED_CLASS = 'declaredClass',
+		_META = '_meta',
+		BASES = 'bases';
 
 	/**
 	 * @lends class
@@ -38,8 +40,8 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 		for (i = 0, len = bases.length; i < len; i++) {
 
 			base = bases[i];
-			_meta = base['_meta'];
-			lin = _meta ? _meta['bases'] : [base];
+			_meta = base[_META];
+			lin = _meta ? _meta[BASES] : [base];
 
 			top = 0;
 
@@ -111,7 +113,7 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 		// calculate the superclass offset
 		base = bases[0];
 		result[0] = base ?
-					base._meta && base === result[result.length - base._meta.bases.length] ? base._meta.bases.length : 1
+					base[_META] && base === result[result.length - base[_META][BASES].length] ? base[_META][BASES].length : 1
 					: 0;
 
 		return result;
@@ -127,7 +129,7 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 	function isInstanceOf(superclass) {
 
 		var host = this;
-		return array.indexOf(host.constructor['_meta']['bases'], superclass) > -1 || host instanceof superclass;
+		return array.indexOf(host.constructor[_META][BASES], superclass) > -1 || host instanceof superclass;
 
 	}
 
@@ -154,7 +156,7 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 	 * 		var c = new C;
 	 * 		var d = new D;
 	 * 		c instanceof A => true
-	 * 		c instanceof B => false
+	 * 		c instanceof B => true
 	 * 		c instanceof C => true
 	 * 		c.isInstanceOf(A) => true
 	 * 		c.isInstanceOf(B) => true
@@ -221,7 +223,7 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 		extend(ctor, superclass, proto, { extend: extend });
 
 		bases[0] = ctor;
-		ctor['_meta'] = { bases: bases, parent: superclass };
+		ctor[_META] = { bases: bases, parent: superclass };
 
 		proto = ctor.prototype;
 		//add declaredClass

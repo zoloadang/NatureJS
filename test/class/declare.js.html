@@ -15,7 +15,7 @@
 
 		require(['../../nature/class/declare.js'], function(declare) {
 
-			describe("类的声明, 继承.", function() {
+			describe("类的声明, 继承, 模拟多继承(聚合).", function() {
 
             it("Inherited from one Class.", function() {
                 var A = function() {};
@@ -34,7 +34,7 @@
                 var c = new C;
                 var d = new D;
                 expect(c instanceof A).toBe(true);
-                expect(c instanceof B).toBe(false);
+                expect(c instanceof B).toBe(true);
                 expect(c instanceof C).toBe(true);
                 expect(c.isInstanceOf(A)).toBe(true);
                 expect(c.isInstanceOf(B)).toBe(true);
