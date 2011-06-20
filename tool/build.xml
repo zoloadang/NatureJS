@@ -8,7 +8,13 @@
 	<!-- jsdoc -->
 	<target name="jsdoc">
 		<taskdef name="jsdoctoolkit" classname="uk.co.darrenhurley.ant.tasks.JsDocToolkit" classpath="${jsdocpath}/jsdoc-toolkit-ant-task-1.1.2.jar;${jsdocpath}/java/classes/js.jar"/>
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/bom/" inputdir="../nature/bom/" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/type/" inputdir="${src}/type/" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/bom/" inputdir="${src}/bom/" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/dom/" inputdir="${src}/dom/" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/io/" inputdir="${src}/io/" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/util/" inputdir="${src}/util/" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/class/" inputdir="${src}/class/" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/html5/" inputdir="${src}/html5/" />
 	</target>
 
     <target name="build" depends="jsdoc"> </target>
