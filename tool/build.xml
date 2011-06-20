@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project name="build NatureJS" default="build" basedir=".">
+    <!-- 定义变量 -->
+	<property name="jsdocpath" location="./jsdoc_toolkit-2.4.0"/>
+	<property name="src" location="../nature"/>
+	<property name="dest" location="../util/doc"/>
+
+	<!-- jsdoc -->
+	<target name="jsdoc">
+		<taskdef name="jsdoctoolkit" classname="uk.co.darrenhurley.ant.tasks.JsDocToolkit" classpath="${jsdocpath}/jsdoc-toolkit-ant-task-1.1.2.jar;${jsdocpath}/java/classes/js.jar"/>
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/bom/" inputdir="../nature/bom/" />
+	</target>
+
+    <target name="build" depends="jsdoc"> </target>
+    
+</project>

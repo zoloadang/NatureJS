@@ -1,809 +1,795 @@
-
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-		<meta charset="utf-8"></meta>
-		<meta name="generator" content="JsDoc Toolkit"></meta>
-		<title>object | Estate Library</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - object</title>
 
-		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
-		<meta name="mobileoptimized" content="0"></meta>
-	
-		<link rel="stylesheet" href="../css/all.css" media="all"></link>
-		<link rel="stylesheet" href="../css/handheld.css" media="only screen and (max-width: 660px)"></link>
-		<link rel="stylesheet" href="../css/handheld.css" media="handheld"></link>
-		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
 
-		<script src="../javascript/all.js"></script>
-		<!--[if lt IE 9]>
-			<script src="../javascript/html5.js"></script>
-		<![endif]-->
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
 	</head>
 
 	<body>
-
-<div class="index">
-	<div class="menu">
-		<div class="indexLinks">
-			<a href="../allclasses.html">Classes</a>
-			<a href="../index.html">Files</a>
-		</div>
-	
-		<h2 class="heading1">Classes</h2>
-		
-		<input type="text" name="classFilter" class="classFilter" id="ClassFilter" placeholder="Filter"></input>
-		
-		<nav>
-			<ul class="classList" id="ClassList">
-				
-					<li><a href="../symbols/array.html">array</a></li>
-				
-					<li><a href="../symbols/lang.html">lang</a></li>
-				
-					<li><a href="../symbols/object.html">object</a></li>
-				
-					<li><a href="../symbols/string.html">string</a></li>
-				
-			</ul>
-		</nav>
-	</div>
-	<div class="fineprint" style="clear:both">
-		
-		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
-		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-5-18 23:19
-	</div>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
 </div>
+		<!-- end static/header.html -->
 
-<div class="index indexStatic"></div>
-
-<div class="content">
-	<div class="innerContent">
-		<h1 class="classTitle">
-			
-			Namespace <span>object</span>
-		</h1>
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/array.html">array</a></li>
+	
+	<li><a href="../symbols/lang.html">lang</a></li>
+	
+	<li><a href="../symbols/object.html">object</a></li>
+	
+	<li><a href="../symbols/string.html">string</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
 		
-		<div class="intro">
-			<p class="description summary">
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Namespace object
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/nature_type_object.js.html">object.js</a>.
 				
 			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class object.">
+				<caption>Namespace Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/object.html#constructor">object</a></b>
+							</div>
+							<div class="description">object 模块</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
 				
-			
-				<ul class="summary">
-					
-					
-					
-						<li>Defined in: <a href="../symbols/src/nature_type_object.js.html">object.js</a></li>
-					
-						
-				</ul>
-			
-		</div>
-		
-		
-			<div class="props">
-				<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class object.">
-					<caption class="sectionTitle">Namespace Summary</caption>
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class object.">
+					<caption>Method Summary</caption>
 					<thead>
 						<tr>
-							<th scope="col">Constructor Attributes</th>
-							<th scope="col">Constructor Name and Description</th>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
 						</tr>
 					</thead>
 					<tbody>
+					
 						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription" >
-								<div class="fixedFont">
-									<b><a href="../symbols/object.html#constructor">object</a></b>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">object.<b><a href="../symbols/object.html#.create">create</a></b>(o)
 								</div>
-								<div class="description">object 模块</div>
+								<div class="description">创建原型实例</div>
 							</td>
 						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">object.<b><a href="../symbols/object.html#.get">get</a></b>(name, create, context)
+								</div>
+								<div class="description">根据字符串获取对象</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">object.<b><a href="../symbols/object.html#.merge">merge</a></b>(props)
+								</div>
+								<div class="description">合并多个对象为一个对象</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">object.<b><a href="../symbols/object.html#.mixin">mixin</a></b>(obj, props)
+								</div>
+								<div class="description">合并对象元素到目标对象</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">object.<b><a href="../symbols/object.html#.set">set</a></b>(name, value, context)
+								</div>
+								<div class="description">设置对象</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">object.<b><a href="../symbols/object.html#.toObject">toObject</a></b>(str, symbol, needDecode)
+								</div>
+								<div class="description">转换字符串到对象</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">object.<b><a href="../symbols/object.html#.toString">toString</a></b>(obj, symbol, needEncode)
+								</div>
+								<div class="description">转换对象为字符串</div>
+							</td>
+						</tr>
+					
 					</tbody>
 				</table>
-			</div>
-		
-		
-		
-<!--
-#### METHODS SUMMARY
--->
-		
-			
-			
-			<div class="props">
-				<h2 class="sectionTitle">Method Summary</h2>
 				
 				
-					<table class="summaryTable" id="MethodsList" cellspacing="0" summary="A summary of the methods documented in the class object.">
-						<thead>
-							<tr>
-								<th scope="col">Method Attributes</th>
-								<th scope="col">Method Name and Description</th>
-							</tr>
-						</thead>
-						
-						<tbody>
-							
-							
-								<tr
-									 class='item0'
-								>
-									<td class="attributes">&lt;static&gt; &nbsp;</td>
-									<td class="nameDescription">
-										<div class="fixedFont">object.<b><a href="../symbols/object.html#.create">create</a></b>(o)
-										</div>
-										<div class="description">创建原型实例</div>
-									</td>
-								</tr>
-							
-								<tr
-									 class='item1'
-								>
-									<td class="attributes">&lt;static&gt; &nbsp;</td>
-									<td class="nameDescription">
-										<div class="fixedFont">object.<b><a href="../symbols/object.html#.get">get</a></b>(name, create, context)
-										</div>
-										<div class="description">根据字符串获取对象</div>
-									</td>
-								</tr>
-							
-								<tr
-									 class='item2'
-								>
-									<td class="attributes">&lt;static&gt; &nbsp;</td>
-									<td class="nameDescription">
-										<div class="fixedFont">object.<b><a href="../symbols/object.html#.merge">merge</a></b>(props)
-										</div>
-										<div class="description">合并多个对象为一个对象</div>
-									</td>
-								</tr>
-							
-								<tr
-									 class='item3'
-								>
-									<td class="attributes">&lt;static&gt; &nbsp;</td>
-									<td class="nameDescription">
-										<div class="fixedFont">object.<b><a href="../symbols/object.html#.mixin">mixin</a></b>(obj, props)
-										</div>
-										<div class="description">合并对象元素到目标对象</div>
-									</td>
-								</tr>
-							
-								<tr
-									 class='item4'
-								>
-									<td class="attributes">&lt;static&gt; &nbsp;</td>
-									<td class="nameDescription">
-										<div class="fixedFont">object.<b><a href="../symbols/object.html#.set">set</a></b>(name, value, context)
-										</div>
-										<div class="description">设置对象</div>
-									</td>
-								</tr>
-							
-								<tr
-									 class='item5'
-								>
-									<td class="attributes">&lt;static&gt; &nbsp;</td>
-									<td class="nameDescription">
-										<div class="fixedFont">object.<b><a href="../symbols/object.html#.toObject">toObject</a></b>(str, symbol, needDecode)
-										</div>
-										<div class="description">转换字符串到对象</div>
-									</td>
-								</tr>
-							
-								<tr
-									 class='item6'
-								>
-									<td class="attributes">&lt;static&gt; &nbsp;</td>
-									<td class="nameDescription">
-										<div class="fixedFont">object.<b><a href="../symbols/object.html#.toString">toString</a></b>(obj, symbol, needEncode)
-										</div>
-										<div class="description">转换对象为字符串</div>
-									</td>
-								</tr>
-							
-						</tbody>
-					</table>
 				
 			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Namespace Detail
+				</div>
 				
-			</div>
-		
-		
-<!--
-#### EVENTS SUMMARY
--->
-		
-<!--
-#### CONSTRUCTOR DETAILS
--->
-		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle" id="constructor">
-						Namespace Detail
-					</h2>
-					
-					<div class="fixedFont">
+				<div class="fixedFont">
 						<b>object</b>
-					</div>
-					
-					<div class="description">
-						object 模块
-						
-					</div>
-					
-					
+				</div>
 				
-					
-					
+				<div class="description">
+					object 模块
 					
 				</div>
-			</div>
-		
-<!--
-#### FIELD DETAILS
--->
-		
-<!--
-#### METHOD DETAILS
--->		
-		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle">
-						Method Detail
-					</h2>
+				
+				
+				
+				
 					
-					<ul class="methodDetail" id="MethodDetail">
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".create"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">object.</span><b>create</b>(o)
+					
+					</div>
+					<div class="description">
+						创建原型实例
 						
 						
-							<li 
-								 class='item0'
-							>
-								<div class="fixedFont heading" id=".create">
-									<span class='lighter'>
-									&lt;static&gt; 
-									</span>
-									
-									<span class="light">{Object}</span>
-									
-									<span class="light">object.</span><b>create</b>(o)
-								</div>
-								
-								<div class="description">
-									创建原型实例
-									
-									
-									
-									
-								</div>
-								
-								
-									
-										<pre class="code">     var A = function() {};
+					</div>
+					
+					
+					
+					<pre class="code">     var A = function() {};
      A.prototype.toString = function() { return '1'; };
      var b = object.create(A.prototype);
      b instanceof A => true
      b.toString() => '1'</pre>
-									
-								
-								
-								
-									<dl class="detailList params">
-										<dt class="heading">Parameters:</dt>
-										
-											<dt>
-												<span class="light fixedFont">{Object}</span> <b>o</b>
-												
-											</dt>
-											<dd>原型对象.</dd>
-										
-									</dl>
-								
-								
-								
-									<dl class="detailList nomargin">
-									
-										
-										
-										
-										
-										
-										
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{Object}</span> 实例.</dd>
-											
-										
-										
-										
-										
-										
-									
-									</dl>
-								
-								<div class="hr"></div>
-							</li>
+					
+					
+					
 						
-							<li 
-								 class='item1'
-							>
-								<div class="fixedFont heading" id=".get">
-									<span class='lighter'>
-									&lt;static&gt; 
-									</span>
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>o</b>
 									
-									<span class="light">{Object}</span>
-									
-									<span class="light">object.</span><b>get</b>(name, create, context)
-								</div>
-								
-								<div class="description">
-									根据字符串获取对象
-									
-									
-									
-									
-								</div>
-								
-								
-									
-										<pre class="code">     object.set('nature.dom', { name: 'dom' });
+								</dt>
+								<dd>原型对象.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> 实例.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".get"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">object.</span><b>get</b>(name, create, context)
+					
+					</div>
+					<div class="description">
+						根据字符串获取对象
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">     object.set('nature.dom', { name: 'dom' });
      var o = object.get('nature.dom');
      o.name => 'dom';</pre>
-									
-								
-								
-								
-									<dl class="detailList params">
-										<dt class="heading">Parameters:</dt>
-										
-											<dt>
-												<span class="light fixedFont">{String}</span> <b>name</b>
-												
-											</dt>
-											<dd>名字.</dd>
-										
-											<dt>
-												<span class="light fixedFont">{Boolean}</span> <b>create</b>
-												
-											</dt>
-											<dd>如果对象不存在是否创建.</dd>
-										
-											<dt>
-												<span class="light fixedFont">{Object}</span> <b>context</b>
-												
-											</dt>
-											<dd>上下文对象.</dd>
-										
-									</dl>
-								
-								
-								
-									<dl class="detailList nomargin">
-									
-										
-										
-										
-										
-										
-										
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{Object}</span> 对象.</dd>
-											
-										
-										
-										
-										
-										
-									
-									</dl>
-								
-								<div class="hr"></div>
-							</li>
+					
+					
+					
 						
-							<li 
-								 class='item2'
-							>
-								<div class="fixedFont heading" id=".merge">
-									<span class='lighter'>
-									&lt;static&gt; 
-									</span>
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>name</b>
 									
-									<span class="light">{Object}</span>
+								</dt>
+								<dd>名字.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>create</b>
 									
-									<span class="light">object.</span><b>merge</b>(props)
-								</div>
-								
-								<div class="description">
-									合并多个对象为一个对象
+								</dt>
+								<dd>如果对象不存在是否创建.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>context</b>
 									
-									
-									
-									
-								</div>
-								
-								
-									
-										<pre class="code">     var o1 = { a: 'b' },
+								</dt>
+								<dd>上下文对象.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> 对象.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".merge"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">object.</span><b>merge</b>(props)
+					
+					</div>
+					<div class="description">
+						合并多个对象为一个对象
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">     var o1 = { a: 'b' },
      	o2 = { c: 'd' },
      	o3 = { e: 'f' },
      	o = object.merge(o1, o2, o3);
      o['a'] => 'b';
      o['c'] => 'd';
      o['e'] => 'f';</pre>
-									
-								
-								
-								
-									<dl class="detailList params">
-										<dt class="heading">Parameters:</dt>
-										
-											<dt>
-												<span class="light fixedFont">{Object}</span> <b>props</b>
-												
-											</dt>
-											<dd>源对象.</dd>
-										
-									</dl>
-								
-								
-								
-									<dl class="detailList nomargin">
-									
-										
-										
-										
-										
-										
-										
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{Object}</span> 合并后的对象.</dd>
-											
-										
-										
-										
-										
-										
-									
-									</dl>
-								
-								<div class="hr"></div>
-							</li>
+					
+					
+					
 						
-							<li 
-								 class='item3'
-							>
-								<div class="fixedFont heading" id=".mixin">
-									<span class='lighter'>
-									&lt;static&gt; 
-									</span>
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>props</b>
 									
-									<span class="light">{Object}</span>
-									
-									<span class="light">object.</span><b>mixin</b>(obj, props)
-								</div>
-								
-								<div class="description">
-									合并对象元素到目标对象
-									
-									
-									
-									
-								</div>
-								
-								
-									
-										<pre class="code">     var t = { a: 'b' },
+								</dt>
+								<dd>源对象.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> 合并后的对象.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".mixin"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">object.</span><b>mixin</b>(obj, props)
+					
+					</div>
+					<div class="description">
+						合并对象元素到目标对象
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">     var t = { a: 'b' },
      	a = { c: 'd' },
      	b = { e: 'f' };
      object.mixin(t, a, b)
      t['c'] => 'd';
      t['e'] => 'f';</pre>
-									
-								
-								
-								
-									<dl class="detailList params">
-										<dt class="heading">Parameters:</dt>
-										
-											<dt>
-												<span class="light fixedFont">{Object}</span> <b>obj</b>
-												
-											</dt>
-											<dd>目标对象.</dd>
-										
-											<dt>
-												<span class="light fixedFont">{Object}</span> <b>props</b>
-												
-											</dt>
-											<dd>源对象.</dd>
-										
-									</dl>
-								
-								
-								
-									<dl class="detailList nomargin">
-									
-										
-										
-										
-										
-										
-										
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{Object}</span> obj.</dd>
-											
-										
-										
-										
-										
-										
-									
-									</dl>
-								
-								<div class="hr"></div>
-							</li>
+					
+					
+					
 						
-							<li 
-								 class='item4'
-							>
-								<div class="fixedFont heading" id=".set">
-									<span class='lighter'>
-									&lt;static&gt; 
-									</span>
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>obj</b>
 									
-									<span class="light">{Object}</span>
+								</dt>
+								<dd>目标对象.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>props</b>
 									
-									<span class="light">object.</span><b>set</b>(name, value, context)
-								</div>
-								
-								<div class="description">
-									设置对象
-									
-									
-									
-									
-								</div>
-								
-								
-								
-								
-									<dl class="detailList params">
-										<dt class="heading">Parameters:</dt>
-										
-											<dt>
-												<span class="light fixedFont">{String}</span> <b>name</b>
-												
-											</dt>
-											<dd>名字.</dd>
-										
-											<dt>
-												<span class="light fixedFont">{Anything}</span> <b>value</b>
-												
-											</dt>
-											<dd>值.</dd>
-										
-											<dt>
-												<span class="light fixedFont">{Object}</span> <b>context</b>
-												
-											</dt>
-											<dd>上下文对象.</dd>
-										
-									</dl>
-								
-								
-								
-									<dl class="detailList nomargin">
-									
-										
-										
-										
-										
-										
-										
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{Object}</span> 要设置的对象.</dd>
-											
-										
-										
-										
-										
-										
-									
-									</dl>
-								
-								<div class="hr"></div>
-							</li>
+								</dt>
+								<dd>源对象.</dd>
+							
+							</dl>
 						
-							<li 
-								 class='item5'
-							>
-								<div class="fixedFont heading" id=".toObject">
-									<span class='lighter'>
-									&lt;static&gt; 
-									</span>
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> obj.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".set"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">object.</span><b>set</b>(name, value, context)
+					
+					</div>
+					<div class="description">
+						设置对象
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>name</b>
 									
-									<span class="light">{Object}</span>
+								</dt>
+								<dd>名字.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Anything}</span> <b>value</b>
 									
-									<span class="light">object.</span><b>toObject</b>(str, symbol, needDecode)
-								</div>
-								
-								<div class="description">
-									转换字符串到对象
+								</dt>
+								<dd>值.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>context</b>
 									
-									
-									
-									
-								</div>
-								
-								
-									
-										<pre class="code">     var o1 = object.toObject('a:b,c:d'),
+								</dt>
+								<dd>上下文对象.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> 要设置的对象.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".toObject"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">object.</span><b>toObject</b>(str, symbol, needDecode)
+					
+					</div>
+					<div class="description">
+						转换字符串到对象
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">     var o1 = object.toObject('a:b,c:d'),
      	o2 = object.toObject('a=b&c=d', ['=', '&']);
      o1['a'] => 'b';
      o1['c'] => 'd';
      o2['a'] => 'b';
      o2['c'] => 'd';</pre>
-									
-								
-								
-								
-									<dl class="detailList params">
-										<dt class="heading">Parameters:</dt>
-										
-											<dt>
-												<span class="light fixedFont">{String}</span> <b>str</b>
-												
-											</dt>
-											<dd>字符串.</dd>
-										
-											<dt>
-												<span class="light fixedFont">{Array}</span> <b>symbol</b>
-												
-											</dt>
-											<dd>分隔符.</dd>
-										
-											<dt>
-												<span class="light fixedFont">{Boolean}</span> <b>needDecode</b>
-												
-											</dt>
-											<dd>是否需要解码.</dd>
-										
-									</dl>
-								
-								
-								
-									<dl class="detailList nomargin">
-									
-										
-										
-										
-										
-										
-										
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{Object}</span> 对象.</dd>
-											
-										
-										
-										
-										
-										
-									
-									</dl>
-								
-								<div class="hr"></div>
-							</li>
+					
+					
+					
 						
-							<li 
-								 class='item6'
-							>
-								<div class="fixedFont heading" id=".toString">
-									<span class='lighter'>
-									&lt;static&gt; 
-									</span>
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>str</b>
 									
-									<span class="light">{String}</span>
+								</dt>
+								<dd>字符串.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>symbol</b>
 									
-									<span class="light">object.</span><b>toString</b>(obj, symbol, needEncode)
-								</div>
-								
-								<div class="description">
-									转换对象为字符串
+								</dt>
+								<dd>分隔符.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>needDecode</b>
 									
-									
-									
-									
-								</div>
-								
-								
-									
-										<pre class="code">     object.toString({ a: 'b', c: 'd' }) => 'a:b,c:d'
+								</dt>
+								<dd>是否需要解码.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> 对象.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".toString"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">object.</span><b>toString</b>(obj, symbol, needEncode)
+					
+					</div>
+					<div class="description">
+						转换对象为字符串
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">     object.toString({ a: 'b', c: 'd' }) => 'a:b,c:d'
      object.toString({ a: 'b', c: 'd' }, ['=', '&']) => 'a=b&c=d'</pre>
-									
-								
-								
-								
-									<dl class="detailList params">
-										<dt class="heading">Parameters:</dt>
-										
-											<dt>
-												<span class="light fixedFont">{Object}</span> <b>obj</b>
-												
-											</dt>
-											<dd>对象.</dd>
-										
-											<dt>
-												<span class="light fixedFont">{Array}</span> <b>symbol</b>
-												
-											</dt>
-											<dd>分隔符, 数组中的第一个为 key, value 之间的间隔符, 第二个为各值之间的间隔.</dd>
-										
-											<dt>
-												<span class="light fixedFont">{Boolean}</span> <b>needEncode</b>
-												
-											</dt>
-											<dd>是否需要编码中文.</dd>
-										
-									</dl>
-								
-								
-								
-									<dl class="detailList nomargin">
-									
-										
-										
-										
-										
-										
-										
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{String}</span> 转换成的字符串.</dd>
-											
-										
-										
-										
-										
-										
-									
-									</dl>
-								
-								
-							</li>
+					
+					
+					
 						
-					</ul>
-				</div>
-			</div>
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>obj</b>
+									
+								</dt>
+								<dd>对象.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>symbol</b>
+									
+								</dt>
+								<dd>分隔符, 数组中的第一个为 key, value 之间的间隔符, 第二个为各值之间的间隔.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Boolean}</span> <b>needEncode</b>
+									
+								</dt>
+								<dd>是否需要编码中文.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> 转换成的字符串.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
 		
-		
-<!--
-#### EVENT DETAILS
--->		
-		
-	</div>
-</div>
-		<script type="text/javascript">
-			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
-			codeview.classFilter.Init()
-		</script>
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 20 2011 07:42:18 GMT+0800 (CST)
+		</div>
 	</body>
 </html>
-
