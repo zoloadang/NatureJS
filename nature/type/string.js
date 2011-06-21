@@ -5,6 +5,8 @@
 
 define(function() {
 
+	var count = 0;
+
 	/**
 	 * string 模块
 	 * @name string
@@ -91,8 +93,28 @@ define(function() {
 
 			return str.substr(0, 1).toUpperCase() + str.substr(1);
 
-		}
+		},
 
+		/**
+		 * 根据设定条件返回唯一字符串
+		 * @param { Function } condition 条件函数.
+		 * @param { String } prefix 前缀.
+		 * @return { String } 生成的唯一字符串.
+		 */
+		unique: function(condition, prefix) {
+
+			var name = prefix || 'Nature_ID_',
+				str;
+
+			do {
+
+				str = name + ++count;
+
+			} while (condition(str));
+
+			return str;
+
+		}
 
 	};
 

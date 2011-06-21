@@ -6,7 +6,7 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 
 	/**
 	 * 类的创建, 继承.
-	 * @name class
+	 * @name oop
 	 * @namespace
 	 */
 
@@ -17,7 +17,7 @@ define(['../type/lang.js', '../type/array.js', '../type/object', './extend.js'],
 		BASES = 'bases';
 
 	/**
-	 * @lends class
+	 * @lends oop
 	 * @static
 	 */
 

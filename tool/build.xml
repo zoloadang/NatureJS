@@ -13,7 +13,7 @@
 		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/dom" inputdir="../nature/dom" />
 		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/io" inputdir="../nature/io" />
 		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/util" inputdir="../nature/util" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/class" inputdir="../nature/class" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/oop" inputdir="../nature/oop" />
 		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/html5" inputdir="../nature/html5" />
 	</target>
 
@@ -40,8 +40,8 @@
 			<arg value="${template}"/>
 		</py-run>
 		<py-run script="${jcasepath}/create.py">
-			<arg value="root=../nature/class"/>
-			<arg value="out=../test/class"/>
+			<arg value="root=../nature/oop"/>
+			<arg value="out=../test/oop"/>
 			<arg value="${template}"/>
 		</py-run>
 		<py-run script="${jcasepath}/create.py">

@@ -5,12 +5,12 @@
 define(['../type/object.js', '../type/array.js'], function(object, array) {
 
 	/**
-	 * @name class
+	 * @name oop
 	 * @namespace
 	 */
 
 	/**
-	 * @lends class
+	 * @lends oop
 	 * @static
 	 */
 

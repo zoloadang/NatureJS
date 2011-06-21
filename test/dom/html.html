@@ -36,6 +36,9 @@
 	<!-- html.dataset -->
 	<div id="dataset" data-a="a" data-b="b"></div>
 
+	<!-- html.generateId -->
+	<div id="generate_1"></div>
+
 	<script src="../../nature/require.js"></script>
 	<script src="../jasmine-1.0.2/jasmine.js"></script>
 	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
@@ -306,6 +309,17 @@
 				});
 			
 			
+			});
+
+			//method generateId
+			describe('html.generateId', function() {
+
+				it('Generate an unique id.', function() {
+				
+					expect(html.generateId('generate_')).toBe('generate_2');
+				
+				});	
+				
 			});
 
 			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());

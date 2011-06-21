@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>AdapterRegistry unit test</title>
+	<link rel="stylesheet" href="../jasmine-1.0.2/jasmine.css" />
+</head>
+<body>
+	
+	<script src="../../nature/require.js"></script>
+	<script src="../jasmine-1.0.2/jasmine.js"></script>
+	<script src="../jasmine-1.0.2/jasmine-html.js"></script>
+
+	<script>
+
+		require(['../../nature/oop/AdapterRegistry.js'], function(AdapterRegistry) {
+
+			describe("多态函数，搜索以及匹配相应条件并执行函数，减少大量 if 的使用，强制 oop.", function() {
+
+            it("match some ...", function() {
+                var reg = new AdapterRegistry();
+                reg.register('checkString', function(a) { return typeof a === 'string' }, function(str) { return str.toUpperCase(); });
+                reg.register('checkArr', function(a) { return typeof a === 'array' || a instanceof Array }, function(arr) { return arr.join('-'); });
+                expect(reg.match('you are great.')).toBe('YOU ARE GREAT.');
+                expect(reg.match(['a', 'b'])).toBe('a-b');
+            });
+
+        });
+
+			jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+			jasmine.getEnv().execute();
+
+		});
+
+	</script>
+
+</body>
+</html>

@@ -655,6 +655,17 @@ define(['../type/lang.js', '../bom/browser.js', '../type/array.js', '../type/str
 
 			}
 
+		},
+
+		/**
+		 * 返回唯一 id
+		 * @param { String } prefix 前缀名.
+		 * @return { String } 生成的唯一 id 字符串.
+		 */
+		generateId: function(prefix) {
+
+			return string.unique(this.byId, prefix);
+
 		}
 
 	};
