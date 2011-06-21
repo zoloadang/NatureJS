@@ -155,7 +155,7 @@ def createSpec(ret, source, fname, arg):
 	code = []
 
 	#匹配注释中心
-	center = re.compile(r'\s*;?\s*=>\s*')
+	center = re.compile(r'\s*;?\s*/*\s*=>\s*')
 
 	#匹配模板
 	jasmineTag = re.compile(r'\{JASMINE_CASE\}')
@@ -242,4 +242,3 @@ def run():
 
 if __name__ == '__main__':
 	run()
-

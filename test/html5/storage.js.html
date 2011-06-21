@@ -15,9 +15,9 @@
 
 		require(['../../nature/html5/storage.js'], function(storage) {
 
-			describe("本地存储", function() {
+			describe("本地存储.", function() {
 
-            it("set and get localstorage", function() {
+            it("set and get localstorage.", function() {
                 storage.setItem('a', 'h');
                 storage.setItem('b', {'c': 'd'});
                 expect(storage.getItem('a')).toBe('h');

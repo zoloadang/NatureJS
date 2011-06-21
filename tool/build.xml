@@ -2,21 +2,55 @@
 <project name="build NatureJS" default="build" basedir=".">
     <!-- 定义变量 -->
 	<property name="jsdocpath" location="./jsdoc_toolkit-2.4.0"/>
-	<property name="src" location="../nature"/>
-	<property name="dest" location="../util/doc"/>
+	<property name="jcasepath" location="./jasmine-creater"/>
+	<property name="template" location="template=./jasmine-creater/template/common.html"/>
 
 	<!-- jsdoc -->
 	<target name="jsdoc">
 		<taskdef name="jsdoctoolkit" classname="uk.co.darrenhurley.ant.tasks.JsDocToolkit" classpath="${jsdocpath}/jsdoc-toolkit-ant-task-1.1.2.jar;${jsdocpath}/java/classes/js.jar"/>
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/type/" inputdir="${src}/type/" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/bom/" inputdir="${src}/bom/" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/dom/" inputdir="${src}/dom/" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/io/" inputdir="${src}/io/" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/util/" inputdir="${src}/util/" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/class/" inputdir="${src}/class/" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="${dest}/html5/" inputdir="${src}/html5/" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/type" inputdir="../nature/type" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/bom" inputdir="../nature/bom" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/dom" inputdir="../nature/dom" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/io" inputdir="../nature/io" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/util" inputdir="../nature/util" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/class" inputdir="../nature/class" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/html5" inputdir="../nature/html5" />
 	</target>
 
-    <target name="build" depends="jsdoc"> </target>
+	<!-- compile -->
+	<target name="compile">
+		<taskdef name="py-run" classname="org.pyant.tasks.PythonRunTask" classpath="${jcasepath}/pyAntTasks-1.3.3.jar"/>
+	</target>
+
+	<!-- jcase -->
+	<target name="jcase" depends="compile">
+		<py-run script="${jcasepath}/create.py">
+			<arg value="root=../nature/type"/>
+			<arg value="out=../test/type"/>
+			<arg value="${template}"/>
+		</py-run>
+		<py-run script="${jcasepath}/create.py">
+			<arg value="root=../nature/bom"/>
+			<arg value="out=../test/bom"/>
+			<arg value="${template}"/>
+		</py-run>
+		<py-run script="${jcasepath}/create.py">
+			<arg value="root=../nature/util"/>
+			<arg value="out=../test/util"/>
+			<arg value="${template}"/>
+		</py-run>
+		<py-run script="${jcasepath}/create.py">
+			<arg value="root=../nature/class"/>
+			<arg value="out=../test/class"/>
+			<arg value="${template}"/>
+		</py-run>
+		<py-run script="${jcasepath}/create.py">
+			<arg value="root=../nature/html5"/>
+			<arg value="out=../test/html5"/>
+			<arg value="${template}"/>
+		</py-run>
+	</target>
+	
+    <target name="build" depends="jsdoc,jcase"> </target>
     
 </project>
