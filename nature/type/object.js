@@ -42,10 +42,7 @@ define(['../type/lang.js'], function(lang) {
 
 					_s = source[name];
 
-					if (
-						!target[name] ||
-						target[name] != _s && (!(name in empty) || _s != empty[name])
-					) {
+					if ( !target[name] || target[name] != _s && (!(name in empty) || _s != empty[name])) {
 
 						target[name] = source[name];
 
@@ -59,10 +56,7 @@ define(['../type/lang.js'], function(lang) {
 					name = extraNames[i];
 					_s = source[name];
 
-					if (
-						!target[name] ||
-						target[name] != _s && (!(name in empty) || _s != empty[name])
-					) {
+					if ( !target[name] || target[name] != _s && (!(name in empty) || _s != empty[name])) {
 						target[name] = _s;
 					}
 
@@ -259,6 +253,34 @@ define(['../type/lang.js'], function(lang) {
 		get: function(name, create, context) {
 
 			return this._getProp(name.split('.'), create, context);
+
+		},
+
+		/**
+		 * 获取所有键值
+		 * @param { Object } obj 对象.
+		 * @return { Array } 键名列表.
+		 * @see http://javascriptweblog.wordpress.com/2011/02/28/javascript-object-keys-finally/
+		 * @spec Get all self\'s keys of an object.
+		 * @example
+		 * 		object.keys({a: })
+		 */
+		keys: function(obj) {
+
+			var keys = [],
+				p;
+
+			for (p in obj) {
+
+				if (obj.hasOwnProperty(p)) {
+
+					keys.push(p);
+
+				}
+
+			}
+
+			return keys;
 
 		},
 
