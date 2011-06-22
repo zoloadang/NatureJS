@@ -7,6 +7,8 @@ define(['../type/lang.js', '../dom/html.js', '../bom/browser.js'], function(lang
 	var win = window,
 		doc = document,
 		hasAdd = win.addEventListener,//拥有添加事件方法
+//		loaded = false,
+//		callbacks = [],
 		_listener;
 
 	/**
@@ -49,7 +51,7 @@ define(['../type/lang.js', '../dom/html.js', '../bom/browser.js'], function(lang
 
 					}
 
-				}
+				};
 
 			}
 
@@ -191,6 +193,58 @@ define(['../type/lang.js', '../dom/html.js', '../bom/browser.js'], function(lang
 
 	};
 
+//	/**
+//	 * domready init 函数
+//	 * @private
+//	 */
+//	function _loadinit() {
+//
+//		if (!loaded) {
+//
+//			if (win.detachEvent) {
+//
+//				win.detachEvent('onload', _loadinit);
+//
+//			}
+//
+//		}
+//
+//		loaded = true;
+//
+//		for (var i = 0, len = callbacks.length; i < len; i++) {
+//
+//			callbacks[i]();
+//
+//		}
+//
+//		callbacks.length = 0;
+//
+//
+//	}
+//
+//	/**
+//	 * check scroll
+//	 * @private
+//	 */
+//	function _doScroll() {
+//
+//		try {
+//
+//			if (doc.body) {
+//
+//				doc.documentElement.doScroll('left');
+//				dojo._loadinit();
+//
+//			}
+//
+//		} catch (e) {
+//
+//			setTimeout(arguments.callee, 50);
+//
+//		}
+//
+//	}
+
 	return {
 
 		/**
@@ -222,6 +276,40 @@ define(['../type/lang.js', '../dom/html.js', '../bom/browser.js'], function(lang
 
 			return _listener.remove.apply(_listener, handle);
 
+//		},
+//
+//		/**
+//		 * onDOMReady
+//		 * @param { Function } callback 回调函数.
+//		 */
+//		onDOMReady: function(callback) {
+//
+//			callbacks.push(callback);
+//
+//			if (loaded) {
+//
+//				_loadinit();
+//
+//			} else if ('complete' === doc.readyState) {
+//
+//                _loadinit();
+//				
+//			} else {
+//
+//				if (hasAdd) {
+//
+//					doc.addEventListener('DOMContentLoaded', _loadinit, false);
+//					win.addEventListener('load', _loadinit, false);
+//
+//				} else {
+//
+//					win.attachEvent('onload', _loadinit);
+//					_doScroll();
+//
+//				}
+//
+//			}
+//
 		}
 
 	};
