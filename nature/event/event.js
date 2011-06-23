@@ -12,9 +12,7 @@ define(['../type/lang.js', '../dom/html.js', '../bom/browser.js'], function(lang
 		_listener;
 
 	/**
-	 * 事件注册
-	 * @name event
-	 * @namespace
+	 * private
 	 */
 	_listener = {
 
@@ -244,6 +242,12 @@ define(['../type/lang.js', '../dom/html.js', '../bom/browser.js'], function(lang
 //		}
 //
 //	}
+
+	/**
+	 * 事件注册
+	 * @name event
+	 * @namespace
+	 */
 
 	return {
 

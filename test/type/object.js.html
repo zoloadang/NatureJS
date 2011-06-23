@@ -56,6 +56,11 @@
                 expect(o.name).toBe('dom');
             });
 
+            it("Get all self\'s keys of an object.", function() {
+                var ret = object.keys({a: '1', b: '1'});
+                expect(ret.join('-')).toBe('a-b');
+            });
+
             it("create an instance", function() {
                 var A = function() {};
                 A.prototype.toString = function() { return '1'; };

@@ -8,14 +8,13 @@ define(['../type/string.js'], function(string) {
 		_listener;
 
 	/**
-	 * 自定义事件
-	 * @name custom
-	 * @namespalce
+	 * @private
 	 */
 	_listener = {
 
 		/**
 		 * 创建一个 dispatcher function
+		 * @private
 		 * @return { Function } dispatcher function.
 		 */
 		getDispatcher: function() {
@@ -46,6 +45,7 @@ define(['../type/string.js'], function(string) {
 
 		/**
 		 * 添加监听
+		 * @private
 		 * @param { Object } obj 对象.
 		 * @param { String } method 方法.
 		 * @param { Function } listener 监听事件.
@@ -77,10 +77,10 @@ define(['../type/string.js'], function(string) {
 
 		/**
 		 * 移除监听
+		 * @private
 		 * @param { Object } obj 对象.
 		 * @param { String } method 方法.
 		 * @param { Number } handle add 返回值.
-		 * @param
 		 */
 		remove: function(obj, method, handle) {
 
@@ -96,6 +96,11 @@ define(['../type/string.js'], function(string) {
 
 	};
 
+	/**
+	 * 自定义事件
+	 * @name custom
+	 * @namespace
+	 */
 	return {
 
 		/**

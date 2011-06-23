@@ -122,6 +122,14 @@ function publish(symbolSet) {
 	var filesIndex = fileindexTemplate.process(allFiles);
 	IO.saveFile(publish.conf.outDir, "files"+publish.conf.ext, filesIndex);
 	fileindexTemplate = filesIndex = files = null;
+
+}
+/** Include a sub-template in the current template, specifying a data object */
+function subtemplate(template, data) {
+	try {
+		return new JSDOC.JsPlate(publish.conf.templatesDir+template).process(data);
+	}
+	catch(e) { print(e.message); quit(); }
 }
 
 

@@ -261,11 +261,19 @@ define(['../type/lang.js'], function(lang) {
 		 * @param { Object } obj 对象.
 		 * @return { Array } 键名列表.
 		 * @see http://javascriptweblog.wordpress.com/2011/02/28/javascript-object-keys-finally/
-		 * @spec Get all self\'s keys of an object.
 		 * @example
-		 * 		object.keys({a: })
+		 * 		object.keys({a: '1', b: '1'}) => ['a', 'b']
+		 * @spec Get all self\'s keys of an object.
+		 * 		var ret = object.keys({a: '1', b: '1'});
+		 * 		expect(ret.join('-')).toBe('a-b');
 		 */
 		keys: function(obj) {
+
+			if (Object.keys && lang.isFunction(Object.keys)) {
+
+				return Object.keys(obj);
+
+			}
 
 			var keys = [],
 				p;

@@ -8,13 +8,14 @@
 	<!-- jsdoc -->
 	<target name="jsdoc">
 		<taskdef name="jsdoctoolkit" classname="uk.co.darrenhurley.ant.tasks.JsDocToolkit" classpath="${jsdocpath}/jsdoc-toolkit-ant-task-1.1.2.jar;${jsdocpath}/java/classes/js.jar"/>
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/type" inputdir="../nature/type" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/bom" inputdir="../nature/bom" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/dom" inputdir="../nature/dom" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/io" inputdir="../nature/io" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/util" inputdir="../nature/util" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/oop" inputdir="../nature/oop" />
-		<jsdoctoolkit jsdochome="${jsdocpath}/" template="jsdoc" outputdir="../util/doc/html5" inputdir="../nature/html5" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="naturejs" outputdir="../util/doc/type" inputdir="../nature/type" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="naturejs" outputdir="../util/doc/bom" inputdir="../nature/bom" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="naturejs" outputdir="../util/doc/dom" inputdir="../nature/dom" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="naturejs" outputdir="../util/doc/event" inputdir="../nature/event" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="naturejs" outputdir="../util/doc/io" inputdir="../nature/io" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="naturejs" outputdir="../util/doc/util" inputdir="../nature/util" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="naturejs" outputdir="../util/doc/oop" inputdir="../nature/oop" />
+		<jsdoctoolkit jsdochome="${jsdocpath}/" template="naturejs" outputdir="../util/doc/html5" inputdir="../nature/html5" />
 	</target>
 
 	<!-- compile -->

@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
-		<title>NatureJS - script</title>
+		<title>NatureJS - _global_</title>
 		<style type="text/css">
 			/* default.css */
 body
@@ -228,9 +228,9 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
-	<li><a href="../symbols/script.html">script</a></li>
+	<li><a href="../symbols/custom.html">custom</a></li>
 	
-	<li><a href="../symbols/xhr.html">xhr</a></li>
+	<li><a href="../symbols/event.html">event</a></li>
 	
 </ul>
 <hr />
@@ -241,7 +241,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Namespace script
+				Built-In Namespace _global_
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -252,42 +252,47 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/nature_io_script.js.html">script.js</a>.
-				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class script.">
-				<caption>Namespace Summary</caption>
-				<thead>
-					<tr>
-						<th scope="col">Constructor Attributes</th>
-						<th scope="col">Constructor Name and Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="attributes">&nbsp;</td>
-						<td class="nameDescription" >
-							<div class="fixedFont">
-								<b><a href="../symbols/script.html#constructor">script</a></b>
-							</div>
-							<div class="description">script 异步载入模块</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			
 
 <!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class _global_.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/_global_.html#_listener">_listener</a></b>
+								</div>
+								<div class="description">private</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
 			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class script.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class _global_.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -298,38 +303,11 @@ ul.inheritsList
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">script.<b><a href="../symbols/script.html#.create">create</a></b>(url)
+								<div class="fixedFont"><b>fp</b>(ev)
 								</div>
-								<div class="description">创建 script 标签</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">script.<b><a href="../symbols/script.html#.get">get</a></b>(cfg)
-								</div>
-								<div class="description">载入 script</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">script.<b><a href="../symbols/script.html#.jsonp">jsonp</a></b>(cfg)
-								</div>
-								<div class="description">jsonp</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">script.<b><a href="../symbols/script.html#.remove">remove</a></b>(node)
-								</div>
-								<div class="description">移除 script 标签</div>
+								<div class="description"></div>
 							</td>
 						</tr>
 					
@@ -344,35 +322,38 @@ ul.inheritsList
 
 <!-- ============================== constructor details ==================== -->		
 			
-			<div class="details"><a name="constructor"> </a>
-				<div class="sectionTitle">
-					Namespace Detail
-				</div>
-				
-				<div class="fixedFont">
-						<b>script</b>
-				</div>
-				
-				<div class="description">
-					script 异步载入模块
-					
-				</div>
-				
-				
-				
-				
-					
-					
-					
-					
-					
-					
-					
-
-			</div>
-			
 
 <!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name="_listener"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>_listener</b>
+					
+					</div>
+					<div class="description">
+						private
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/nature_event_event.js.html">event.js</a>.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
 			
 
 <!-- ============================== method details ========================= -->		
@@ -381,15 +362,18 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".create"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="fp"> </a>
+					<div class="fixedFont">
 					
-					<span class="light">{HTMLelement}</span>
-					<span class="light">script.</span><b>create</b>(url)
+					
+					<b>fp</b>(ev)
 					
 					</div>
 					<div class="description">
-						创建 script 标签
+						
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/nature_event_event.js.html">event.js</a>.
 						
 						
 					</div>
@@ -401,132 +385,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>url</b>
+									<b>ev</b>
 									
 								</dt>
-								<dd>script 地址.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{HTMLelement}</span> script node.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".get"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{HTMLelement}</span>
-					<span class="light">script.</span><b>get</b>(cfg)
-					
-					</div>
-					<div class="description">
-						载入 script
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Object}</span> <b>cfg</b>
-									
-								</dt>
-								<dd>配置项.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{HTMLelement}</span> script node.</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".jsonp"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">script.</span><b>jsonp</b>(cfg)
-					
-					</div>
-					<div class="description">
-						jsonp
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Object}</span> <b>cfg</b>
-									
-								</dt>
-								<dd>配置项.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".remove"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">script.</span><b>remove</b>(node)
-					
-					</div>
-					<div class="description">
-						移除 script 标签
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{HTMLelement}</span> <b>node</b>
-									
-								</dt>
-								<dd>script node.</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -550,7 +412,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 			<div class="footer">
 				<p>&copy; 2011 <a href="http://naturejs.org/">NatureJS</a></p>
-				<p>Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jun 23 2011 07:59:14 GMT+0800 (CST)</p>
+				<p>Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jun 23 2011 07:59:13 GMT+0800 (CST)</p>
 			</div>
 		</div>
 	</body>

@@ -1,0 +1,329 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @fileoveview 事件注册
+<span class='line'>  3</span>  * @author nanzhi&lt;nanzhienai@163.com>
+<span class='line'>  4</span>  */</span><span class="WHIT">
+<span class='line'>  5</span> </span><span class="NAME">define</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="STRN">'../type/lang.js'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'../dom/html.js'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'../bom/browser.js'</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">lang</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">html</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">browser</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>  6</span> 
+<span class='line'>  7</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">win</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">window</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  8</span> </span><span class="WHIT">		</span><span class="NAME">doc</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">document</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>  9</span> </span><span class="WHIT">		</span><span class="NAME">hasAdd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">win.addEventListener</span><span class="PUNC">,</span><span class="COMM">//拥有添加事件方法</span><span class="WHIT">
+<span class='line'> 10</span> </span><span class="COMM">//		loaded = false,</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="COMM">//		callbacks = [],</span><span class="WHIT">
+<span class='line'> 12</span> </span><span class="WHIT">		</span><span class="NAME">_listener</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 13</span> 
+<span class='line'> 14</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 15</span> 	 * private
+<span class='line'> 16</span> 	 */</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="WHIT">	</span><span class="NAME">_listener</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 18</span> 
+<span class='line'> 19</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'> 20</span> 		 * 添加事件
+<span class='line'> 21</span> 		 * @private
+<span class='line'> 22</span> 		 * @param { HTMLElement } node 节点.
+<span class='line'> 23</span> 		 * @param { String } type 事件类型.
+<span class='line'> 24</span> 		 * @param { Function } func 回调函数.
+<span class='line'> 25</span> 		 * @return { Function } 回调函数.
+<span class='line'> 26</span> 		 */</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">		</span><span class="NAME">add</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">node</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 28</span> 
+<span class='line'> 29</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">host</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">				</span><span class="NAME">fp</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ev</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">					</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">host._fixCallback</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ev</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">				</span><span class="NAME">enter_reg</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/mouseenter|mouseleave/i</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">				</span><span class="NAME">focus_reg</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="REGX">/focusin|focusout/i</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">				</span><span class="NAME">m</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 36</span> 
+<span class='line'> 37</span> </span><span class="WHIT">			</span><span class="COMM">//fix mouseenter, mouseleave</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">			</span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">type.match</span><span class="PUNC">(</span><span class="NAME">enter_reg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">m</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">browser.isIE</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 40</span> 
+<span class='line'> 41</span> </span><span class="WHIT">				</span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'mouseenter'</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">m</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">'mouseover'</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'mouseout'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> 
+<span class='line'> 43</span> </span><span class="WHIT">				</span><span class="COMM">//非 ie 浏览器</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">				</span><span class="NAME">fp</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ev</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="WHIT">					</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">html.contains</span><span class="PUNC">(</span><span class="NAME">node</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ev.relatedTarget</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 47</span> 
+<span class='line'> 48</span> </span><span class="WHIT">						</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">host._fixCallback</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ev</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> 
+<span class='line'> 50</span> </span><span class="WHIT">					</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 51</span> 
+<span class='line'> 52</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 53</span> 
+<span class='line'> 54</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 55</span> 
+<span class='line'> 56</span> </span><span class="WHIT">			</span><span class="COMM">//fix focusin, focusout</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">			</span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">type.match</span><span class="PUNC">(</span><span class="NAME">focus_reg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">m</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">m</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">browser.isIE</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 59</span> 
+<span class='line'> 60</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.addEventListener</span><span class="PUNC">(</span><span class="STRN">'focusin'</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">m</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="STRN">'focus'</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'blur'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fp</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 61</span> 
+<span class='line'> 62</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 63</span> 
+<span class='line'> 64</span> </span><span class="WHIT">			</span><span class="COMM">//兼容性处理</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">hasAdd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 66</span> 
+<span class='line'> 67</span> </span><span class="WHIT">				</span><span class="NAME">node.addEventListener</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fp</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 68</span> 
+<span class='line'> 69</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 70</span> 
+<span class='line'> 71</span> </span><span class="WHIT">				</span><span class="NAME">node.attachEvent</span><span class="PUNC">(</span><span class="STRN">'on'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">fp</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 72</span> 
+<span class='line'> 73</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 74</span> 
+<span class='line'> 75</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">fp</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 76</span> 
+<span class='line'> 77</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 78</span> 
+<span class='line'> 79</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'> 80</span> 		 * 移除事件
+<span class='line'> 81</span> 		 * @private
+<span class='line'> 82</span> 		 * @param { HTMLElement } node 节点.
+<span class='line'> 83</span> 		 * @param { String } type 事件类型.
+<span class='line'> 84</span> 		 * @param { Function } handle 函数, add 返回值.
+<span class='line'> 85</span> 		 * @return
+<span class='line'> 86</span> 		 */</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">		</span><span class="NAME">remove</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">node</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">handle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 88</span> 
+<span class='line'> 89</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">hasAdd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 90</span> 
+<span class='line'> 91</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.removeEventListener</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">handle</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> 
+<span class='line'> 93</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 94</span> 
+<span class='line'> 95</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.detachEvent</span><span class="PUNC">(</span><span class="STRN">'on'</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">handle</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 96</span> 
+<span class='line'> 97</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 98</span> 
+<span class='line'> 99</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>100</span> 
+<span class='line'>101</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>102</span> 		 * fix callback
+<span class='line'>103</span> 		 * @private
+<span class='line'>104</span> 		 * @param { String } type 事件类型.
+<span class='line'>105</span> 		 * @param { Function } func 回调函数.
+<span class='line'>106</span> 		 * @return { Function } 修改过 ev 的函数.
+<span class='line'>107</span> 		 */</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">		</span><span class="NAME">_fixCallback</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>109</span> 
+<span class='line'>110</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ev</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>111</span> 
+<span class='line'>112</span> </span><span class="WHIT">				</span><span class="NAME">func.call</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">_listener._fixEvent</span><span class="PUNC">(</span><span class="NAME">ev</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>113</span> 
+<span class='line'>114</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>115</span> 
+<span class='line'>116</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>117</span> 
+<span class='line'>118</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>119</span> 		 * 为事件对象添加属性, 方法
+<span class='line'>120</span> 		 * @private
+<span class='line'>121</span> 		 * @param { Event Object } ev 事件对象.
+<span class='line'>122</span> 		 * @param
+<span class='line'>123</span> 		 * @return { Event Object } 事件对象.
+<span class='line'>124</span> 		 */</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">		</span><span class="NAME">_fixEvent</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ev</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>126</span> 
+<span class='line'>127</span> </span><span class="WHIT">			</span><span class="NAME">ev</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ev</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">win.event</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>128</span> 
+<span class='line'>129</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">host</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> 
+<span class='line'>131</span> </span><span class="WHIT">			</span><span class="COMM">//target</span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">ev.target</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>133</span> 
+<span class='line'>134</span> </span><span class="WHIT">				</span><span class="NAME">ev.target</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">ev.srcElement</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>135</span> 
+<span class='line'>136</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>137</span> 
+<span class='line'>138</span> </span><span class="WHIT">			</span><span class="COMM">//阻止默认事件</span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">ev.preventDefault</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>140</span> 
+<span class='line'>141</span> </span><span class="WHIT">				</span><span class="NAME">ev.preventDefault</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>142</span> 
+<span class='line'>143</span> </span><span class="WHIT">					</span><span class="NAME">ev.returnValue</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> 
+<span class='line'>145</span> </span><span class="WHIT">					</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>146</span> 
+<span class='line'>147</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>148</span> 
+<span class='line'>149</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>150</span> 
+<span class='line'>151</span> </span><span class="WHIT">			</span><span class="COMM">//阻止冒泡</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">ev.stopPropagation</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>153</span> 
+<span class='line'>154</span> </span><span class="WHIT">				</span><span class="NAME">ev.stopPropagation</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>155</span> 
+<span class='line'>156</span> </span><span class="WHIT">					</span><span class="NAME">ev.cancelBubble</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>157</span> 
+<span class='line'>158</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>159</span> 
+<span class='line'>160</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>161</span> 
+<span class='line'>162</span> </span><span class="WHIT">			</span><span class="COMM">//阻止默认事件和冒泡</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">ev.stopEvent</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>164</span> 
+<span class='line'>165</span> </span><span class="WHIT">				</span><span class="NAME">ev.stopEvent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>166</span> 
+<span class='line'>167</span> </span><span class="WHIT">					</span><span class="NAME">ev.preventDefault</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">					</span><span class="NAME">ev.stopPropagation</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>169</span> 
+<span class='line'>170</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>171</span> 
+<span class='line'>172</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>173</span> 
+<span class='line'>174</span> </span><span class="WHIT">			</span><span class="COMM">//修改 key</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">			</span><span class="NAME">host._fixKey</span><span class="PUNC">(</span><span class="NAME">ev</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>176</span> 
+<span class='line'>177</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ev</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>178</span> 
+<span class='line'>179</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>180</span> 
+<span class='line'>181</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>182</span> 		 * 修改 key
+<span class='line'>183</span> 		 * @private
+<span class='line'>184</span> 		 * @param { Event Object } ev 事件对象.
+<span class='line'>185</span> 		 * @return { Event Object } 事件对象.
+<span class='line'>186</span> 		 */</span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">		</span><span class="NAME">_fixKey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ev</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>188</span> 
+<span class='line'>189</span> 
+<span class='line'>190</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>191</span> 
+<span class='line'>192</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>193</span> 
+<span class='line'>194</span> </span><span class="COMM">//	/**</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="COMM">//	 * domready init 函数</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="COMM">//	 * @private</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="COMM">//	 */</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="COMM">//	function _loadinit() {</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="COMM">//		if (!loaded) {</span><span class="WHIT">
+<span class='line'>201</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>202</span> </span><span class="COMM">//			if (win.detachEvent) {</span><span class="WHIT">
+<span class='line'>203</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>204</span> </span><span class="COMM">//				win.detachEvent('onload', _loadinit);</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="COMM">//			}</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="COMM">//		}</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>210</span> </span><span class="COMM">//		loaded = true;</span><span class="WHIT">
+<span class='line'>211</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>212</span> </span><span class="COMM">//		for (var i = 0, len = callbacks.length; i &lt; len; i++) {</span><span class="WHIT">
+<span class='line'>213</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>214</span> </span><span class="COMM">//			callbacks[i]();</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="COMM">//		}</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>218</span> </span><span class="COMM">//		callbacks.length = 0;</span><span class="WHIT">
+<span class='line'>219</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>220</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>221</span> </span><span class="COMM">//	}</span><span class="WHIT">
+<span class='line'>222</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>223</span> </span><span class="COMM">//	/**</span><span class="WHIT">
+<span class='line'>224</span> </span><span class="COMM">//	 * check scroll</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="COMM">//	 * @private</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="COMM">//	 */</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="COMM">//	function _doScroll() {</span><span class="WHIT">
+<span class='line'>228</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>229</span> </span><span class="COMM">//		try {</span><span class="WHIT">
+<span class='line'>230</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>231</span> </span><span class="COMM">//			if (doc.body) {</span><span class="WHIT">
+<span class='line'>232</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>233</span> </span><span class="COMM">//				doc.documentElement.doScroll('left');</span><span class="WHIT">
+<span class='line'>234</span> </span><span class="COMM">//				dojo._loadinit();</span><span class="WHIT">
+<span class='line'>235</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>236</span> </span><span class="COMM">//			}</span><span class="WHIT">
+<span class='line'>237</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>238</span> </span><span class="COMM">//		} catch (e) {</span><span class="WHIT">
+<span class='line'>239</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>240</span> </span><span class="COMM">//			setTimeout(arguments.callee, 50);</span><span class="WHIT">
+<span class='line'>241</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>242</span> </span><span class="COMM">//		}</span><span class="WHIT">
+<span class='line'>243</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>244</span> </span><span class="COMM">//	}</span><span class="WHIT">
+<span class='line'>245</span> 
+<span class='line'>246</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>247</span> 	 * 事件注册
+<span class='line'>248</span> 	 * @name event
+<span class='line'>249</span> 	 * @namespace
+<span class='line'>250</span> 	 */</span><span class="WHIT">
+<span class='line'>251</span> 
+<span class='line'>252</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>253</span> 
+<span class='line'>254</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>255</span> 		 * @lends event
+<span class='line'>256</span> 		 * @static
+<span class='line'>257</span> 		 */</span><span class="WHIT">
+<span class='line'>258</span> 
+<span class='line'>259</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>260</span> 		 * 添加事件
+<span class='line'>261</span> 		 * @param { HTMLelement | String } node 节点或者节点 id.
+<span class='line'>262</span> 		 * @param { String } type 事件类型.
+<span class='line'>263</span> 		 * @param { Function | String } func 事件函数, 或者对象方法名.
+<span class='line'>264</span> 		 * @param { Object } scope 函数作用域.
+<span class='line'>265</span> 		 * @return { Function } 事件, 用于移除事件.
+<span class='line'>266</span> 		 */</span><span class="WHIT">
+<span class='line'>267</span> </span><span class="WHIT">		</span><span class="NAME">add</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">node</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">scope</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>268</span> 
+<span class='line'>269</span> </span><span class="WHIT">			</span><span class="NAME">node</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">html.byId</span><span class="PUNC">(</span><span class="NAME">node</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>270</span> 
+<span class='line'>271</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NAME">node</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">_listener.add</span><span class="PUNC">(</span><span class="NAME">node</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">lang.hitch</span><span class="PUNC">(</span><span class="NAME">scope</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">func</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>272</span> 
+<span class='line'>273</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>274</span> 
+<span class='line'>275</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>276</span> 		 * 解除事件
+<span class='line'>277</span> 		 * @param { Function | String } handle add 返回值.
+<span class='line'>278</span> 		 */</span><span class="WHIT">
+<span class='line'>279</span> </span><span class="WHIT">		</span><span class="NAME">remove</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">handle</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>280</span> 
+<span class='line'>281</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">_listener.remove.apply</span><span class="PUNC">(</span><span class="NAME">_listener</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">handle</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>282</span> 
+<span class='line'>283</span> </span><span class="COMM">//		},</span><span class="WHIT">
+<span class='line'>284</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>285</span> </span><span class="COMM">//		/**</span><span class="WHIT">
+<span class='line'>286</span> </span><span class="COMM">//		 * onDOMReady</span><span class="WHIT">
+<span class='line'>287</span> </span><span class="COMM">//		 * @param { Function } callback 回调函数.</span><span class="WHIT">
+<span class='line'>288</span> </span><span class="COMM">//		 */</span><span class="WHIT">
+<span class='line'>289</span> </span><span class="COMM">//		onDOMReady: function(callback) {</span><span class="WHIT">
+<span class='line'>290</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>291</span> </span><span class="COMM">//			callbacks.push(callback);</span><span class="WHIT">
+<span class='line'>292</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>293</span> </span><span class="COMM">//			if (loaded) {</span><span class="WHIT">
+<span class='line'>294</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>295</span> </span><span class="COMM">//				_loadinit();</span><span class="WHIT">
+<span class='line'>296</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>297</span> </span><span class="COMM">//			} else if ('complete' === doc.readyState) {</span><span class="WHIT">
+<span class='line'>298</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>299</span> </span><span class="COMM">//                _loadinit();</span><span class="WHIT">
+<span class='line'>300</span> </span><span class="COMM">//				</span><span class="WHIT">
+<span class='line'>301</span> </span><span class="COMM">//			} else {</span><span class="WHIT">
+<span class='line'>302</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>303</span> </span><span class="COMM">//				if (hasAdd) {</span><span class="WHIT">
+<span class='line'>304</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>305</span> </span><span class="COMM">//					doc.addEventListener('DOMContentLoaded', _loadinit, false);</span><span class="WHIT">
+<span class='line'>306</span> </span><span class="COMM">//					win.addEventListener('load', _loadinit, false);</span><span class="WHIT">
+<span class='line'>307</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>308</span> </span><span class="COMM">//				} else {</span><span class="WHIT">
+<span class='line'>309</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>310</span> </span><span class="COMM">//					win.attachEvent('onload', _loadinit);</span><span class="WHIT">
+<span class='line'>311</span> </span><span class="COMM">//					_doScroll();</span><span class="WHIT">
+<span class='line'>312</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>313</span> </span><span class="COMM">//				}</span><span class="WHIT">
+<span class='line'>314</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>315</span> </span><span class="COMM">//			}</span><span class="WHIT">
+<span class='line'>316</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>317</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>318</span> 
+<span class='line'>319</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>320</span> 
+<span class='line'>321</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>322</span> </span></pre></body></html>

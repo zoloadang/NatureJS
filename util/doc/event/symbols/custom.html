@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
-		<title>NatureJS - storage</title>
+		<title>NatureJS - custom</title>
 		<style type="text/css">
 			/* default.css */
 body
@@ -228,7 +228,9 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
-	<li><a href="../symbols/storage.html">storage</a></li>
+	<li><a href="../symbols/custom.html">custom</a></li>
+	
+	<li><a href="../symbols/event.html">event</a></li>
 	
 </ul>
 <hr />
@@ -239,7 +241,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Namespace storage
+				Namespace custom
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -250,13 +252,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/nature_html5_storage.js.html">storage.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/nature_event_custom.js.html">custom.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class storage.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class custom.">
 				<caption>Namespace Summary</caption>
 				<thead>
 					<tr>
@@ -269,9 +271,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/storage.html#constructor">storage</a></b>
+								<b><a href="../symbols/custom.html#constructor">custom</a></b>
 							</div>
-							<div class="description">本地存储.</div>
+							<div class="description">自定义事件</div>
 						</td>
 					</tr>
 				</tbody>
@@ -285,7 +287,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class storage.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class custom.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -298,36 +300,18 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">storage.<b><a href="../symbols/storage.html#.clear">clear</a></b>()
+								<div class="fixedFont">custom.<b><a href="../symbols/custom.html#.add">add</a></b>(obj, method, listener)
 								</div>
-								<div class="description">清除所有本地存储.</div>
+								<div class="description">添加事件</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">storage.<b><a href="../symbols/storage.html#.getItem">getItem</a></b>(key)
+								<div class="fixedFont">custom.<b><a href="../symbols/custom.html#.remove">remove</a></b>(handle)
 								</div>
-								<div class="description">读取本地存储.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">storage.<b><a href="../symbols/storage.html#.removeItem">removeItem</a></b>(key)
-								</div>
-								<div class="description">移除本地存储.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">storage.<b><a href="../symbols/storage.html#.setItem">setItem</a></b>(key, value)
-								</div>
-								<div class="description">写入本地存储, 当 value 值为对象时会转换为 json 格式进行存储, 当为其他类型时转换为 toString() 来存储.</div>
+								<div class="description">解除事件</div>
 							</td>
 						</tr>
 					
@@ -348,11 +332,11 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>storage</b>
+						<b>custom</b>
 				</div>
 				
 				<div class="description">
-					本地存储.
+					自定义事件
 					
 				</div>
 				
@@ -379,61 +363,18 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".clear"> </a>
+					<a name=".add"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					
-					<span class="light">storage.</span><b>clear</b>()
+					<span class="light">{Array}</span>
+					<span class="light">custom.</span><b>add</b>(obj, method, listener)
 					
 					</div>
 					<div class="description">
-						清除所有本地存储.
+						添加事件
 						
 						
 					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd></dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".getItem"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{String}</span>
-					<span class="light">storage.</span><b>getItem</b>(key)
-					
-					</div>
-					<div class="description">
-						读取本地存储.
-						
-						
-					</div>
-					
-					
-					
-					<pre class="code">		storage.setItem('a', 'h');
-		storage.setItem('b', {'c': 'd'});
-		storage.getItem('a') => 'h';
-		storage.getItem('b') => '{"c":"d"}';
-		storage.removeItem('b');
-		storage.getItem('b') => null;
-		storage.clear();
-		storage.getItem('a') => null;</pre>
 					
 					
 					
@@ -442,10 +383,22 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>key</b>
+									<span class="light fixedFont">{Object}</span> <b>obj</b>
 									
 								</dt>
-								<dd>存储名.</dd>
+								<dd>对象.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>method</b>
+									
+								</dt>
+								<dd>方法.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Function}</span> <b>listener</b>
+									
+								</dt>
+								<dd>监听.</dd>
 							
 							</dl>
 						
@@ -456,7 +409,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> 本地存储值.</dd>
+								<dd><span class="light fixedFont">{Array}</span> 用于 remove 参数.</dd>
 							
 							</dl>
 						
@@ -465,15 +418,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".removeItem"> </a>
+					<a name=".remove"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					<span class="light">storage.</span><b>removeItem</b>(key)
+					<span class="light">custom.</span><b>remove</b>(handle)
 					
 					</div>
 					<div class="description">
-						移除本地存储.
+						解除事件
 						
 						
 					</div>
@@ -485,52 +438,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{String}</span> <b>key</b>
+									<span class="light fixedFont">{Array}</span> <b>handle</b>
 									
 								</dt>
-								<dd>存储名.</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".setItem"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">storage.</span><b>setItem</b>(key, value)
-					
-					</div>
-					<div class="description">
-						写入本地存储, 当 value 值为对象时会转换为 json 格式进行存储, 当为其他类型时转换为 toString() 来存储.
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{String}</span> <b>key</b>
-									
-								</dt>
-								<dd>存储名.</dd>
-							
-								<dt>
-									<span class="light fixedFont">{Anything}</span> <b>value</b>
-									
-								</dt>
-								<dd>需要存储的值.</dd>
+								<dd>add 返回值.</dd>
 							
 							</dl>
 						
@@ -554,7 +465,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 			<div class="footer">
 				<p>&copy; 2011 <a href="http://naturejs.org/">NatureJS</a></p>
-				<p>Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jun 23 2011 07:59:16 GMT+0800 (CST)</p>
+				<p>Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jun 23 2011 07:59:13 GMT+0800 (CST)</p>
 			</div>
 		</div>
 	</body>
